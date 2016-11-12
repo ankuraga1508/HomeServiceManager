@@ -1,0 +1,28 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+#header {
+  text-align: center;
+}
+input {
+  float: right;
+}
+
+#fields {
+  display: block;
+  width: 650px;
+  padding-bottom: 15px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+    margin: 15px;
+    font-size: 1.5em;
+}
