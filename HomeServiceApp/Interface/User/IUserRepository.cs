@@ -17,7 +17,7 @@ namespace HSM.Interface
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        List<User> GetAllUsers(int cityId);
+        List<User> GetAllUsers(int roleId);
         
         /// <summary>
         /// get delaer based on Userid

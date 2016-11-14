@@ -4,9 +4,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 using System.Web;
-using HSM.Notification;
 using System.Threading;
 using HSM.Common;
 
@@ -14,14 +13,14 @@ namespace HSM.DAL
 {
     public class Database
     {
-        private SqlConnection con;
-        private SqlCommand cmd;
+        private MySqlConnection con;
+        private MySqlCommand cmd;
         private String strConn;
         public static int Static_count = 0;
         public int count = 0;
         private HttpContext objTrace = HttpContext.Current;
 
-        public SqlConnection Conn
+        public MySqlConnection Conn
         {
             get { return con; }
             set { con = value; }
@@ -47,15 +46,15 @@ namespace HSM.DAL
             return strConn;
         }
 
-        public SqlDataReader SelectQry(string strSql)
+        public MySqlDataReader SelectQry(string strSql)
         {
-            SqlDataReader dataReader;
-            con = new SqlConnection(strConn);
+            MySqlDataReader dataReader;
+            con = new MySqlConnection(strConn);
 
             try
             {
                 con.Open();
-                cmd = new SqlCommand(strSql, con);
+                cmd = new MySqlCommand(strSql, con);
                 dataReader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
 
                 return dataReader;
@@ -67,16 +66,16 @@ namespace HSM.DAL
             }
         }
 
-        public SqlDataReader SelectQry(string sqlStr, SqlParameter[] commandParameters)
+        public MySqlDataReader SelectQry(string sqlStr, MySqlParameter[] commandParameters)
         {
-            SqlDataReader dataReader = null;
-            con = new SqlConnection(strConn);
+            MySqlDataReader dataReader = null;
+            con = new MySqlConnection(strConn);
 
             try
             {
                 con.Open();
-                cmd = new SqlCommand(sqlStr, con);
-                foreach (SqlParameter p in commandParameters)
+                cmd = new MySqlCommand(sqlStr, con);
+                foreach (MySqlParameter p in commandParameters)
                 {
                     if ((p.Direction == ParameterDirection.InputOutput) && (p.Value == null))
                         p.Value = DBNull.Value;
@@ -99,15 +98,15 @@ namespace HSM.DAL
             return dataReader;
         }
 
-        public SqlDataReader SelectQry(SqlCommand cmdParam)
+        public MySqlDataReader SelectQry(MySqlCommand cmdParam)
         {
-            SqlDataReader dataReader = null;
+            MySqlDataReader dataReader = null;
 
             try
             {
-                using (con = new SqlConnection(strConn))
+                using (con = new MySqlConnection(strConn))
                 {
-                    con = new SqlConnection(strConn);
+                    con = new MySqlConnection(strConn);
                     cmdParam.Connection = con;
                     con.Open();
                     dataReader = cmdParam.ExecuteReader(CommandBehavior.CloseConnection);
@@ -129,15 +128,15 @@ namespace HSM.DAL
         public DataSet SelectAdaptQry(string strSql)
         {
             DataSet dataSet = new DataSet();
-            con = new SqlConnection(strConn);
+            con = new MySqlConnection(strConn);
 
             try
             {
-                SqlDataAdapter adapter = new SqlDataAdapter();
-                adapter.SelectCommand = new SqlCommand(strSql, con);
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = new MySqlCommand(strSql, con);
                 adapter.Fill(dataSet);
             }
-            catch (SqlException exSql)
+            catch (MySqlException exSql)
             {
                 dataSet = null;
 
@@ -157,17 +156,17 @@ namespace HSM.DAL
             return dataSet;
         }
 
-        public DataSet SelectAdaptQry(string sqlStr, SqlParameter[] commandParameters)
+        public DataSet SelectAdaptQry(string sqlStr, MySqlParameter[] commandParameters)
         {
             DataSet dataSet = new DataSet();
 
-            con = new SqlConnection(strConn);
-            SqlDataAdapter adapter = new SqlDataAdapter();
+            con = new MySqlConnection(strConn);
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
             try
             {
-                adapter.SelectCommand = new SqlCommand(sqlStr, con);
+                adapter.SelectCommand = new MySqlCommand(sqlStr, con);
 
-                foreach (SqlParameter p in commandParameters)
+                foreach (MySqlParameter p in commandParameters)
                 {
                     if ((p.Direction == ParameterDirection.InputOutput) && (p.Value == null))
                         p.Value = DBNull.Value;
@@ -177,7 +176,7 @@ namespace HSM.DAL
                 adapter.Fill(dataSet);
                 adapter.SelectCommand.Parameters.Clear();
             }
-            catch (SqlException exSql)
+            catch (MySqlException exSql)
             {
                 dataSet = null;
 
@@ -197,11 +196,11 @@ namespace HSM.DAL
             return dataSet;
         }
 
-        public DataSet SelectAdaptQry(SqlCommand cmdParam)
+        public DataSet SelectAdaptQry(MySqlCommand cmdParam)
         {
-            con = new SqlConnection(strConn);
+            con = new MySqlConnection(strConn);
             DataSet dataSet = new DataSet();
-            SqlDataAdapter adapter = new SqlDataAdapter();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
 
             try
             {
@@ -211,7 +210,7 @@ namespace HSM.DAL
                 adapter.SelectCommand = cmdParam;
                 adapter.Fill(dataSet);
             }
-            catch (SqlException exSql)
+            catch (MySqlException exSql)
             {
                 dataSet = null;
 
@@ -249,11 +248,11 @@ namespace HSM.DAL
         public bool InsertQry(string strSql)
         {
             int intRetRows;
-            con = new SqlConnection(strConn);
+            con = new MySqlConnection(strConn);
             bool result = false;
             try
             {
-                cmd = new SqlCommand(strSql, con);
+                cmd = new MySqlCommand(strSql, con);
                 con.Open();
 
                 intRetRows = cmd.ExecuteNonQuery();
@@ -274,17 +273,17 @@ namespace HSM.DAL
             return result;
         }
 
-        public bool InsertQry(string sqlStr, SqlParameter[] commandParameters)
+        public bool InsertQry(string sqlStr, MySqlParameter[] commandParameters)
         {
-            con = new SqlConnection(strConn);
+            con = new MySqlConnection(strConn);
             bool result = false;
 
             try
             {
-                cmd = new SqlCommand(sqlStr, con);
+                cmd = new MySqlCommand(sqlStr, con);
                 con.Open();
 
-                foreach (SqlParameter p in commandParameters)
+                foreach (MySqlParameter p in commandParameters)
                 {
                     if ((p.Direction == ParameterDirection.InputOutput) && (p.Value == null))
                         p.Value = DBNull.Value;
@@ -312,9 +311,9 @@ namespace HSM.DAL
             return result;
         }
 
-        public bool InsertQry(SqlCommand cmdParam)
+        public bool InsertQry(MySqlCommand cmdParam)
         {
-            con = new SqlConnection(strConn);
+            con = new MySqlConnection(strConn);
             bool result = false;
 
             try
@@ -345,11 +344,11 @@ namespace HSM.DAL
         public bool UpdateQry(string strSql)
         {
             int intRetRows;
-            con = new SqlConnection(strConn);
+            con = new MySqlConnection(strConn);
             bool result;
             try
             {
-                cmd = new SqlCommand(strSql, con);
+                cmd = new MySqlCommand(strSql, con);
                 con.Open();
                 intRetRows = cmd.ExecuteNonQuery();
 
@@ -369,17 +368,17 @@ namespace HSM.DAL
             return result;
         }
 
-        public bool UpdateQry(string sqlStr, SqlParameter[] commandParameters)
+        public bool UpdateQry(string sqlStr, MySqlParameter[] commandParameters)
         {
-            con = new SqlConnection(strConn);
+            con = new MySqlConnection(strConn);
             bool result = false;
 
             try
             {
-                cmd = new SqlCommand(sqlStr, con);
+                cmd = new MySqlCommand(sqlStr, con);
                 con.Open();
 
-                foreach (SqlParameter p in commandParameters)
+                foreach (MySqlParameter p in commandParameters)
                 {
                     if ((p.Direction == ParameterDirection.InputOutput) && (p.Value == null))
                         p.Value = DBNull.Value;
@@ -409,9 +408,9 @@ namespace HSM.DAL
             return result;
         }
 
-        public bool UpdateQry(SqlCommand cmdParam)
+        public bool UpdateQry(MySqlCommand cmdParam)
         {
-            con = new SqlConnection(strConn);
+            con = new MySqlConnection(strConn);
             bool result = false;
 
             try
@@ -442,11 +441,11 @@ namespace HSM.DAL
         public int UpdateQryRetRows(string strSql)
         {
             int intRetRows = 0;
-            con = new SqlConnection(strConn);
+            con = new MySqlConnection(strConn);
 
             try
             {
-                cmd = new SqlCommand(strSql, con);
+                cmd = new MySqlCommand(strSql, con);
                 con.Open();
 
                 intRetRows = cmd.ExecuteNonQuery();
@@ -463,17 +462,17 @@ namespace HSM.DAL
             return intRetRows;
         }
 
-        public int UpdateQryRetRows(string sqlStr, SqlParameter[] commandParameters)
+        public int UpdateQryRetRows(string sqlStr, MySqlParameter[] commandParameters)
         {
-            con = new SqlConnection(strConn);
+            con = new MySqlConnection(strConn);
             int intRetRows = 0;
 
             try
             {
-                cmd = new SqlCommand(sqlStr, con);
+                cmd = new MySqlCommand(sqlStr, con);
                 con.Open();
 
-                foreach (SqlParameter p in commandParameters)
+                foreach (MySqlParameter p in commandParameters)
                 {
                     if ((p.Direction == ParameterDirection.InputOutput) && (p.Value == null))
                         p.Value = DBNull.Value;
@@ -501,11 +500,11 @@ namespace HSM.DAL
         {
             bool result = false;
             int intRetRows;
-            con = new SqlConnection(strConn);
+            con = new MySqlConnection(strConn);
 
             try
             {
-                cmd = new SqlCommand(strSql, con);
+                cmd = new MySqlCommand(strSql, con);
                 con.Open();
 
                 intRetRows = cmd.ExecuteNonQuery();
@@ -528,17 +527,17 @@ namespace HSM.DAL
 
         }
 
-        public bool DeleteQry(string sqlStr, SqlParameter[] commandParameters)
+        public bool DeleteQry(string sqlStr, MySqlParameter[] commandParameters)
         {
-            con = new SqlConnection(strConn);
+            con = new MySqlConnection(strConn);
             bool result = false;
 
             try
             {
-                cmd = new SqlCommand(sqlStr, con);
+                cmd = new MySqlCommand(sqlStr, con);
                 con.Open();
 
-                foreach (SqlParameter p in commandParameters)
+                foreach (MySqlParameter p in commandParameters)
                 {
                     if ((p.Direction == ParameterDirection.InputOutput) && (p.Value == null))
                         p.Value = DBNull.Value;
@@ -569,9 +568,9 @@ namespace HSM.DAL
             return result;
         }
 
-        public bool DeleteQry(SqlCommand cmdParam)
+        public bool DeleteQry(MySqlCommand cmdParam)
         {
-            con = new SqlConnection(strConn);
+            con = new MySqlConnection(strConn);
             bool result = false;
 
             try
@@ -603,17 +602,17 @@ namespace HSM.DAL
         {
             string val = "";
 
-            SqlConnection con;
-            SqlCommand cmd;
+            MySqlConnection con;
+            MySqlCommand cmd;
 
             string conStr = GetConString();
 
-            con = new SqlConnection(conStr);
+            con = new MySqlConnection(conStr);
 
             try
             {
                 con.Open();
-                cmd = new SqlCommand(strSql, con);
+                cmd = new MySqlCommand(strSql, con);
                 val = Convert.ToString(cmd.ExecuteScalar());
             }
             catch (Exception err)
@@ -628,17 +627,17 @@ namespace HSM.DAL
             return val;
         }
 
-        public string ExecuteScalar(string strSql, SqlParameter[] commandParameters)
+        public string ExecuteScalar(string strSql, MySqlParameter[] commandParameters)
         {
             string val = "";
-            con = new SqlConnection(strConn);
+            con = new MySqlConnection(strConn);
 
             try
             {
-                cmd = new SqlCommand(strSql, con);
+                cmd = new MySqlCommand(strSql, con);
                 con.Open();
 
-                foreach (SqlParameter p in commandParameters)
+                foreach (MySqlParameter p in commandParameters)
                 {
                     if ((p.Direction == ParameterDirection.InputOutput) && (p.Value == null))
                         p.Value = DBNull.Value;
@@ -666,12 +665,12 @@ namespace HSM.DAL
         /// </summary>
         /// <param name="cmd"></param>
         /// <returns>returns first rows & first column value</returns>
-        public string ExecuteScalar(SqlCommand cmd)
+        public string ExecuteScalar(MySqlCommand cmd)
         {
             string val = "";
 
             string conStr = GetConString();
-            con = new SqlConnection(conStr);
+            con = new MySqlConnection(conStr);
             try
             {
                 con.Open();
@@ -690,8 +689,8 @@ namespace HSM.DAL
             return val;
         }
 
-        //using sqlCommand
-        public string GetInClauseValue(string input, string fieldName, SqlCommand cmd)
+        //using MySqlCommand
+        public string GetInClauseValue(string input, string fieldName, MySqlCommand cmd)
         {
             string[] inputArr = input.Split(',');
             string[] parameters = new string[inputArr.Length];
@@ -711,19 +710,19 @@ namespace HSM.DAL
             return string.Join(",", parameters);
         }
 
-        public string GetInClauseValue(string input, string fieldName, out SqlParameter[] commandParameters)
+        public string GetInClauseValue(string input, string fieldName, out MySqlParameter[] commandParameters)
         {
             string[] inputArr = input.Split(',');
             string[] parameters = new string[inputArr.Length];
             commandParameters = null;
             try
             {
-                commandParameters = new SqlParameter[inputArr.Length];
+                commandParameters = new MySqlParameter[inputArr.Length];
 
                 for (int i = 0; i < inputArr.Length; i++)
                 {
                     parameters[i] = "@" + fieldName + i;
-                    commandParameters[i] = new SqlParameter(parameters[i], inputArr[i]);
+                    commandParameters[i] = new MySqlParameter(parameters[i], inputArr[i]);
                     HttpContext.Current.Trace.Warn(parameters[i].ToString() + " : " + inputArr[i].ToString());
                 }
 
@@ -738,13 +737,13 @@ namespace HSM.DAL
             return string.Join(",", parameters);
         }
 
-        public SqlParameter[] ConcatenateParams(SqlParameter[] param1, SqlParameter[] param2)
+        public MySqlParameter[] ConcatenateParams(MySqlParameter[] param1, MySqlParameter[] param2)
         {
-            SqlParameter[] param = null;
+            MySqlParameter[] param = null;
 
             if (param1 != null && param2 != null)
             {
-                param = new SqlParameter[param1.Length + param2.Length];
+                param = new MySqlParameter[param1.Length + param2.Length];
 
                 for (int i = 0; i < param1.Length; i++)
                 {
@@ -769,28 +768,28 @@ namespace HSM.DAL
             return param;
         }
 
-        public SqlParameter[] ConcatenateParams(SqlParameter[] param1, SqlParameter[] param2, SqlParameter[] param3)
+        public MySqlParameter[] ConcatenateParams(MySqlParameter[] param1, MySqlParameter[] param2, MySqlParameter[] param3)
         {
             //first join the first 2 params
-            SqlParameter[] paramRes1 = ConcatenateParams(param1, param2);
+            MySqlParameter[] paramRes1 = ConcatenateParams(param1, param2);
             return ConcatenateParams(paramRes1, param3);
         }
 
-        public SqlParameter[] ConcatenateParams(SqlParameter[] param1, SqlParameter[] param2, SqlParameter[] param3,
-                                                                    SqlParameter[] param4)
+        public MySqlParameter[] ConcatenateParams(MySqlParameter[] param1, MySqlParameter[] param2, MySqlParameter[] param3,
+                                                                    MySqlParameter[] param4)
         {
             //first join the first 2 params
-            SqlParameter[] paramRes1 = ConcatenateParams(param1, param2, param3);
+            MySqlParameter[] paramRes1 = ConcatenateParams(param1, param2, param3);
             return ConcatenateParams(paramRes1, param4);
         }
         /// <summary>
-        /// similar to method SelectAdaptQry(SqlCommand cmdParam) but the parameters of the input SqlCommand remain intact
+        /// similar to method SelectAdaptQry(MySqlCommand cmdParam) but the parameters of the input MySqlCommand remain intact
         /// </summary>
-        public DataSet SelectAdaptQryParamNC(SqlCommand cmdParam)
+        public DataSet SelectAdaptQryParamNC(MySqlCommand cmdParam)
         {
-            con = new SqlConnection(strConn);
+            con = new MySqlConnection(strConn);
             DataSet dataSet = new DataSet();
-            SqlDataAdapter adapter = new SqlDataAdapter();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
 
             try
             {
@@ -799,7 +798,7 @@ namespace HSM.DAL
                 adapter.SelectCommand = cmdParam;
                 adapter.Fill(dataSet);
             }
-            catch (SqlException exSql)
+            catch (MySqlException exSql)
             {
                 dataSet = null;
                 var objErr = new ErrorClass(exSql, HttpContext.Current.Request.ServerVariables["URL"]);
@@ -819,15 +818,15 @@ namespace HSM.DAL
         }
 
         //Added By Ranjeet ||For async || Used for Used car search
-        public async Task<DataTable> AsyncGetDataTable(SqlCommand cmd)
+        public async Task<DataTable> AsyncGetDataTable(MySqlCommand cmd)
         {
             DataTable dt = new DataTable();
-            var asyncConnectionString = new SqlConnectionStringBuilder(ConfigurationManager.AppSettings["connectionString"])
+            var asyncConnectionString = new MySqlConnectionStringBuilder(ConfigurationManager.AppSettings["connectionString"])
             {
                 AsynchronousProcessing = true
             }.ToString();
 
-            using (var conn = new SqlConnection(asyncConnectionString))
+            using (var conn = new MySqlConnection(asyncConnectionString))
             {
                 try
                 {
@@ -856,16 +855,16 @@ namespace HSM.DAL
         }
 
         //Added By Ranjeet ||For async || Used for Used car search ||
-        public async Task<SqlDataReader> AsyncGetDataReader(SqlCommand cmd)
+        public async Task<MySqlDataReader> AsyncGetDataReader(MySqlCommand cmd)
         {
-            SqlDataReader reader = null;
-            var asyncConnectionString = new SqlConnectionStringBuilder(ConfigurationManager.AppSettings["connectionString"])
+            MySqlDataReader reader = null;
+            var asyncConnectionString = new MySqlConnectionStringBuilder(ConfigurationManager.AppSettings["connectionString"])
             {
                 AsynchronousProcessing = true
             }.ToString();
             try
             {
-                var conn = new SqlConnection(asyncConnectionString);
+                var conn = new MySqlConnection(asyncConnectionString);
                 Static_count += 1;
                 cmd.Connection = conn;
                 cmd.CommandType = CommandType.Text;

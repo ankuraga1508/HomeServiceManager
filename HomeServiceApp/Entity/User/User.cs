@@ -8,22 +8,22 @@ namespace HSM.Entity
 {
     public class User
     {
-        public int UserId { get; set; }
-        public string FirstName { get; set; }
-        public string Address { get; set; }
-        public int CityId { get; set; }
-        public string Email { get; set; }
-        public string Mobile { get; set; }
-        public string logoUrl { get; set; }
-        public string Image { get; set; }
-        public string WorkingHrs { get; set; }
-        public string WebsiteUrl { get; set; }
-        public string Type { get; set; }
-        public int IsActive { get; set; }
-        public string LastName { get; set; }
-        public string Organisation { get; set; }
-        public string SecondaryNo { get; set; }
-        public string ContactPerson { get; set; }
+        public int idUser { get; set; }
+        public string UserName { get; set; }
+       
+        public string UserEmail { get; set; }
+        public string UserMobile { get; set; }
+
+        public int UserRoleId { get; set; }
+        public string UserSSN { get; set; }
+
+        public string LoginId { get; set; }
+        public string LoginPassword { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+        public int CreatedBy { get; set; }
+        public DateTime ModifiedOn { get; set; }
+        public int ModifiedBy { get; set; }
 
     }
 
