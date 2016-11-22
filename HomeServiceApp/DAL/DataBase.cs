@@ -698,7 +698,7 @@ namespace HSM.DAL
             {
                 for (int i = 0; i < inputArr.Length; i++)
                 {
-                    cmd.Parameters.Add("@" + fieldName + i, SqlDbType.VarChar, inputArr[i].Length).Value = inputArr[i].ToString();
+                    cmd.Parameters.Add("@" + fieldName + i, MySqlDbType.VarChar, inputArr[i].Length).Value = inputArr[i].ToString();
                     parameters[i] = "@" + fieldName + i;
                 }
             }
@@ -823,7 +823,7 @@ namespace HSM.DAL
             DataTable dt = new DataTable();
             var asyncConnectionString = new MySqlConnectionStringBuilder(ConfigurationManager.AppSettings["connectionString"])
             {
-                AsynchronousProcessing = true
+                //AsynchronousProcessing = true
             }.ToString();
 
             using (var conn = new MySqlConnection(asyncConnectionString))
@@ -854,30 +854,6 @@ namespace HSM.DAL
             return dt;
         }
 
-        //Added By Ranjeet ||For async || Used for Used car search ||
-        public async Task<MySqlDataReader> AsyncGetDataReader(MySqlCommand cmd)
-        {
-            MySqlDataReader reader = null;
-            var asyncConnectionString = new MySqlConnectionStringBuilder(ConfigurationManager.AppSettings["connectionString"])
-            {
-                AsynchronousProcessing = true
-            }.ToString();
-            try
-            {
-                var conn = new MySqlConnection(asyncConnectionString);
-                Static_count += 1;
-                cmd.Connection = conn;
-                cmd.CommandType = CommandType.Text;
-                await cmd.Connection.OpenAsync().ConfigureAwait(false);
-                reader = await cmd.ExecuteReaderAsync(CommandBehavior.CloseConnection).ConfigureAwait(false);
-            }
-            catch (Exception ex)
-            {
-                var objErr = new ErrorClass(ex, "AsyncDb sql: ");
-                objErr.LogException();
-            }
-
-            return reader;
-        }
+        
     }
 }

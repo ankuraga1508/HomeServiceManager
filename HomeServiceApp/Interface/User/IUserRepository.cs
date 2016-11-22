@@ -24,7 +24,7 @@ namespace HSM.Interface
         /// </summary>
         /// <param name="UserId"></param>
         /// <returns></returns>
-        User GetUser(int UserId);
+        User GetUserById(int UserId);
 
         /// <summary>
         /// Save/Update User info

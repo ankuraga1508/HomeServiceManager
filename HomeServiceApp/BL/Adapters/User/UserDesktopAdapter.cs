@@ -13,32 +13,33 @@ using Microsoft.Practices.Unity;
 
 namespace HSM.BL
 {
-    public class UserDesktopAdapter : IListingAdapter
+    public class UserBL 
     {
 
-        private readonly IUserRepository _UserLising;
+        private readonly IUserRepository _userRepo;
 
-        public UserDesktopAdapter(IUnityContainer container)
+        public UserBL(IUnityContainer container)
         {
-            container.RegisterType<IUserRepository, UserRepository>()
-                .RegisterType<IImageRepository, ImageRepository>();
-            _UserLising = container.Resolve<IUserRepository>();
-            _UserImage = container.Resolve<IImageRepository>();
+            container.RegisterType<IUserRepository, UserRepository>();
+            _userRepo = container.Resolve<IUserRepository>();
         }
 
 
-        public HomePageData GetHomePageData(int cityId, int categoryId, int startIndex, int endIndex)
+        public List<User> GetAllUser(int roleId)
         {
-            HomePageData homeLising = new HomePageData();
-            List<UserMin> allUsers = new List<UserMin>();
+            return _userRepo.GetAllUsers(roleId);
 
+        }
 
-            allUsers = _UserLising.GetUserListing(cityId, categoryId, startIndex, endIndex);
+        public User GetUserById(int userId)
+        {
+            return _userRepo.GetUserById(userId);
 
-            homeLising.UserListing = allUsers.Where(p => p.IsFeatured == 0).ToList<UserMin>();
-            homeLising.FeaturedUserListing = allUsers.Where(p => p.IsFeatured == 1).ToList<UserMin>();
+        }
 
-            return homeLising;
+        public void SaveUser(User userData)
+        {
+            _userRepo.SaveUserDetails(userData);
 
         }
     }// class

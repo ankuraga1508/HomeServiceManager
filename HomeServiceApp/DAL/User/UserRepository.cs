@@ -54,7 +54,7 @@ namespace HSM.DAL
             return UserList;
         }
 
-        public User GetUser(int UserId)
+        public User GetUserById(int UserId)
         {
             var UserData = new User();
             try
