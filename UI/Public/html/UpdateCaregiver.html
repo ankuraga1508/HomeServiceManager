@@ -26,11 +26,16 @@
 </head>
 <body>
     <div id="header">
-        <h1>Register</h1>
+        <h1>Update Caregiver</h1>
     </div>
     <div class="container" id="fields">
         <form>
             <ul>
+                <li>
+                    <label for="originalUsername">Current Username</label>
+                    <input type="text" id="originalUsername" required />
+                </li>
+                <hr />
                 <li>
                     <label for="firstName">First Name</label>
                     <input type="text" id="firstName" required />
@@ -47,45 +52,9 @@
                     <label for="password">Password</label>
                     <input type="text" id="password" required />
                 </li>
-                <li>
-                    <label for="contactNum">Contact Number</label>
-                    <input type="text" id="contactNum" required />
-                </li>
-                <li>
-                    <label for="altContactNum">Alternate Contact Number</label>
-                    <input type="text" id="altContactNum" />
-                </li>
-                <li>
-                    <label for="addressLine1">Address Line 1</label>
-                    <input type="text" id="addressLine1" required />
-                </li>
-                <li>
-                    <label for="addressLine2">Address Line 2</label>
-                    <input type="text" id="addressLine2" />
-                </li>
-                <li>
-                    <label for="city">City</label>
-                    <input type="text" id="city" />
-                </li>
-                <li>
-                    <label for="state">State</label>
-                    <input type="text" id="state" required />
-                </li>
-                <li>
-                    <label for="zipCode">Zip Code</label>
-                    <input type="text" id="zipCode" required />
-                </li>
-                <li>
-                    <label for="sex">Sex</label>
-                    <input type="text" id="sex" />
-                </li>
-                <li>
-                    <label for="dateOfBirth">Date of Birth</label>
-                    <input type="text" id="dateOfBirth" />
-                </li>
             </ul>
-            <input type="submit" value="Register"/>
-            <button id="registration-cancel">Cancel</button>
+            <input type="submit" value="Submit Changes"/>
+            <button id="update-cancel">Cancel</button>
         </form>
     </div>
     <!-- Bootstrap core JavaScript
