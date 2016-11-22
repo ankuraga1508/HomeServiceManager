@@ -50,26 +50,26 @@ namespace HSM.Services
 
         }
 
-        public IHttpActionResult GetUserById()
-        {
-            string response = null;
-            var QueryString = Request.RequestUri.ParseQueryString();
-            int userId = (QueryString["userid"] != null && !String.IsNullOrEmpty(QueryString["userid"].ToString())) ? Convert.ToInt32(QueryString["userid"]) : -1;
-            IUnityContainer container = new UnityContainer();
-            UserBL userBl = new UserBL(container);
-            try
-            {
+        //public IHttpActionResult GetUserById()
+        //{
+        //    string response = null;
+        //    var QueryString = Request.RequestUri.ParseQueryString();
+        //    int userId = (QueryString["userid"] != null && !String.IsNullOrEmpty(QueryString["userid"].ToString())) ? Convert.ToInt32(QueryString["userid"]) : -1;
+        //    IUnityContainer container = new UnityContainer();
+        //    UserBL userBl = new UserBL(container);
+        //    try
+        //    {
 
-                response = JsonConvert.SerializeObject(userBl.GetUserById(userId));
+        //        response = JsonConvert.SerializeObject(userBl.GetUserById(userId));
 
-            }
-            catch (Exception ex)
-            {
-                var objErr = new ErrorClass(ex, "OfferController.GetAllListings()");
-                objErr.LogException();
-            }
-            return Ok(response);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        var objErr = new ErrorClass(ex, "OfferController.GetAllListings()");
+        //        objErr.LogException();
+        //    }
+        //    return Ok(response);
 
-        }
+        //}
     }
 }
