@@ -8,6 +8,7 @@ using System.Data;
 using HSM.Entity;
 using HSM.Common;
 using MySql.Data.MySqlClient;
+using Newtonsoft.Json.Linq;
 
 namespace HSM.DAL
 {
@@ -52,6 +53,43 @@ namespace HSM.DAL
                 objErr.LogException();
             }
             return UserList;
+        }
+
+        public Boolean userLogin(string loginDetails)
+        {
+            try
+            {
+                loginDetails = @"{username: 'Vikas', password: 'test'}";
+
+                JObject parse = JObject.Parse(loginDetails);
+                string username = (String)parse["username"];
+                string password = (String)parse["password"];
+                using (MySqlCommand cmd = new MySqlCommand("userlogin"))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("_username", username);
+                    cmd.Parameters.AddWithValue("_password", password);
+                    Database db = new Database();
+                    using (MySqlDataReader dr = db.SelectQry(cmd))
+                    {
+                        if (dr.Read())
+                        {
+                            System.Diagnostics.Debug.WriteLine( "AA " + dr.GetValue(0));
+                            if (Int32.Parse(dr.GetValue(0).ToString()) != 0) {
+
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+               // System.Diagnostics.Debug.WriteLine(ex.ToString());
+                var objErr = new ErrorClass(ex, "");
+                objErr.LogException();
+            }
+            return false;
         }
 
         public User GetUserById(int UserId)
