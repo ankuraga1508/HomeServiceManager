@@ -30,6 +30,12 @@ namespace HSM.BL
             return _userRepo.GetAllUsers(roleId);
         }
 
+        public Boolean userLogin(string loginDetails)
+        {
+            return _userRepo.userLogin(loginDetails);
+
+        }
+
         public User GetUserById(int userId)
         {
             return _userRepo.GetUserById(userId);

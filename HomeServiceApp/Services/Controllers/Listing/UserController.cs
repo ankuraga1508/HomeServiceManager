@@ -17,7 +17,6 @@ using HSM.Interface;
 using HSM.Common;
 using HSM.BL;
 
-
 namespace HSM.Services
 {
     public class UserController : ApiController
@@ -48,6 +47,28 @@ namespace HSM.Services
             }
             return Ok(response);
 
+        }
+
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.ActionName("userlogin")]
+        public IHttpActionResult PostUserLogin([FromBody] Credential usercr) {
+            string loginDetails = "";
+            string response = null;
+            IUnityContainer container = new UnityContainer();
+            UserBL userBl = new UserBL(container);
+
+            try
+            {
+
+                response = JsonConvert.SerializeObject(userBl.userLogin(loginDetails));
+
+            }
+            catch (Exception ex)
+            {
+                var objErr = new ErrorClass(ex, "");
+                objErr.LogException();
+            }
+            return Ok(response);
         }
         /// <summary>
         /// 
