@@ -516,8 +516,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `userlogin`(_username varchar(45), _password varchar(200))
 BEGIN
-SELECT 
-	count(*)
+SELECT *
 	FROM home_service_db.user
     WHERE UserName = _username AND LoginPassword = _password;
 END ;;
@@ -536,4 +535,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-27 15:14:37
+-- Dump completed on 2016-11-27 16:25:09

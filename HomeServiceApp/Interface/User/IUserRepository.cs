@@ -22,7 +22,7 @@ namespace HSM.Interface
         /// <summary>
         /// Check user is valid or not
         /// </summary>
-        Boolean userLogin(string loginDetails);
+        User userLogin(Credential usercr);
 
         /// <summary>
         /// get delaer based on Userid

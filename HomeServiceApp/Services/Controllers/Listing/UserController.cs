@@ -52,16 +52,13 @@ namespace HSM.Services
         [System.Web.Http.HttpPost]
         [System.Web.Http.ActionName("userlogin")]
         public IHttpActionResult PostUserLogin([FromBody] Credential usercr) {
-            string loginDetails = "";
             string response = null;
             IUnityContainer container = new UnityContainer();
             UserBL userBl = new UserBL(container);
 
             try
             {
-
-                response = JsonConvert.SerializeObject(userBl.userLogin(loginDetails));
-
+                response = JsonConvert.SerializeObject(userBl.userLogin(usercr));
             }
             catch (Exception ex)
             {

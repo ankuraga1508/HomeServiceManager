@@ -30,9 +30,9 @@ namespace HSM.BL
             return _userRepo.GetAllUsers(roleId);
         }
 
-        public Boolean userLogin(string loginDetails)
+        public User userLogin(Credential usercr)
         {
-            return _userRepo.userLogin(loginDetails);
+            return _userRepo.userLogin(usercr);
 
         }
 
