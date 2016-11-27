@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `home_service_db` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `home_service_db`;
 -- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: home_service_db
@@ -85,7 +83,7 @@ CREATE TABLE `services` (
   `ServicesDesc` varchar(500) DEFAULT NULL,
   `IsActive` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,6 +92,7 @@ CREATE TABLE `services` (
 
 LOCK TABLES `services` WRITE;
 /*!40000 ALTER TABLE `services` DISABLE KEYS */;
+INSERT INTO `services` VALUES (1,'swe','description',0),(2,'wwww','description',1),(3,'swe','description',0),(4,'swe','description',0);
 /*!40000 ALTER TABLE `services` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -156,189 +155,6 @@ LOCK TABLES `user_role` WRITE;
 INSERT INTO `user_role` VALUES (1,'admin',''),(2,'caregiver',''),(3,'user','');
 /*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'home_service_db'
---
-
---
--- Dumping routines for database 'home_service_db'
---
-/*!50003 DROP PROCEDURE IF EXISTS `getalluser` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getalluser`(
-_UserRoleId int
-)
-BEGIN
-	SELECT 
-    idUser ,
-	UserName ,
-	UserEmail ,
-	UserMobile ,
-	UserRoleId ,
-	UserSSN ,
-	CreatedOn ,
-	CreatedBy ,
-	ModifiedOn ,
-	ModifiedBy ,
-	LoginId ,
-	LoginPassword 
-	FROM home_service_db.user
-    WHERE UserRoleId= _UserRoleId OR _UserRoleId = -1;
-
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `getuserbyid` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getuserbyid`(
- idUser int(11)
-)
-BEGIN
-	SELECT 
-	UserName ,
-	UserEmail ,
-	UserMobile ,
-	UserRoleId ,
-	UserSSN ,
-	CreatedOn ,
-	CreatedBy ,
-	ModifiedOn ,
-	ModifiedBy ,
-	LoginId ,
-	LoginPassword ,
-    IsActive
-	FROM home_service_db.user
-	WHERE idUser = idUser;
-
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `insertorupdate_user` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertorupdate_user`(
- in idUser int(11) ,
- in UserName varchar(45)  ,
- in UserEmail varchar(45)  ,
- in UserMobile varchar(20)  ,
- in UserRoleId int(11)  ,
- in UserSSN varchar(10)  ,
- in CreatedOn datetime  ,
- in CreatedBy int(11)  ,
- in ModifiedOn datetime  ,
- in ModifiedBy int(11)  ,
- in LoginId varchar(45)  ,
- in LoginPassword varchar(200) ,
- in IsActive bit
-)
-BEGIN
-
-
-	IF (idUser IS NULL) THEN
-		INSERT INTO home_service_db.user (
-			UserName
-			,UserEmail
-			,UserMobile
-			,UserRoleId
-			,UserSSN
-			,CreatedOn
-			,CreatedBy
-			,ModifiedOn
-			,ModifiedBy
-			,LoginId
-			,LoginPassword
-			,IsActive
-			)
-		VALUES (
-			UserName
-			,UserEmail
-			,UserMobile
-			,UserRoleId
-			,UserSSN
-			,now()
-			,CreatedBy
-			,ModifiedOn
-			,ModifiedBy
-			,LoginId
-			,LoginPassword
-			,IsActive
-			);
-	ELSE
-		UPDATE home_service_db.user
-		SET UserName = UserName
-			,UserEmail = UserEmail
-			,UserMobile = UserMobile
-			,UserRoleId = UserRoleId
-			,UserSSN = UserSSN
-			,CreatedOn = CreatedOn
-			,CreatedBy = CreatedBy
-			,ModifiedOn = now()
-			,ModifiedBy = ModifiedBy
-			,LoginId = LoginId
-			,LoginPassword = LoginPassword
-			,IsActive = IsActive
-		WHERE idUser = idUser;
-		END
-
-	IF ;
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `userlogin` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `userlogin`(_username varchar(45), _password varchar(200))
-BEGIN
-SELECT 
-	count(*)
-	FROM home_service_db.user
-    WHERE UserName = _username AND LoginPassword = _password;
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -349,4 +165,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-25 18:55:51
+-- Dump completed on 2016-11-27  0:02:44

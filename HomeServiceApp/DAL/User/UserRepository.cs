@@ -65,7 +65,7 @@ namespace HSM.DAL
                 string username = (String)parse["username"];
                 string password = (String)parse["password"];
                 using (MySqlCommand cmd = new MySqlCommand("userlogin"))
-                {
+                {                    
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("_username", username);
                     cmd.Parameters.AddWithValue("_password", password);
@@ -74,8 +74,9 @@ namespace HSM.DAL
                     {
                         if (dr.Read())
                         {
-                            System.Diagnostics.Debug.WriteLine( "AA " + dr.GetValue(0));
-                            if (Int32.Parse(dr.GetValue(0).ToString()) != 0) {
+                            System.Diagnostics.Debug.WriteLine("AA " + dr.GetValue(0));
+                            if (Int32.Parse(dr.GetValue(0).ToString()) != 0)
+                            {
 
                                 return true;
                             }

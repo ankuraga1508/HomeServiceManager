@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HSM.Entity
 {
-    public class User
+    public class User : Credential
     {
         public int idUser { get; set; }
         public string UserName { get; set; }
@@ -16,9 +16,6 @@ namespace HSM.Entity
 
         public int UserRoleId { get; set; }
         public string UserSSN { get; set; }
-
-        public string LoginId { get; set; }
-        public string LoginPassword { get; set; }
 
         public DateTime CreatedOn { get; set; }
         public int CreatedBy { get; set; }

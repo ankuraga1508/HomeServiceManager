@@ -49,9 +49,9 @@ namespace HSM.Services
 
         }
 
-        [System.Web.Http.HttpGet]
+        [System.Web.Http.HttpPost]
         [System.Web.Http.ActionName("userlogin")]
-        public IHttpActionResult userLogin() {
+        public IHttpActionResult PostUserLogin([FromBody] Credential usercr) {
             string loginDetails = "";
             string response = null;
             IUnityContainer container = new UnityContainer();
