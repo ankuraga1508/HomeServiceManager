@@ -72,6 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Request\IRequestRepository.cs" />
     <Compile Include="Service\IServiceRepository.cs" />
     <Compile Include="User\IUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

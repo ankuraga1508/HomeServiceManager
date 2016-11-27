@@ -72,6 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapters\Request\RequestBL.cs" />
     <Compile Include="Adapters\Service\ServiceBL.cs" />
     <Compile Include="Adapters\User\UserBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -129,6 +129,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Listing\RequestController.cs" />
     <Compile Include="Controllers\Listing\ServiceController.cs" />
     <Compile Include="Controllers\Listing\UserController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

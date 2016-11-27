@@ -35,7 +35,7 @@ CREATE TABLE `service_request` (
   `ModifiedBy` datetime DEFAULT NULL,
   `ModifiedOn` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,6 +44,7 @@ CREATE TABLE `service_request` (
 
 LOCK TABLES `service_request` WRITE;
 /*!40000 ALTER TABLE `service_request` DISABLE KEYS */;
+INSERT INTO `service_request` VALUES (1,2221,22,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 01:43:38','1000-01-01 00:00:00','2016-11-27 01:58:40'),(2,0,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 01:46:16','1000-01-01 00:00:00','1000-01-01 00:00:00'),(3,0,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 01:46:32','1000-01-01 00:00:00','1000-01-01 00:00:00');
 /*!40000 ALTER TABLE `service_request` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -165,4 +166,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-27  0:02:44
+-- Dump completed on 2016-11-27  2:02:44
