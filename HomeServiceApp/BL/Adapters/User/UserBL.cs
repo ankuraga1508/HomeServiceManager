@@ -13,7 +13,7 @@ using Microsoft.Practices.Unity;
 
 namespace HSM.BL
 {
-    public class UserBL 
+    public class UserBL
     {
 
         private readonly IUserRepository _userRepo;
@@ -28,7 +28,6 @@ namespace HSM.BL
         public List<User> GetAllUser(int roleId)
         {
             return _userRepo.GetAllUsers(roleId);
-
         }
 
         public Boolean userLogin(string loginDetails)
@@ -40,13 +39,11 @@ namespace HSM.BL
         public User GetUserById(int userId)
         {
             return _userRepo.GetUserById(userId);
-
         }
 
-        public void SaveUser(User userData)
+        public int SaveUser(User userData)
         {
-            _userRepo.SaveUserDetails(userData);
-
+            return _userRepo.SaveUserDetails(userData);
         }
     }// class
 }
