@@ -26,5 +26,15 @@ namespace HSM.BL
         {
             return _requestRepo.updateRequest(requestDetails);
         }
+
+        public List<Request> getRequestByUserId(int userid)
+        {
+            return _requestRepo.getRequestByUserId(userid);
+        }
+
+        public List<Request> getRequestByRoleId(int roleid)
+        {
+            return _requestRepo.getRequestByRoleId(roleid);
+        }
     }
 }

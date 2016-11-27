@@ -17,5 +17,14 @@ namespace HSM.Interface
         /// </summary>
         bool updateRequest(Request requestDetails);
 
+        /// <summary>
+        /// Get Request by userid
+        /// </summary>
+        List<Request> getRequestByUserId(int userid);
+
+        /// <summary>
+        /// Get Request by roleid
+        /// </summary>
+        List<Request> getRequestByRoleId(int roleid);
     }
 }

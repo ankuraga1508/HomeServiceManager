@@ -7,7 +7,9 @@ namespace HSM.Entity
 {
     public class Request
     {
+        public int id { get; set; }
         public int RequesterId { get; set; }
+        public int RoleId { get; set; }
         public int CaregiverId { get; set; }
         public int ServiceId { get; set; }
         public int Status { get; set; }
@@ -16,7 +18,6 @@ namespace HSM.Entity
         public string Comments { get; set; }
         public DateTime ModifiedBy { get; set; }
         public DateTime ModifiedOn { get; set; }
-        public int id { get; set; }
     }
 
 }
