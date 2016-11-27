@@ -62,7 +62,7 @@ namespace HSM.DAL
                 using (MySqlCommand cmd = new MySqlCommand("dbo.GetUsers"))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@UserId", SqlDbType.Int).Value = UserId;
+                    cmd.Parameters.Add("@UserId", MySqlDbType.Int32).Value = UserId;
                     Database db = new Database();
                     using (MySqlDataReader dr = db.SelectQry(cmd))
                     {
@@ -101,7 +101,17 @@ namespace HSM.DAL
                 using (MySqlCommand cmd = new MySqlCommand("insertorupdate_user"))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("idUser", SqlDbType.Int).Value = UserData.idUser;
+                    cmd.Parameters.Add("_id", MySqlDbType.Int32).Value = UserData.idUser;
+                    cmd.Parameters.Add("UserName", MySqlDbType.VarChar).Value = UserData.UserName;
+                    cmd.Parameters.Add("UserEmail", MySqlDbType.VarChar).Value = UserData.UserEmail;
+                    cmd.Parameters.Add("UserMobile", MySqlDbType.VarChar).Value = UserData.UserMobile;
+                    cmd.Parameters.Add("UserRoleId", MySqlDbType.Int32).Value = UserData.UserRoleId;
+                    cmd.Parameters.Add("UserSSN", MySqlDbType.VarChar).Value = UserData.UserSSN;
+                    cmd.Parameters.Add("ModifiedBy", MySqlDbType.Int32).Value = UserData.ModifiedBy;
+                    cmd.Parameters.Add("LoginId", MySqlDbType.VarChar).Value = UserData.LoginId;
+                    cmd.Parameters.Add("LoginPassword", MySqlDbType.VarChar).Value = UserData.LoginPassword;
+                    cmd.Parameters.Add("IsActive", MySqlDbType.Bit).Value = UserData.IsActive;
+
                     Database db = new Database();
                     db.ExecuteScalar(cmd);
 

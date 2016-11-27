@@ -25,6 +25,8 @@ namespace HSM.Entity
         public DateTime ModifiedOn { get; set; }
         public int ModifiedBy { get; set; }
 
+        public bool IsActive { get; set; }
+
     }
 
 }
