@@ -18,13 +18,18 @@ namespace HSM.Interface
         /// <param name="pageSize"></param>
         /// <returns></returns>
         List<User> GetAllUsers(int roleId);
-        
+
+        /// <summary>
+        /// Check user is valid or not
+        /// </summary>
+        Boolean userLogin(string loginDetails);
+
         /// <summary>
         /// get delaer based on Userid
         /// </summary>
         /// <param name="UserId"></param>
         /// <returns></returns>
-        User GetUser(int UserId);
+        User GetUserById(int UserId);
 
         /// <summary>
         /// Save/Update User info
