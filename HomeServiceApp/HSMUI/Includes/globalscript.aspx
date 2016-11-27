@@ -1,23 +1,15 @@
-﻿<body>
+﻿ <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="js/jsgrid-1.5.2/dist/jsgrid.min.css" />
+	<link type="text/css" rel="stylesheet" href="js/jsgrid-1.5.2/dist/jsgrid-theme.min.css" />
 
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="css/style.css" rel="stylesheet" type="text/css">
-    <link href="plugins/prettyphoto/css/prettyPhoto.css" rel="stylesheet" type="text/css">
-    <link href="plugins/owl-carousel/css/owl.carousel.css" rel="stylesheet" type="text/css">
-    <link href="plugins/owl-carousel/css/owl.theme.css" rel="stylesheet" type="text/css">
-    <!-- RTL CSS -->
-    <link href="css/bootstrap-rtl.min.css" rel="stylesheet" type="text/css">
-    <link href="css/rtl.css" rel="stylesheet" type="text/css">
-    <!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="css/ie.css" media="screen" /><![endif]-->
-    <!-- Color Style -->
-    <link href="colors/color1.css" rel="stylesheet" type="text/css">
-    <!-- SCRIPTS
-  ================================================== -->
-    <script src="js/modernizr.js"></script>
-    <!-- Modernizr -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
-    <!--[if lt IE 7]>
-	<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-    <![endif]-->
-</body>
+    <!-- Custom styles for this template -->
+    <link href="css/adminStyle.css" rel="stylesheet">
 
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>

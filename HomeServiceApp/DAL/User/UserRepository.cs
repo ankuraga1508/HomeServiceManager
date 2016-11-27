@@ -147,6 +147,7 @@ namespace HSM.DAL
                     cmd.Parameters.Add("UserRoleId", MySqlDbType.Int32).Value = UserData.UserRoleId;
                     cmd.Parameters.Add("UserSSN", MySqlDbType.VarChar).Value = UserData.UserSSN;
                     cmd.Parameters.Add("ModifiedBy", MySqlDbType.Int32).Value = UserData.ModifiedBy;
+                    cmd.Parameters.Add("CreatedBy", MySqlDbType.Int32).Value = UserData.CreatedBy;
                     cmd.Parameters.Add("LoginId", MySqlDbType.VarChar).Value = UserData.LoginId;
                     cmd.Parameters.Add("LoginPassword", MySqlDbType.VarChar).Value = UserData.LoginPassword;
                     cmd.Parameters.Add("IsActive", MySqlDbType.Bit).Value = UserData.IsActive;
