@@ -36,7 +36,7 @@ CREATE TABLE `service_request` (
   `ModifiedBy` datetime DEFAULT NULL,
   `ModifiedOn` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `service_request` (
 
 LOCK TABLES `service_request` WRITE;
 /*!40000 ALTER TABLE `service_request` DISABLE KEYS */;
-INSERT INTO `service_request` VALUES (1,2221,2,22,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 01:43:38','1000-01-01 00:00:00','2016-11-27 01:58:40'),(2,0,1,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 01:46:16','1000-01-01 00:00:00','1000-01-01 00:00:00'),(3,0,3,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 01:46:32','1000-01-01 00:00:00','1000-01-01 00:00:00'),(4,11,3,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 11:55:39','1000-01-01 00:00:00','1000-01-01 00:00:00'),(5,12,3,2,121,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 12:15:44','1000-01-01 00:00:00','2016-11-27 12:18:44'),(6,12,3,2,121,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 14:48:49','1000-01-01 00:00:00','1000-01-01 00:00:00'),(7,12,3,2,121,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 14:49:10','1000-01-01 00:00:00','1000-01-01 00:00:00');
+INSERT INTO `service_request` VALUES (1,2221,2,22,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 01:43:38','1000-01-01 00:00:00','2016-11-27 01:58:40'),(2,0,1,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 01:46:16','1000-01-01 00:00:00','1000-01-01 00:00:00'),(3,0,3,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 01:46:32','1000-01-01 00:00:00','1000-01-01 00:00:00'),(4,11,3,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 11:55:39','1000-01-01 00:00:00','1000-01-01 00:00:00'),(5,12,3,2,121,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 12:15:44','1000-01-01 00:00:00','2016-11-27 12:18:44'),(6,12,3,2,121,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 14:48:49','1000-01-01 00:00:00','1000-01-01 00:00:00'),(7,12,3,2,121,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 14:49:10','1000-01-01 00:00:00','1000-01-01 00:00:00'),(8,123,22,121,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 17:26:19','1000-01-01 00:00:00','1000-01-01 00:00:00'),(9,123,22,121,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 17:27:37','0001-01-01 00:00:00','0001-01-01 00:00:00'),(10,123,22,121,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00',NULL,'2016-11-27 17:27:59','0001-01-01 00:00:00','0001-01-01 00:00:00');
 /*!40000 ALTER TABLE `service_request` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,8 +119,12 @@ CREATE TABLE `user` (
   `LoginId` varchar(45) DEFAULT NULL,
   `LoginPassword` varchar(200) DEFAULT NULL,
   `IsActive` bit(1) DEFAULT NULL,
+  `Address` varchar(200) DEFAULT NULL,
+  `FirstName` varchar(45) DEFAULT NULL,
+  `LastName` varchar(45) DEFAULT NULL,
+  `Sex` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -129,7 +133,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'Vikas','vj@iastate.edu','7735100198',1,'777888999','2016-11-22 14:52:42',1,'2016-11-22 14:52:42',1,'test','test',''),(2,'Vikas','vj@iastate.edu','7735100198',1,'777888999','2016-11-22 14:52:44',1,'2016-11-22 14:52:44',1,'test','test','');
+INSERT INTO `user` VALUES (1,NULL,NULL,NULL,0,NULL,'2016-11-22 14:52:42',0,'2016-11-28 00:34:55',0,'ankur','test','\0','abcd','ankur','agarwal','Male'),(2,'Vikas','vj@iastate.edu','7735100198',1,'777888999','2016-11-22 14:52:44',1,'2016-11-22 14:52:44',1,'test','test','',NULL,NULL,NULL,NULL),(3,NULL,NULL,NULL,0,NULL,'2016-11-28 00:33:25',0,'0001-01-01 00:00:00',0,'ankur','test','\0','abcd','ankur','agarwal','Male');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -236,7 +240,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getalluser`(
 _UserRoleId int
@@ -254,7 +258,11 @@ BEGIN
 	ModifiedOn ,
 	ModifiedBy ,
 	LoginId ,
-	LoginPassword 
+	LoginPassword ,
+    Address ,
+    FirstName , 
+    LastName ,
+    Sex
 	FROM home_service_db.user
     WHERE UserRoleId= _UserRoleId OR _UserRoleId = -1;
 
@@ -303,10 +311,13 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `getrequestbyuserid`(
  userid int(11)
 )
 BEGIN
-	SELECT id, RequesterId, RoleId, CaregiverId, ServiceId, Status, TimeOfServiceStart, 
-    TimeOfServiceEnds, Comments, ModifiedBy, ModifiedOn
-	FROM home_service_db.service_request
-	WHERE RequesterId = userid;
+	SELECT u.address, s.id, s.RequesterId, s.RoleId, s.CaregiverId, s.ServiceId,sv.servicename ,s.Status, s.TimeOfServiceStart, 
+    s.TimeOfServiceEnds, s.Comments, s.ModifiedBy, s.ModifiedOn
+	FROM home_service_db.service_request s
+    inner join services sv on sv.id = s.serviceid
+    inner join user u on u.id = s.RequesterId
+	WHERE s.RequesterId = userid
+    ;
 
 END ;;
 DELIMITER ;
@@ -322,7 +333,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getuserbyid`(
  idUser int(11)
@@ -340,7 +351,11 @@ BEGIN
 	ModifiedBy ,
 	LoginId ,
 	LoginPassword ,
-    IsActive
+    IsActive, 
+    Address,
+    FirstName,
+    LastName,
+    Sex
 	FROM home_service_db.user
 	WHERE idUser = idUser;
 
@@ -358,27 +373,30 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertorupdate_user`(
- in idUser int(11) ,
+ in _idUser int(11) ,
  in UserName varchar(45)  ,
  in UserEmail varchar(45)  ,
  in UserMobile varchar(20)  ,
  in UserRoleId int(11)  ,
  in UserSSN varchar(10)  ,
- in CreatedOn datetime  ,
  in CreatedBy int(11)  ,
  in ModifiedOn datetime  ,
  in ModifiedBy int(11)  ,
  in LoginId varchar(45)  ,
  in LoginPassword varchar(200) ,
- in IsActive bit
+ in IsActive bit,
+ in Address varchar(200)  ,
+ in FirstName varchar(45)  ,
+ in LastName varchar(45)  ,
+ in Sex varchar(45) 
 )
 BEGIN
 
 
-	IF (idUser IS NULL) THEN
+	IF (_idUser IS NULL OR _idUser = 0) THEN
 		INSERT INTO home_service_db.user (
 			UserName
 			,UserEmail
@@ -392,6 +410,10 @@ BEGIN
 			,LoginId
 			,LoginPassword
 			,IsActive
+            ,Address
+            ,FirstName
+            ,LastName
+            ,Sex
 			)
 		VALUES (
 			UserName
@@ -406,6 +428,10 @@ BEGIN
 			,LoginId
 			,LoginPassword
 			,IsActive
+            ,Address
+            ,FirstName
+            ,LastName
+            ,Sex
 			);
 	ELSE
 		UPDATE home_service_db.user
@@ -414,14 +440,17 @@ BEGIN
 			,UserMobile = UserMobile
 			,UserRoleId = UserRoleId
 			,UserSSN = UserSSN
-			,CreatedOn = CreatedOn
 			,CreatedBy = CreatedBy
 			,ModifiedOn = now()
 			,ModifiedBy = ModifiedBy
 			,LoginId = LoginId
 			,LoginPassword = LoginPassword
 			,IsActive = IsActive
-		WHERE idUser = idUser;
+            ,Address = Address
+            ,FirstName = FirstName
+            ,LastName = LastName
+            ,Sex = Sex
+		WHERE idUser = _idUser;
 		END
 
 	IF ;
@@ -535,4 +564,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-27 16:25:09
+-- Dump completed on 2016-11-28  0:36:45
