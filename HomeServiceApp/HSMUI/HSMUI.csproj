@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -193,12 +194,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddCaregiver.aspx.cs">
-      <DependentUpon>AddCaregiver.aspx</DependentUpon>
+    <Compile Include="Signin.aspx.cs">
+      <DependentUpon>Signin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AddCaregiver.aspx.designer.cs">
-      <DependentUpon>AddCaregiver.aspx</DependentUpon>
+    <Compile Include="Signin.aspx.designer.cs">
+      <DependentUpon>Signin.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -213,6 +214,29 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\assignRequest.css" />
+    <Content Include="css\jsgrid-theme.min.css" />
+    <Content Include="css\jsgrid.min.css" />
+    <Content Include="css\showRequests.css" />
+    <Content Include="images\favicon.jpg" />
+    <Content Include="images\login_bg.jpg" />
+    <Content Include="js\adminDashboardController.js" />
+    <Content Include="js\jsgrid.core.js" />
+    <Content Include="js\jsgrid.field.checkbox.js" />
+    <Content Include="js\jsgrid.field.control.js" />
+    <Content Include="js\jsgrid.field.js" />
+    <Content Include="js\jsgrid.field.number.js" />
+    <Content Include="js\jsgrid.field.select.js" />
+    <Content Include="js\jsgrid.field.text.js" />
+    <Content Include="js\jsgrid.field.textarea.js" />
+    <Content Include="js\jsgrid.load-indicator.js" />
+    <Content Include="js\jsgrid.load-strategies.js" />
+    <Content Include="js\jsgrid.sort-strategies.js" />
+    <Content Include="js\jsgrid.validation.js" />
+    <Content Include="Signin.aspx" />
+    <Content Include="AdminDashboard.aspx" />
+    <Content Include="AddService.aspx" />
+    <Content Include="ManageService.aspx" />
     <Content Include="AddCaregiver.aspx" />
     <Content Include="assets\brand\bootstrap-outline.svg" />
     <Content Include="assets\brand\bootstrap-punchout.svg" />
@@ -361,7 +385,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="images\" />
     <Folder Include="plugins\" />
     <Folder Include="Src\" />
   </ItemGroup>
@@ -421,6 +444,11 @@
     <Content Include="css\bootstrap-theme.min.css.map" />
     <Content Include="css\bootstrap.css.map" />
     <Content Include="css\bootstrap.min.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="json\db514_activeRequests.json" />
+    <Content Include="json\db514_availableCG.json" />
+    <Content Include="json\db514_availableServices.json" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -12,23 +12,34 @@ $(document).ready(function () {
 			$('input[type="password"]').css("box-shadow","0 0 3px red");
 		} 
 		if (username != '' && password != '') {
+			/*
 			var postData = JSON.stringify({ 
 				"username": username, 
 				"password": password 
 			});
-			alert(postData);
+			*/
+			var postData = "username="+username+"&password="+password;
 			$.ajax({
 				type: "POST",
-				url: "LoginPageForLearn.aspx/MyMethod",
+				url: "/api/user/userlogin",
 				data: postData,
-				contentType: "application/json; charset=utf-8",
+				//contentType: "application/json; charset=utf-8",
 				success: function (result) {
-					if (result.d) {
+					if (result) {
 						alert('success');
+					} else {
+						$('input[type="text"]').css("border","2px solid red");
+						$('input[type="text"]').css("box-shadow","0 0 3px red");
+						$('input[type="password"]').css("border","2px solid red");
+						$('input[type="password"]').css("box-shadow","0 0 3px red");
 					}
 				},
 				error: function (msg) { alert(msg); }
 			}); 
 		}
+	});
+	
+	$("#userReg").click(function() {
+		window.location = "register.html";
 	});
 });

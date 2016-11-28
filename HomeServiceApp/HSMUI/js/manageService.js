@@ -1,38 +1,19 @@
 
 $(document).ready(function(){
-	/*
+	
+	//Getting data from backend
 	$.ajax({
 		type: "GET",
-		url:"",
+		url:"/json/db514_availableServices.json",
 		dataType: "json",
 		success: function (data) {
-			$.each(data.serviceNames, function(i, obj) {
-				var divData="<option value="+obj.value+">"+obj.value+"</option>";
+			$.each(data, function(i, obj) {
+				var divData="<option value="+obj.name+">"+obj.name+"</option>";
 				$(divData).appendTo('#serviceName');
 			});
 		}
 	});
-	*/
-	//Simulating dropdown polulation
-	var data = {
-		"serviceNames": [{
-			"name": "Cleaning"
-		}, {
-			"name": "Cooking"
-		}, {
-			"name": "Mowing"
-		}, {
-			"name": "Plumbing"
-		}, {
-			"name": "Grooming"
-		}]
-	};
 	
-	$.each(data.serviceNames, function(i, obj) {
-		var divData="<option value="+obj.name+">"+obj.name+"</option>";
-		$(divData).appendTo('#serviceName');
-	});
-	//end
 	
 	//Sending data to backend
 	$("#manageService").click(function () {
