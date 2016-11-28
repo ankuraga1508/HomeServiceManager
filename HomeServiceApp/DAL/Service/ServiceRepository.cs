@@ -107,6 +107,7 @@ namespace HSM.DAL
             }
             catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(ex);
                 var objErr = new ErrorClass(ex, "");
                 objErr.LogException();
             }
