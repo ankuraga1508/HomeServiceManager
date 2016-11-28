@@ -9,7 +9,7 @@ namespace HSM.Entity
     public class User : Credential
     {
         public int idUser { get; set; }
-        public string UserName { get; set; }
+        public string LoginId { get; set; }
        
         public string UserEmail { get; set; }
         public string UserMobile { get; set; }

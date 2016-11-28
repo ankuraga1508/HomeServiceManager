@@ -8,7 +8,7 @@ namespace HSM.Entity
 {
     public class Credential
     {
-        public string LoginId { get; set; }
+        public string UserName { get; set; }
         public string LoginPassword { get; set; }
 
     }

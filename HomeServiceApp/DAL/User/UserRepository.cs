@@ -66,19 +66,18 @@ namespace HSM.DAL
             {
                 User user;
 
-                string LoginId = usercr.LoginId;
+                string Username = usercr.UserName;
                 string LoginPassword = usercr.LoginPassword;
                 using (MySqlCommand cmd = new MySqlCommand("userlogin"))
                 {                    
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("_username", LoginId);
+                    cmd.Parameters.AddWithValue("_username", Username);
                     cmd.Parameters.AddWithValue("_password", LoginPassword);
                     Database db = new Database();
                     using (MySqlDataReader dr = db.SelectQry(cmd))
                     {
                         if (dr.Read())
                         {
-                            System.Diagnostics.Debug.WriteLine(dr["IsActive"].ToString());
                             user = new User() {
                                 UserRoleId = Int32.Parse(dr["UserRoleId"].ToString()),
                                 idUser = Int32.Parse(dr["idUser"].ToString()),
@@ -193,6 +192,7 @@ namespace HSM.DAL
             }
             catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(ex);
                 var objErr = new ErrorClass(ex, "");
                 objErr.LogException();
                 return 0;
