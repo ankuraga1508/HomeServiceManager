@@ -136,8 +136,11 @@ namespace HSM.DAL
                                 TimeOfServiceEnds = Convert.ToDateTime(dr["TimeOfServiceEnds"].ToString()),
                                 Comments = dr["Comments"].ToString(),
                                 ModifiedBy = Convert.ToDateTime(dr["ModifiedBy"].ToString()),
-                                ModifiedOn = Convert.ToDateTime(dr["ModifiedOn"].ToString())
-                                
+                                ModifiedOn = Convert.ToDateTime(dr["ModifiedOn"].ToString()),
+
+                                Address = dr["Address"].ToString(),
+                                serviceName = dr["serviceName"].ToString()
+
                             });
                         }
                     }

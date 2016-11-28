@@ -36,7 +36,7 @@ CREATE TABLE `service_request` (
   `ModifiedBy` datetime DEFAULT NULL,
   `ModifiedOn` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `service_request` (
 
 LOCK TABLES `service_request` WRITE;
 /*!40000 ALTER TABLE `service_request` DISABLE KEYS */;
-INSERT INTO `service_request` VALUES (1,2221,2,22,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 01:43:38','1000-01-01 00:00:00','2016-11-27 01:58:40'),(2,0,1,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 01:46:16','1000-01-01 00:00:00','1000-01-01 00:00:00'),(3,0,3,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 01:46:32','1000-01-01 00:00:00','1000-01-01 00:00:00'),(4,11,3,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 11:55:39','1000-01-01 00:00:00','1000-01-01 00:00:00'),(5,12,3,2,121,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 12:15:44','1000-01-01 00:00:00','2016-11-27 12:18:44'),(6,12,3,2,121,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 14:48:49','1000-01-01 00:00:00','1000-01-01 00:00:00'),(7,12,3,2,121,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 14:49:10','1000-01-01 00:00:00','1000-01-01 00:00:00'),(8,123,22,121,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 17:26:19','1000-01-01 00:00:00','1000-01-01 00:00:00'),(9,123,22,121,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 17:27:37','0001-01-01 00:00:00','0001-01-01 00:00:00'),(10,123,22,121,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00',NULL,'2016-11-27 17:27:59','0001-01-01 00:00:00','0001-01-01 00:00:00');
+INSERT INTO `service_request` VALUES (1,2221,2,22,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 01:43:38','1000-01-01 00:00:00','2016-11-27 01:58:40'),(2,0,1,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 01:46:16','1000-01-01 00:00:00','1000-01-01 00:00:00'),(3,0,3,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 01:46:32','1000-01-01 00:00:00','1000-01-01 00:00:00'),(4,11,3,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 11:55:39','1000-01-01 00:00:00','1000-01-01 00:00:00'),(5,12,3,2,121,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 12:15:44','1000-01-01 00:00:00','2016-11-27 12:18:44'),(6,12,3,2,121,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 14:48:49','1000-01-01 00:00:00','1000-01-01 00:00:00'),(7,12,3,2,121,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 14:49:10','1000-01-01 00:00:00','1000-01-01 00:00:00'),(8,123,22,121,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 17:26:19','1000-01-01 00:00:00','1000-01-01 00:00:00'),(9,123,22,121,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 17:27:37','0001-01-01 00:00:00','0001-01-01 00:00:00'),(10,123,22,121,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00',NULL,'2016-11-27 17:27:59','0001-01-01 00:00:00','0001-01-01 00:00:00'),(11,1,2,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-28 02:38:32','1000-01-01 00:00:00','1000-01-01 00:00:00');
 /*!40000 ALTER TABLE `service_request` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -124,7 +124,7 @@ CREATE TABLE `user` (
   `LastName` varchar(45) DEFAULT NULL,
   `Sex` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -133,7 +133,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,NULL,NULL,NULL,0,NULL,'2016-11-22 14:52:42',0,'2016-11-28 00:34:55',0,'ankur','test','\0','abcd','ankur','agarwal','Male'),(2,'Vikas','vj@iastate.edu','7735100198',1,'777888999','2016-11-22 14:52:44',1,'2016-11-22 14:52:44',1,'test','test','',NULL,NULL,NULL,NULL),(3,NULL,NULL,NULL,0,NULL,'2016-11-28 00:33:25',0,'0001-01-01 00:00:00',0,'ankur','test','\0','abcd','ankur','agarwal','Male');
+INSERT INTO `user` VALUES (1,NULL,NULL,NULL,0,NULL,'2016-11-22 14:52:42',0,'2016-11-28 01:07:05',0,'11','test','\0','abcd1234','ankur','agarwal','Male'),(2,'Vikas','vj@iastate.edu','7735100198',1,'777888999','2016-11-22 14:52:44',1,'2016-11-22 14:52:44',1,'test','test','',NULL,NULL,NULL,NULL),(3,NULL,NULL,NULL,0,NULL,'2016-11-28 00:33:25',0,'0001-01-01 00:00:00',0,'ankur','test','\0','abcd','ankur','agarwal','Male'),(4,NULL,NULL,NULL,0,NULL,'2016-11-28 01:07:42',0,'0001-01-01 00:00:00',0,'11','test','\0','ab','ankur','agarwal','Male');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -311,11 +311,12 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `getrequestbyuserid`(
  userid int(11)
 )
 BEGIN
-	SELECT u.address, s.id, s.RequesterId, s.RoleId, s.CaregiverId, s.ServiceId,sv.servicename ,s.Status, s.TimeOfServiceStart, 
+	SELECT sv.servicename, u.address, s.id, s.RequesterId, s.RoleId, 
+    s.CaregiverId, s.ServiceId ,s.Status, s.TimeOfServiceStart, 
     s.TimeOfServiceEnds, s.Comments, s.ModifiedBy, s.ModifiedOn
 	FROM home_service_db.service_request s
     inner join services sv on sv.id = s.serviceid
-    inner join user u on u.id = s.RequesterId
+    inner join user u on u.idUser = s.RequesterId
 	WHERE s.RequesterId = userid
     ;
 
@@ -564,4 +565,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-28  0:36:45
+-- Dump completed on 2016-11-28  2:41:06

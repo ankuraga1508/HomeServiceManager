@@ -18,6 +18,9 @@ namespace HSM.Entity
         public string Comments { get; set; }
         public DateTime ModifiedBy { get; set; }
         public DateTime ModifiedOn { get; set; }
+
+        public string Address { get; set; }
+        public string serviceName { get; set; }
     }
 
 }
