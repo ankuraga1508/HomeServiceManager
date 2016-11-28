@@ -9,6 +9,7 @@ using HSM.Entity;
 using HSM.Common;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json.Linq;
+using System.Configuration;
 
 namespace HSM.DAL
 {
@@ -42,6 +43,10 @@ namespace HSM.DAL
                                 CreatedBy = Int32.Parse(dr["CreatedBy"].ToString()),
                                 ModifiedOn = Convert.ToDateTime(dr["ModifiedOn"].ToString()),
                                 ModifiedBy = Int32.Parse(dr["ModifiedBy"].ToString()),
+                                Address = dr["Address"].ToString(),
+                                FirstName = dr["FirstName"].ToString(),
+                                LastName = dr["LastName"].ToString(),
+                                Sex = dr["Sex"].ToString(),
                             });
                         }
                     }
@@ -49,7 +54,7 @@ namespace HSM.DAL
             }
             catch (Exception ex)
             {
-                var objErr = new ErrorClass(ex, "NewCarUsersRepository.BindNewCarUsers()");
+                var objErr = new ErrorClass(ex, "");
                 objErr.LogException();
             }
             return UserList;
@@ -73,7 +78,24 @@ namespace HSM.DAL
                     {
                         if (dr.Read())
                         {
-                            user = new User(){ UserRoleId = Int32.Parse(dr["UserRoleId"].ToString())};
+                            System.Diagnostics.Debug.WriteLine(dr["IsActive"].ToString());
+                            user = new User() {
+                                UserRoleId = Int32.Parse(dr["UserRoleId"].ToString()),
+                                idUser = Int32.Parse(dr["idUser"].ToString()),
+                                UserName = dr["UserName"].ToString(),
+                                UserEmail = dr["UserEmail"].ToString(),
+                                UserMobile = dr["UserMobile"].ToString(),
+                                UserSSN = dr["UserSSN"].ToString(),
+                                CreatedOn = Convert.ToDateTime(dr["CreatedOn"].ToString()),
+                                CreatedBy = Int32.Parse(dr["CreatedBy"].ToString()),
+                                ModifiedOn = Convert.ToDateTime(dr["ModifiedOn"].ToString()),
+                                ModifiedBy = Int32.Parse(dr["ModifiedBy"].ToString()),
+                                IsActive = Int32.Parse(dr["IsActive"].ToString()),
+                                Address = dr["Address"].ToString(),
+                                FirstName = dr["FirstName"].ToString(),
+                                LastName = dr["LastName"].ToString(),
+                                Sex = dr["Sex"].ToString(),
+                            };
                             return user;
                         }
                     }
@@ -114,6 +136,10 @@ namespace HSM.DAL
                                 UserData.CreatedBy = Int32.Parse(dr["CreatedBy"].ToString());
                                 UserData.ModifiedOn = Convert.ToDateTime(dr["ModifiedOn"].ToString());
                                 UserData.ModifiedBy = Int32.Parse(dr["ModifiedBy"].ToString());
+                                UserData.Address = dr["Address"].ToString();
+                                UserData.FirstName = dr["FirstName"].ToString();
+                                UserData.LastName = dr["LastName"].ToString();
+                                UserData.Sex = dr["Sex"].ToString();
                         }
 
                     }
@@ -122,7 +148,7 @@ namespace HSM.DAL
             }
             catch (Exception ex)
             {
-                var objErr = new ErrorClass(ex, "NewCarUsersRepository.BindNewCarUsers()");
+                var objErr = new ErrorClass(ex, "");
                 objErr.LogException();
             }
             return UserData;
@@ -132,29 +158,42 @@ namespace HSM.DAL
         {
             try
             {
-                using (MySqlCommand cmd = new MySqlCommand("insertorupdate_user"))
+                using (MySqlConnection con = new MySqlConnection(ConfigurationManager.AppSettings["connectionString"]))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("_id", MySqlDbType.Int32).Value = UserData.idUser;
-                    cmd.Parameters.Add("UserName", MySqlDbType.VarChar).Value = UserData.UserName;
-                    cmd.Parameters.Add("UserEmail", MySqlDbType.VarChar).Value = UserData.UserEmail;
-                    cmd.Parameters.Add("UserMobile", MySqlDbType.VarChar).Value = UserData.UserMobile;
-                    cmd.Parameters.Add("UserRoleId", MySqlDbType.Int32).Value = UserData.UserRoleId;
-                    cmd.Parameters.Add("UserSSN", MySqlDbType.VarChar).Value = UserData.UserSSN;
-                    cmd.Parameters.Add("ModifiedBy", MySqlDbType.Int32).Value = UserData.ModifiedBy;
-                    cmd.Parameters.Add("LoginId", MySqlDbType.VarChar).Value = UserData.LoginId;
-                    cmd.Parameters.Add("LoginPassword", MySqlDbType.VarChar).Value = UserData.LoginPassword;
-                    cmd.Parameters.Add("IsActive", MySqlDbType.Bit).Value = UserData.IsActive;
+                    using (MySqlCommand cmd = new MySqlCommand("insertorupdate_user"))
+                    {
+                        con.Open();
+                        cmd.Connection = con;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("_idUser", MySqlDbType.Int32).Value = UserData.idUser;
+                        cmd.Parameters.Add("UserName", MySqlDbType.VarChar).Value = UserData.UserName;
+                        cmd.Parameters.Add("UserEmail", MySqlDbType.VarChar).Value = UserData.UserEmail;
+                        cmd.Parameters.Add("UserMobile", MySqlDbType.VarChar).Value = UserData.UserMobile;
+                        cmd.Parameters.Add("UserRoleId", MySqlDbType.Int32).Value = UserData.UserRoleId;
+                        cmd.Parameters.Add("UserSSN", MySqlDbType.VarChar).Value = UserData.UserSSN;
+                        cmd.Parameters.Add("CreatedBy", MySqlDbType.Int32).Value = UserData.CreatedBy;
+                        cmd.Parameters.Add("ModifiedBy", MySqlDbType.Int32).Value = UserData.ModifiedBy;
+                        cmd.Parameters.Add("LoginId", MySqlDbType.VarChar).Value = UserData.LoginId;
+                        cmd.Parameters.Add("LoginPassword", MySqlDbType.VarChar).Value = UserData.LoginPassword;
+                        cmd.Parameters.Add("IsActive", MySqlDbType.Bit).Value = UserData.IsActive;
+                        cmd.Parameters.Add("Address", MySqlDbType.VarChar).Value = UserData.Address;
+                        cmd.Parameters.Add("FirstName", MySqlDbType.VarChar).Value = UserData.FirstName;
+                        cmd.Parameters.Add("LastName", MySqlDbType.VarChar).Value = UserData.LastName;
+                        cmd.Parameters.Add("Sex", MySqlDbType.VarChar).Value = UserData.Sex;
+                        cmd.Parameters.AddWithValue("ModifiedOn", UserData.ModifiedOn);
 
-                    Database db = new Database();
-                    db.ExecuteScalar(cmd);
+                        cmd.ExecuteReader();
+                        con.Close();
 
-                    return 1;
+                        return 1;
+                    }
                 }
+
+                
             }
             catch (Exception ex)
             {
-                var objErr = new ErrorClass(ex, "NewCarUsersRepository.BindNewCarUsers()");
+                var objErr = new ErrorClass(ex, "");
                 objErr.LogException();
                 return 0;
             }

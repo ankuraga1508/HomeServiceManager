@@ -22,7 +22,11 @@ namespace HSM.Entity
         public DateTime ModifiedOn { get; set; }
         public int ModifiedBy { get; set; }
 
-        public bool IsActive { get; set; }
+        public int IsActive { get; set; }
+        public string Address { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Sex { get; set; }
 
     }
 
