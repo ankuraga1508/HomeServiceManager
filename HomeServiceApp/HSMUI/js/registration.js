@@ -34,10 +34,10 @@ $(document).ready(function () {
 
     var completeForm = 1;
 
-    for (field of required) {
-      if (field.value === '') {
-        $("#" + field.id).css("border","2px solid red");
-        $("#" + field.id).css("box-shadow","0 0 3px red");
+    for (var i=0; i<required.length; i++) {
+      if (required[i].value === '') {
+          $("#" + required[i].id).css("border", "2px solid red");
+          $("#" + required[i].id).css("box-shadow", "0 0 3px red");
         completeForm = 0;
       }
     }
@@ -66,8 +66,8 @@ $(document).ready(function () {
 				contentType: "application/json; charset=utf-8",
 				success: function (result) {
 					if (result.d) {
-						alert('success');
-                      //TODO direct to new page
+					    alert('success');
+					    window.location = "SeniorDashboard.aspx";
 					}
 				},
 				error: function (msg) { alert(msg); }
