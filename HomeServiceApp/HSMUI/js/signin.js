@@ -18,15 +18,19 @@ $(document).ready(function () {
 				"password": password 
 			});
 			*/
-			var postData = "username="+username+"&password="+password;
+		    var postData = "UserName=" + username + "&LoginPassword=" + password;
 			$.ajax({
 				type: "POST",
 				url: "/api/user/userlogin",
 				data: postData,
-				//contentType: "application/json; charset=utf-8",
+				contentType: "application/x-www-form-urlencoded; charset=utf-8",
 				success: function (result) {
-					if (result) {
-						alert('success');
+				    if (result) {
+				        alert('success');
+				        var r = jQuery.parseJSON(result);
+				        var UserRoleId = r.UserRoleId;
+				        if (UserRoleId)
+                        window.location = ""
 					} else {
 						$('input[type="text"]').css("border","2px solid red");
 						$('input[type="text"]').css("box-shadow","0 0 3px red");
