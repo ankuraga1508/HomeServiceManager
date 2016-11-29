@@ -26,8 +26,8 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
-    <link href="js/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet">
+    <script src="js/jquery-ui.min.js"></script>
+    <link href="css/jquery-ui.min.css" rel="stylesheet">
 </head>
 <body>
     <div id="header">
@@ -104,8 +104,8 @@
                 </li>
             </ul>
             <button type="submit" id="request" name="request">Submit Request</button>
-            <button id="request-cancel">Cancel</button>
         </form>
+        <button id="request-cancel">Cancel</button>
     </div>
     <script>
     $(function() {
