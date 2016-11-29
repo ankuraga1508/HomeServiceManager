@@ -29,6 +29,8 @@ $(document).ready(function () {
 				        alert('success');
 				        var r = jQuery.parseJSON(result);
 				        var UserRoleId = r.UserRoleId;
+				        var UserId = r.UserId;
+                        window.
 				        if (UserRoleId === 1) {
 				            window.location = "SeniorDashboard.aspx";
 				        } else if (UserRoleId === 2) {

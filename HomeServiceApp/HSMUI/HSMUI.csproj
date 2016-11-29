@@ -227,6 +227,8 @@
     <Content Include="js\jsgrid.sort-strategies.js" />
     <Content Include="js\jsgrid.validation.js" />
     <Content Include="Registration.aspx" />
+    <Content Include="CaregiverDashboard.aspx" />
+    <Content Include="RequestService.aspx" />
     <Content Include="Signin.aspx" />
     <Content Include="AdminDashboard.aspx" />
     <Content Include="AddService.aspx" />

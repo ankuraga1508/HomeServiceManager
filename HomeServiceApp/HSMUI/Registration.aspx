@@ -54,10 +54,6 @@
                     <input type="text" id="contactNum" name="contactNum" required/>
                 </li>
                 <li>
-                    <label for="altContactNum">Alternate Contact Number</label>
-                    <input type="text" id="altContactNum" name="altContactNum" />
-                </li>
-                <li>
                     <label for="addressLine1">Address Line 1</label>
                     <input type="text" id="addressLine1" name="addressLine1" required/>
                 </li>
