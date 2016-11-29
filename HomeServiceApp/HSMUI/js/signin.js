@@ -30,7 +30,7 @@ $(document).ready(function () {
 				        var r = jQuery.parseJSON(result);
 				        var UserRoleId = r.UserRoleId;
 				        var UserId = r.UserId;
-                        window.
+				        window.sessionStorage.setItem("UserId", UserId);
 				        if (UserRoleId === 1) {
 				            window.location = "SeniorDashboard.aspx";
 				        } else if (UserRoleId === 2) {
