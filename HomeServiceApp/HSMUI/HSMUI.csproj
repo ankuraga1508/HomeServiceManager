@@ -194,12 +194,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Signin.aspx.cs">
-      <DependentUpon>Signin.aspx</DependentUpon>
+    <Compile Include="Registration.aspx.cs">
+      <DependentUpon>Registration.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Signin.aspx.designer.cs">
-      <DependentUpon>Signin.aspx</DependentUpon>
+    <Compile Include="Registration.aspx.designer.cs">
+      <DependentUpon>Registration.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -233,6 +233,7 @@
     <Content Include="js\jsgrid.load-strategies.js" />
     <Content Include="js\jsgrid.sort-strategies.js" />
     <Content Include="js\jsgrid.validation.js" />
+    <Content Include="Registration.aspx" />
     <Content Include="Signin.aspx" />
     <Content Include="AdminDashboard.aspx" />
     <Content Include="AddService.aspx" />

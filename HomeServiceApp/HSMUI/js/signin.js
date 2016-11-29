@@ -29,8 +29,13 @@ $(document).ready(function () {
 				        alert('success');
 				        var r = jQuery.parseJSON(result);
 				        var UserRoleId = r.UserRoleId;
-				        if (UserRoleId)
-                        window.location = ""
+				        if (UserRoleId === 1) {
+				            window.location = "SeniorDashboard.aspx";
+				        } else if (UserRoleId === 2) {
+				            window.location = "CaregiverDashboard.aspx";
+				        } else if (UserRoleId === 3) {
+				            window.location = "AdminDashboard.aspx";
+				        };
 					} else {
 						$('input[type="text"]').css("border","2px solid red");
 						$('input[type="text"]').css("box-shadow","0 0 3px red");
