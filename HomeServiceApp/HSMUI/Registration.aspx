@@ -31,7 +31,7 @@
         <h1>Register</h1>
     </div>
     <div class="container" id="fields">
-        <form>
+        <form method="post">
             <ul>
                 <li>
                     <label for="firstName">First Name</label>
@@ -66,7 +66,7 @@
                     <input type="text" id="sex" name="sex" required/>
                 </li>
             </ul>
-            <button type="submit" id="register" name="register">Register</button>
+            <button id="register" name="register">Register</button>
             <button id="registration-cancel">Cancel</button>
         </form>
     </div>
