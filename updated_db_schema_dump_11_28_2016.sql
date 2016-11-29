@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `home_service_db` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `home_service_db`;
 -- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: home_service_db
@@ -36,7 +38,7 @@ CREATE TABLE `service_request` (
   `ModifiedBy` datetime DEFAULT NULL,
   `ModifiedOn` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +47,7 @@ CREATE TABLE `service_request` (
 
 LOCK TABLES `service_request` WRITE;
 /*!40000 ALTER TABLE `service_request` DISABLE KEYS */;
-INSERT INTO `service_request` VALUES (1,2221,2,22,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 01:43:38','1000-01-01 00:00:00','2016-11-27 01:58:40'),(2,0,1,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 01:46:16','1000-01-01 00:00:00','1000-01-01 00:00:00'),(3,0,3,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 01:46:32','1000-01-01 00:00:00','1000-01-01 00:00:00'),(4,11,3,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 11:55:39','1000-01-01 00:00:00','1000-01-01 00:00:00'),(5,12,3,2,121,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 12:15:44','1000-01-01 00:00:00','2016-11-27 12:18:44'),(6,12,3,2,121,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 14:48:49','1000-01-01 00:00:00','1000-01-01 00:00:00'),(7,12,3,2,121,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 14:49:10','1000-01-01 00:00:00','1000-01-01 00:00:00'),(8,123,22,121,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 17:26:19','1000-01-01 00:00:00','1000-01-01 00:00:00'),(9,123,22,121,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 17:27:37','0001-01-01 00:00:00','0001-01-01 00:00:00'),(10,123,22,121,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00',NULL,'2016-11-27 17:27:59','0001-01-01 00:00:00','0001-01-01 00:00:00'),(11,1,2,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-28 02:38:32','1000-01-01 00:00:00','1000-01-01 00:00:00');
+INSERT INTO `service_request` VALUES (1,2221,2,22,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 01:43:38','1000-01-01 00:00:00','2016-11-27 01:58:40'),(2,0,1,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 01:46:16','1000-01-01 00:00:00','1000-01-01 00:00:00'),(3,0,3,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 01:46:32','1000-01-01 00:00:00','1000-01-01 00:00:00'),(4,11,3,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 11:55:39','1000-01-01 00:00:00','1000-01-01 00:00:00'),(5,12,3,2,121,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 12:15:44','1000-01-01 00:00:00','2016-11-27 12:18:44'),(6,12,3,2,121,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 14:48:49','1000-01-01 00:00:00','1000-01-01 00:00:00'),(7,12,3,2,121,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 14:49:10','1000-01-01 00:00:00','1000-01-01 00:00:00'),(8,123,22,121,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 17:26:19','1000-01-01 00:00:00','1000-01-01 00:00:00'),(9,123,22,121,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 17:27:37','0001-01-01 00:00:00','0001-01-01 00:00:00'),(10,123,22,121,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00',NULL,'2016-11-27 17:27:59','0001-01-01 00:00:00','0001-01-01 00:00:00'),(11,1,2,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-28 02:38:32','1000-01-01 00:00:00','1000-01-01 00:00:00'),(12,2,2,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-28 18:55:58','1000-01-01 00:00:00','1000-01-01 00:00:00'),(13,1,2,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-28 18:56:24','1000-01-01 00:00:00','1000-01-01 00:00:00');
 /*!40000 ALTER TABLE `service_request` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -212,6 +214,31 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `getallrequests` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getallrequests`(
+)
+BEGIN
+	SELECT sv.servicename, u.address, s.id, s.RequesterId, s.RoleId, 
+    s.CaregiverId, s.ServiceId ,s.Status, s.TimeOfServiceStart, 
+    s.TimeOfServiceEnds, s.Comments, s.ModifiedBy, s.ModifiedOn
+	FROM home_service_db.service_request s
+    inner join services sv on sv.id = s.serviceid
+    inner join user u on u.idUser = s.RequesterId;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `getallservices` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -266,6 +293,60 @@ BEGIN
 	FROM home_service_db.user
     WHERE UserRoleId= _UserRoleId OR _UserRoleId = -1;
 
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `getrequestbycaregiverid` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getrequestbycaregiverid`(
+ _CaregiverId int(11)
+)
+BEGIN
+	SELECT sv.servicename, u.address, s.id, s.RequesterId, s.RoleId, 
+    s.CaregiverId, s.ServiceId ,s.Status, s.TimeOfServiceStart, 
+    s.TimeOfServiceEnds, s.Comments, s.ModifiedBy, s.ModifiedOn
+	FROM home_service_db.service_request s
+    inner join services sv on sv.id = s.serviceid
+    inner join user u on u.idUser = s.RequesterId
+	WHERE s.CaregiverId = _CaregiverId;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `getrequestbyrequesterid` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getrequestbyrequesterid`(
+ _RequesterId int(11)
+)
+BEGIN
+	SELECT sv.servicename, u.address, s.id, s.RequesterId, s.RoleId, 
+    s.CaregiverId, s.ServiceId ,s.Status, s.TimeOfServiceStart, 
+    s.TimeOfServiceEnds, s.Comments, s.ModifiedBy, s.ModifiedOn
+	FROM home_service_db.service_request s
+    inner join services sv on sv.id = s.serviceid
+    inner join user u on u.idUser = s.RequesterId
+	WHERE s.RequesterId = _RequesterId;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -589,4 +670,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-28 18:17:38
+-- Dump completed on 2016-11-28 19:04:13

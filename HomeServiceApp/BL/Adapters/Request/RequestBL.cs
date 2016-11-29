@@ -27,14 +27,19 @@ namespace HSM.BL
             return _requestRepo.updateRequest(requestDetails);
         }
 
-        public List<Request> getRequestByUserId(int userid)
+        public List<Request> getRequestByRequesterId(int RequesterId)
         {
-            return _requestRepo.getRequestByUserId(userid);
+            return _requestRepo.getRequestByRequesterId(RequesterId);
         }
 
-        public List<Request> getRequestByRoleId(int roleid)
+        public List<Request> getRequestByCaregiverId(int CaregiverId)
         {
-            return _requestRepo.getRequestByRoleId(roleid);
+            return _requestRepo.getRequestByCaregiverId(CaregiverId);
+        }
+
+        public List<Request> getAllRequests()
+        {
+            return _requestRepo.getAllRequests();
         }
     }
 }

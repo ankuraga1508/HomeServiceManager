@@ -109,16 +109,16 @@ namespace HSM.DAL
             return false;
         }
 
-        public List<Request> getRequestByUserId(int userid)
+        public List<Request> getRequestByRequesterId(int RequesterId)
         {
             var requestList = new List<Request>();
 
             try
             {
-                using (MySqlCommand cmd = new MySqlCommand("getrequestbyuserid"))
+                using (MySqlCommand cmd = new MySqlCommand("getrequestbyrequesterid"))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("userid", userid);
+                    cmd.Parameters.AddWithValue("_RequesterId", RequesterId);
                     Database db = new Database();
                     using (MySqlDataReader dr = db.SelectQry(cmd))
                     {
@@ -155,16 +155,16 @@ namespace HSM.DAL
             return requestList;
         }
 
-        public List<Request> getRequestByRoleId(int roleid)
+        public List<Request> getRequestByCaregiverId(int CaregiverId)
         {
             var requestList = new List<Request>();
 
             try
             {
-                using (MySqlCommand cmd = new MySqlCommand("getrequestbyroleid"))
+                using (MySqlCommand cmd = new MySqlCommand("getrequestbycaregiverid"))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("_roleid", roleid);
+                    cmd.Parameters.AddWithValue("_CaregiverId", CaregiverId);
                     Database db = new Database();
                     using (MySqlDataReader dr = db.SelectQry(cmd))
                     {
@@ -182,7 +182,53 @@ namespace HSM.DAL
                                 TimeOfServiceEnds = Convert.ToDateTime(dr["TimeOfServiceEnds"].ToString()),
                                 Comments = dr["Comments"].ToString(),
                                 ModifiedBy = Convert.ToDateTime(dr["ModifiedBy"].ToString()),
-                                ModifiedOn = Convert.ToDateTime(dr["ModifiedOn"].ToString())
+                                ModifiedOn = Convert.ToDateTime(dr["ModifiedOn"].ToString()),
+                                Address = dr["Address"].ToString(),
+                                serviceName = dr["serviceName"].ToString()
+
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
+                var objErr = new ErrorClass(ex, "");
+                objErr.LogException();
+            }
+            return requestList;
+        }
+
+        public List<Request> getAllRequests()
+        {
+            var requestList = new List<Request>();
+
+            try
+            {
+                using (MySqlCommand cmd = new MySqlCommand("getallrequests"))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    Database db = new Database();
+                    using (MySqlDataReader dr = db.SelectQry(cmd))
+                    {
+                        while (dr.Read())
+                        {
+                            requestList.Add(new Request()
+                            {
+                                id = Int32.Parse(dr["id"].ToString()),
+                                RequesterId = Int32.Parse(dr["RequesterId"].ToString()),
+                                RoleId = Int32.Parse(dr["RoleId"].ToString()),
+                                CaregiverId = Int32.Parse(dr["CaregiverId"].ToString()),
+                                ServiceId = Int32.Parse(dr["ServiceId"].ToString()),
+                                Status = Int32.Parse(dr["Status"].ToString()),
+                                TimeOfServiceStart = Convert.ToDateTime(dr["TimeOfServiceStart"].ToString()),
+                                TimeOfServiceEnds = Convert.ToDateTime(dr["TimeOfServiceEnds"].ToString()),
+                                Comments = dr["Comments"].ToString(),
+                                ModifiedBy = Convert.ToDateTime(dr["ModifiedBy"].ToString()),
+                                ModifiedOn = Convert.ToDateTime(dr["ModifiedOn"].ToString()),
+                                Address = dr["Address"].ToString(),
+                                serviceName = dr["serviceName"].ToString()
 
                             });
                         }

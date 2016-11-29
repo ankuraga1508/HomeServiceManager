@@ -18,13 +18,18 @@ namespace HSM.Interface
         bool updateRequest(Request requestDetails);
 
         /// <summary>
-        /// Get Request by userid
+        /// Get Request by RequesterId
         /// </summary>
-        List<Request> getRequestByUserId(int userid);
+        List<Request> getRequestByRequesterId(int RequesterId);
 
         /// <summary>
         /// Get Request by roleid
         /// </summary>
-        List<Request> getRequestByRoleId(int roleid);
+        List<Request> getRequestByCaregiverId(int CaregiverId);
+
+        /// <summary>
+        /// Get All Requests
+        /// </summary>
+        List<Request> getAllRequests();
     }
 }
