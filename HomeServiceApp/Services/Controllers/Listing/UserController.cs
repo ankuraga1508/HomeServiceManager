@@ -92,6 +92,33 @@ namespace HSM.Services
             return Ok(response);
 
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public IHttpActionResult GetUserByUserName()
+        {
+            string response = null;
+            var QueryString = Request.RequestUri.ParseQueryString();
+            string UserName = (QueryString["username"] != null && !String.IsNullOrEmpty(QueryString["username"].ToString())) ? QueryString["username"] : "";
+            IUnityContainer container = new UnityContainer();
+            UserBL userBl = new UserBL(container);
+            try
+            {
+
+                response = JsonConvert.SerializeObject(userBl.GetUserByUserName(UserName));
+
+            }
+            catch (Exception ex)
+            {
+                var objErr = new ErrorClass(ex, "OfferController.GetAllListings()");
+                objErr.LogException();
+            }
+            return Ok(response);
+
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -104,7 +131,7 @@ namespace HSM.Services
             try
             {
 
-                response = userBl.SaveUser(userData).ToString();
+                response = JsonConvert.SerializeObject(userBl.SaveUser(userData));
 
             }
             catch (Exception ex)

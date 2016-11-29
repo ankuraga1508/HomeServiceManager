@@ -32,11 +32,18 @@ namespace HSM.Interface
         User GetUserById(int UserId);
 
         /// <summary>
+        /// get user based on UserName
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns></returns>
+        User GetUserByUserName(string UserName);
+
+        /// <summary>
         /// Save/Update User info
         /// </summary>
         /// <param name="UserData"></param>
         /// <returns></returns>
-        int SaveUserDetails(User UserData);
+        User SaveUserDetails(User UserData);
 
 
     }

@@ -41,7 +41,12 @@ namespace HSM.BL
             return _userRepo.GetUserById(userId);
         }
 
-        public int SaveUser(User userData)
+        public User GetUserByUserName(string UserName)
+        {
+            return _userRepo.GetUserByUserName(UserName);
+        }
+
+        public User SaveUser(User userData)
         {
             return _userRepo.SaveUserDetails(userData);
         }

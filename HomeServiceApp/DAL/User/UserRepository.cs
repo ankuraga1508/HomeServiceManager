@@ -153,7 +153,51 @@ namespace HSM.DAL
             return UserData;
         }
 
-        public int SaveUserDetails(User UserData)
+        public User GetUserByUserName(string UserName)
+        {
+            var UserData = new User();
+            try
+            {
+                using (MySqlCommand cmd = new MySqlCommand("getuserbyusername"))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("_UserName", UserName);
+                    Database db = new Database();
+                    using (MySqlDataReader dr = db.SelectQry(cmd))
+                    {
+
+                        if (dr.Read())
+                        {
+                            UserData.idUser = Int32.Parse(dr["idUser"].ToString());
+                            UserData.UserName = dr["UserName"].ToString();
+                            UserData.UserEmail = dr["UserEmail"].ToString();
+                            UserData.UserMobile = dr["UserMobile"].ToString();
+                            UserData.UserSSN = dr["UserSSN"].ToString();
+                            UserData.LoginId = dr["LoginId"].ToString();
+                            UserData.LoginPassword = dr["LoginPassword"].ToString();
+                            UserData.CreatedOn = Convert.ToDateTime(dr["CreatedOn"].ToString());
+                            UserData.CreatedBy = Int32.Parse(dr["CreatedBy"].ToString());
+                            UserData.ModifiedOn = Convert.ToDateTime(dr["ModifiedOn"].ToString());
+                            UserData.ModifiedBy = Int32.Parse(dr["ModifiedBy"].ToString());
+                            UserData.Address = dr["Address"].ToString();
+                            UserData.FirstName = dr["FirstName"].ToString();
+                            UserData.LastName = dr["LastName"].ToString();
+                            UserData.Sex = dr["Sex"].ToString();
+                        }
+
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                var objErr = new ErrorClass(ex, "");
+                objErr.LogException();
+            }
+            return UserData;
+        }
+
+        public User SaveUserDetails(User UserData)
         {
             try
             {
@@ -184,7 +228,7 @@ namespace HSM.DAL
                         cmd.ExecuteReader();
                         con.Close();
 
-                        return 1;
+                        return GetUserByUserName(UserData.UserName);
                     }
                 }
 
@@ -195,7 +239,7 @@ namespace HSM.DAL
                 System.Diagnostics.Debug.WriteLine(ex);
                 var objErr = new ErrorClass(ex, "");
                 objErr.LogException();
-                return 0;
+                return null;
             }
 
         }
