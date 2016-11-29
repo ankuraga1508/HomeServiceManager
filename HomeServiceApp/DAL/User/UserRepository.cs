@@ -114,10 +114,10 @@ namespace HSM.DAL
             var UserData = new User();
             try
             {
-                using (MySqlCommand cmd = new MySqlCommand("dbo.GetUsers"))
+                using (MySqlCommand cmd = new MySqlCommand("getuserbyid"))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@UserId", MySqlDbType.Int32).Value = UserId;
+                    cmd.Parameters.AddWithValue("idUser", UserId);
                     Database db = new Database();
                     using (MySqlDataReader dr = db.SelectQry(cmd))
                     {
