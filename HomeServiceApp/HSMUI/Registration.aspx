@@ -66,24 +66,8 @@
                     <input type="text" id="addressLine2" name="addressLine2" />
                 </li>
                 <li>
-                    <label for="city">City</label>
-                    <input type="text" id="city" name="city" required/>
-                </li>
-                <li>
-                    <label for="state">State</label>
-                    <input type="text" id="state" name="state" required/>
-                </li>
-                <li>
-                    <label for="zipCode">Zip Code</label>
-                    <input type="text" id="zipCode" name="zipCode" required/>
-                </li>
-                <li>
                     <label for="sex">Sex</label>
                     <input type="text" id="sex" name="sex" required/>
-                </li>
-                <li>
-                    <label for="dateOfBirth">Date of Birth</label>
-                    <input type="text" id="dateOfBirth" name="dateOfBirth" required/>
                 </li>
             </ul>
             <button type="submit" id="register" name="register">Register</button>
