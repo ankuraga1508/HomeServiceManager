@@ -197,10 +197,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -229,7 +225,7 @@
     <Content Include="Registration.aspx" />
     <Content Include="CaregiverDashboard.aspx" />
     <Content Include="RequestService.aspx" />
-    <Content Include="Signin.aspx" />
+    <Content Include="Default.aspx" />
     <Content Include="AdminDashboard.aspx" />
     <Content Include="AddService.aspx" />
     <Content Include="ManageService.aspx" />
@@ -282,7 +278,6 @@
     <Content Include="css\signin.css" />
     <Content Include="css\SimpleForm.css" />
     <Content Include="css\style.css" />
-    <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Includes\globalscript.aspx" />
@@ -372,12 +367,12 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Web.Debug.config">
+    <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
+    </None>
+    <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

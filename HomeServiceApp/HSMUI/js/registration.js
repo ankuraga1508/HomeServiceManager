@@ -1,5 +1,6 @@
 $(document).ready(function () {
-  $("#register").click(function () {
+    $("#register").click(function (e) {
+    e.preventDefault();
     var firstName = $("#firstName").val().trim();
     var lastName = $("#lastName").val().trim();
     var username = $("#username").val().trim();
@@ -50,7 +51,11 @@ $(document).ready(function () {
 					    window.location = "SeniorDashboard.aspx";
 					}
 				},
-				error: function (msg) { alert("fail"); alert(msg); return false; }
+				error: function (msg) {
+				    alert("fail");
+				    alert(msg);
+				    return false;
+				}
 			});
     }
   });

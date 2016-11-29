@@ -29,6 +29,8 @@ $(document).ready(function () {
       var startTime = startDate + " " + startHour + ":" + startMinutes;
       var endTime = endDate + " " + endHour + ":" + endMinutes;
 
+      var postData = "RequesterId=" + window.sessionStorage.getItem("UserId") + "RoleId=" + password;
+
       var postData = JSON.stringify({
         "startTime": startTime,
         "endTime": endTime,
@@ -37,9 +39,9 @@ $(document).ready(function () {
       alert(postData);
       $.ajax({
         type: "POST",
-        url: "",
+        url: "http://localhost:62649/api/request/addrequest",
         data: postData,
-        contentType: "application/json; charset=utf-8",
+        contentType: "application/x-www-form-urlencoded; charset=utf-8",
 				success: function (result) {
 					if (result.d) {
 						alert('success');

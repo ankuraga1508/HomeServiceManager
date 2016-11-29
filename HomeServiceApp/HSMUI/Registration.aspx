@@ -31,7 +31,7 @@
         <h1>Register</h1>
     </div>
     <div class="container" id="fields">
-        <form method="post">
+        <form id="registration" method="post">
             <ul>
                 <li>
                     <label for="firstName">First Name</label>
@@ -66,9 +66,9 @@
                     <input type="text" id="sex" name="sex" required/>
                 </li>
             </ul>
-            <button id="register" name="register">Register</button>
-            <button id="registration-cancel">Cancel</button>
+            <button type="submit" id="register" name="register">Register</button>
         </form>
+        <button id="registration-cancel">Cancel</button>
     </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
