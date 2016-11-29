@@ -40,19 +40,19 @@ $(document).ready(function () {
       var ModifiedOn = currentDate.getFullYear() + "-" + minTwoDigits(currentDate.getMonth()) + "-" + minTwoDigits(currentDate.getDay()) + " " +
           minTwoDigits(currentDate.getHours()) + ":" + minTwoDigits(currentDate.getMinutes()) + ":" + minTwoDigits(currentDate.getSeconds());
 
-        //Check value of RoleId and Caregiver ID and Service ID
-      var postData = "RequesterId=" + UserId + "&RoleId=1" + "&CaregiverId=" + 1 +
+        //TODO get and set ServiceId
+      var postData = "RequesterId=" + UserId + "&RoleId= 1" + "&CaregiverId=" + "" +
           "&ServiceId=" + ServiceId + "&Status=1" + "&TimeOfServiceStart=" + startTime + "&TimeOfSericeEnd=" + endTime +
           "&Comments=" + comments + "&ModifiedBy=" + UserId + "&ModifiedOn=" + ModifiedOn;
 
       alert(postData);
       $.ajax({
         type: "POST",
-        url: "http://localhost:62649/api/request/addrequest",
+        url: "/api/request/addrequest",
         data: postData,
         contentType: "application/x-www-form-urlencoded; charset=utf-8",
 		success: function (result) {
-					if (result.d) {
+					if (result) {
 						alert('success');
 					}
 					window.location = "SeniorDashboard.aspx";
