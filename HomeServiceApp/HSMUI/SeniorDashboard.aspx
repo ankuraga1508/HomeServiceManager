@@ -54,7 +54,7 @@
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar" id="sidebar">
                 <ul class="nav nav-sidebar">
-                    <li class="active"><a href="#">Shedule a Service<span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a href="#">Schedule a Service<span class="sr-only">(current)</span></a></li>
                     <li><a href="SeniorActiveRequests.aspx">Requests Being Serviced</a></li>
                     <li><a href="SeniorCompletedRequests.aspx">Completed Requests</a></li>
                     <li><a href="SeniorRejectedRequests.aspx">Rejected Requests</a></li>
