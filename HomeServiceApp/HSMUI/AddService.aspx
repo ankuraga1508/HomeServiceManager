@@ -88,12 +88,12 @@
 				<div class="col-sm-offset-4 col-sm-5">
 				  <div class="radio-inline">
 					<label>
-					  <input type="radio" id="serviceActive" name="serviceStatus" value="Y" checked/> Service Active
+					  <input type="radio" id="serviceActive" name="serviceStatus" value="1" checked/> Service Active
 					</label>
 				  </div>
 				  <div class="radio-inline">
 					<label>
-					  <input type="radio" id="serviceInactive" name="serviceStatus" value="N"/> Service Inactive
+					  <input type="radio" id="serviceInactive" name="serviceStatus" value="0"/> Service Inactive
 					</label>
 				  </div>
 				</div>

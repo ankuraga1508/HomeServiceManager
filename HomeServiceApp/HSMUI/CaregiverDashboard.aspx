@@ -62,64 +62,6 @@
           <h1 class="page-header">Active Requests</h1>
 
 		  <div id="jsGrid"></div>
-			<script>
-				var requests = [
-					{ Service: "Cleaning", Date: "11-20-2016", From: "14:00", To: "15:00", Location: "University Boulevard" },
-					{ "Service": "Cleaning", "Date": "11-20-2016", "From": "14:00", "To": "15:00", "Location": "University Boulevard" },
-					{ "Service": "Cleaning", "Date": "11-20-2016", "From": "14:00", "To": "15:00", "Location": "University Boulevard" },
-					{ "Service": "Cleaning", "Date": "11-20-2016", "From": "14:00", "To": "15:00", "Location": "University Boulevard" },
-					{ "Service": "Cleaning", "Date": "11-20-2016", "From": "14:00", "To": "15:00", "Location": "University Boulevard" },
-					{ "Service": "Cleaning", "Date": "11-20-2016", "From": "14:00", "To": "15:00", "Location": "University Boulevard" },
-					{ "Service": "Cleaning", "Date": "11-20-2016", "From": "14:00", "To": "15:00", "Location": "University Boulevard" },
-					{ "Service": "Cleaning", "Date": "11-20-2016", "From": "14:00", "To": "15:00", "Location": "University Boulevard" },
-					{ "Service": "Cleaning", "Date": "11-20-2016", "From": "14:00", "To": "15:00", "Location": "University Boulevard" },
-					{ "Service": "Cleaning", "Date": "11-20-2016", "From": "14:00", "To": "15:00", "Location": "University Boulevard" },
-					{ "Service": "Cleaning", "Date": "11-20-2016", "From": "14:00", "To": "15:00", "Location": "University Boulevard" },
-					{ "Service": "Cleaning", "Date": "11-20-2016", "From": "14:00", "To": "15:00", "Location": "University Boulevard" },
-					{ "Service": "Cleaning", "Date": "11-20-2016", "From": "14:00", "To": "15:00", "Location": "University Boulevard" },
-					{ "Service": "Cleaning", "Date": "11-20-2016", "From": "14:00", "To": "15:00", "Location": "University Boulevard" },
-					{ "Service": "Cleaning", "Date": "11-20-2016", "From": "14:00", "To": "15:00", "Location": "University Boulevard" },
-					{ "Service": "Cleaning", "Date": "11-20-2016", "From": "14:00", "To": "15:00", "Location": "University Boulevard" },
-					{ "Service": "Cleaning", "Date": "11-20-2016", "From": "14:00", "To": "15:00", "Location": "University Boulevard" },
-					{ "Service": "Cleaning", "Date": "11-20-2016", "From": "14:00", "To": "15:00", "Location": "University Boulevard" },
-					{ "Service": "Cleaning", "Date": "11-20-2016", "From": "14:00", "To": "15:00", "Location": "University Boulevard" },
-					{ "Service": "Cleaning", "Date": "11-20-2016", "From": "14:00", "To": "15:00", "Location": "University Boulevard" },
-					{ "Service": "Cleaning", "Date": "11-20-2016", "From": "14:00", "To": "15:00", "Location": "University Boulevard" },
-					{ "Service": "Cleaning", "Date": "11-20-2016", "From": "14:00", "To": "15:00", "Location": "University Boulevard" },
-					{ "Service": "Cleaning", "Date": "11-20-2016", "From": "14:00", "To": "15:00", "Location": "University Boulevard" },
-					{ "Service": "Cleaning", "Date": "11-20-2016", "From": "14:00", "To": "15:00", "Location": "University Boulevard" },
-					{ "Service": "Cleaning", "Date": "11-20-2016", "From": "14:00", "To": "15:00", "Location": "University Boulevard" },
-					{ "Service": "Cleaning", "Date": "11-20-2016", "From": "14:00", "To": "15:00", "Location": "University Boulevard" },
-					{ "Service": "Cleaning", "Date": "11-20-2016", "From": "14:00", "To": "15:00", "Location": "University Boulevard" }
-				];
-
-				$("#jsGrid").jsGrid({
-					width: "100%",
-					height: "75%",
-
-					filtering: false,
-					editing: false,
-					sorting: true,
-					paging: true,
-					autoload: true,
-
-					pageSize: 10,
-					pageButtonCount: 5,
-
-					deleteConfirm: "Do you really want to reject this request?",
-
-					data: requests,
-
-					fields: [
-						{ name: "Service", type: "text", width: 70 },
-						{ name: "Date", type: "text", width: 70 },
-						{ name: "From", type: "text", width: 50 },
-						{ name: "To", type: "text", width: 50 },
-						{ name: "Location", type: "text", width: 120},
-						{ type: "control", editButton: false}
-					]
-				});
-			</script>
         </div>
       </div>
     </div>
@@ -127,7 +69,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-
+    <script src="js/caregiverDashboardController.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->

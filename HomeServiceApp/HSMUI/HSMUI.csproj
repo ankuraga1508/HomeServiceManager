@@ -218,6 +218,7 @@
     <Content Include="js\adminDashboardController.js" />
     <Content Include="css\jquery-ui.min.css" />
     <Content Include="js\jquery-ui.min.js" />
+    <Content Include="js\caregiverDashboardController.js" />
     <Content Include="js\jsgrid.core.js" />
     <Content Include="js\jsgrid.field.checkbox.js" />
     <Content Include="js\jsgrid.field.control.js" />

@@ -48,7 +48,7 @@ $(document).ready(function () {
       alert(postData);
       $.ajax({
         type: "POST",
-        url: "/api/request/addrequest",
+        url: "/api/request/postrequest",
         data: postData,
         contentType: "application/x-www-form-urlencoded; charset=utf-8",
 		success: function (result) {

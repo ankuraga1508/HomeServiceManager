@@ -4,11 +4,11 @@ $(document).ready(function(){
 	//Getting data from backend
 	$.ajax({
 		type: "GET",
-		url:"/json/db514_availableServices.json",
+		url: "/api/service/services",
 		dataType: "json",
 		success: function (data) {
 			$.each(data, function(i, obj) {
-				var divData="<option value="+obj.name+">"+obj.name+"</option>";
+				var divData="<option value="+obj.id+">"+obj.serviceName+"</option>";
 				$(divData).appendTo('#serviceName');
 			});
 		}
@@ -16,7 +16,8 @@ $(document).ready(function(){
 	
 	
 	//Sending data to backend
-	$("#manageService").click(function () {
+	$("#manageService").click(function (e) {
+	    e.preventDefault();
 		var serviceName = $("#serviceName").val().trim();
 		var serviceDesc = $("#serviceDesc").val().trim();
 		var serviceStatus = $("input:radio[name=serviceStatus]:checked").val();
@@ -30,7 +31,14 @@ $(document).ready(function(){
 			$("#serviceDesc").css("box-shadow","0 0 3px red");
 		} 
 		if (serviceName != '' && serviceDesc != '' && serviceStatus!='') {
-			var postData = JSON.stringify({ 
+		    var postData = new Object();
+
+		    postData.serviceName = serviceName;
+		    postData.serviceDec = serviceDesc;
+		    postData.serviceStatus = serviceStatus;
+
+		    var postData = JSON.stringify({
+		        "id": id,
 				"serviceName": serviceName, 
 				"serviceDesc": serviceDesc,
 				"serviceStatus": serviceStatus
@@ -38,11 +46,11 @@ $(document).ready(function(){
 			alert(postData);
 			$.ajax({
 				type: "POST",
-				url: "",
+				url: "/api/service/addservice",
 				data: postData,
-				contentType: "application/json; charset=utf-8",
+				contentType: "application/x-www-form-urlencoded; charset=utf-8",
 				success: function (result) {
-					if (result.d) {
+					if (result) {
 						alert('success');
 					}
 				},

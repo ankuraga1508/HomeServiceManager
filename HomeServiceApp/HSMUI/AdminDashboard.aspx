@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminDashboard.aspx.cs" Inherits="BestDealsMVC.AddCaregiver" %>
+﻿<%@ Page Language="C#"%>
 
 <!DOCTYPE html>
 <html lang="en">
