@@ -203,6 +203,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="css\scheduleServiceModal.css" />
+    <Content Include="css\seniorDashboard.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="js\scheduleServiceModal.js" />
+    <Content Include="js\seniorCompletedRequests.js" />
+    <Content Include="js\seniorRejectedRequests.js" />
+    <Content Include="js\seniorActiveRequests.js" />
+    <Content Include="js\seniorDashboard.js" />
+    <Content Include="SeniorCompletedRequests.aspx" />
+    <Content Include="SeniorRejectedRequests.aspx" />
+    <Content Include="SeniorActiveRequests.aspx" />
+    <Content Include="SeniorDashboard.aspx" />
     <Content Include="css\assignRequest.css" />
     <Content Include="css\images\ui-icons_555555_256x240.png" />
     <Content Include="css\images\ui-icons_777620_256x240.png" />
@@ -449,6 +462,21 @@
     <Content Include="json\db514_activeRequests.json" />
     <Content Include="json\db514_availableCG.json" />
     <Content Include="json\db514_availableServices.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="json\db514_seniorActiveReq.json" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
