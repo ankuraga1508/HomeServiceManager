@@ -24,7 +24,7 @@
 
     <div class="container">
 
-    <form class="form-horizontal form-signin">
+    <form class="form-signin">
         <h2 class="form-signin-heading">Register</h2>
 	    <div class="form-group">
 	    <label for="firstName" class="control-label">First Name</label>
@@ -59,9 +59,8 @@
 		<input type="text" class="form-control" id="sex" name="sex" placeholder="Sex" required>
 	    </div>
 	    <div class="form-group">
-	    <div class="col-sm-offset-4 col-sm-10">
-		    <button type="submit" class="btn btn-success" id="register" name="register">Register</button>
-	    </div>
+		<button type="submit" class="btn btn-lg btn-success btn-block" id="register" name="register">Register</button>
+        <a href="Default.aspx">Go Back</a>
 	    </div>
     </form>
 
@@ -70,53 +69,6 @@
     <script src="js/registration.js"></script>
   </body>
 </html>
-<!--
-<body>
-    <div id="header">
-        <h1>Register</h1>
-    </div>
-    <div class="container" id="fields">
-        <form id="registration" method="post">
-            <ul>
-                <li>
-                    <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" name="firstName" required/>
-                </li>
-                <li>
-                    <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" required/>
-                </li>
-                <li>
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required/>
-                </li>
-                <li>
-                    <label for="password">Password</label>
-                    <input type="text" id="password" name="password" required/>
-                </li>
-                <li>
-                    <label for="contactNum">Contact Number</label>
-                    <input type="text" id="contactNum" name="contactNum" required/>
-                </li>
-                <li>
-                    <label for="addressLine1">Address Line 1</label>
-                    <input type="text" id="addressLine1" name="addressLine1" required/>
-                </li>
-                <li>
-                    <label for="addressLine2">Address Line 2</label>
-                    <input type="text" id="addressLine2" name="addressLine2" />
-                </li>
-                <li>
-                    <label for="sex">Sex</label>
-                    <input type="text" id="sex" name="sex" required/>
-                </li>
-            </ul>
-            <button type="submit" id="register" name="register">Register</button>
-        </form>
-        <button id="registration-cancel">Cancel</button>
-    </div>
-
--->
 
 
 
