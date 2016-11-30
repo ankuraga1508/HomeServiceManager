@@ -2,7 +2,7 @@
 
     $.ajax({
         type: "GET",
-        url: "api/request/getrequestbyfilters?status=1,2,3&requesterid=1",
+        url: "api/request/getrequestbyfilters?status=1,2&requesterid=1",
         dataType: "json",
         success: function (data) {
             var jsonData = JSON.parse(data);
