@@ -13,16 +13,12 @@ $(document).ready(function () {
 			$('input[type="password"]').css("box-shadow","0 0 3px red");
 		} 
 		if (username != '' && password != '') {
-		    var postData = {
-		        username: username,
-		        loginpwd: password
-		    };
+		    var postData = "username="+ username + "&LoginPassword="+ password;
 			$.ajax({
 				type: "POST",
 				url: "/api/user/userlogin",
 				data: postData,
 				success: function (result) {
-				    alert(result);
 				    if (result != 'null') {
 				        var r = jQuery.parseJSON(result);
 				        var UserRoleId = r.UserRoleId;
@@ -42,7 +38,7 @@ $(document).ready(function () {
 						$('input[type="password"]').css("box-shadow","0 0 3px red");
 					}
 				},
-				error: function (msg) { alert(msg); }
+				error: function (msg) {  }
 			}); 
 		}
 	});
