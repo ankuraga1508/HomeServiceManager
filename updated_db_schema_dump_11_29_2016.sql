@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: home_service_db
 -- ------------------------------------------------------
--- Server version	5.7.15-log
+-- Server version	5.5.53
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -50,26 +50,27 @@ INSERT INTO `service_request` VALUES (1,2221,2,22,1,1,'1000-01-01 00:00:00','100
 UNLOCK TABLES;
 
 --
--- Table structure for table `service_status`
+-- Table structure for table `service_request_status`
 --
 
-DROP TABLE IF EXISTS `service_status`;
+DROP TABLE IF EXISTS `service_request_status`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `service_status` (
+CREATE TABLE `service_request_status` (
   `Status_id` int(11) NOT NULL AUTO_INCREMENT,
   `StatusName` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`Status_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `service_status`
+-- Dumping data for table `service_request_status`
 --
 
-LOCK TABLES `service_status` WRITE;
-/*!40000 ALTER TABLE `service_status` DISABLE KEYS */;
-/*!40000 ALTER TABLE `service_status` ENABLE KEYS */;
+LOCK TABLES `service_request_status` WRITE;
+/*!40000 ALTER TABLE `service_request_status` DISABLE KEYS */;
+INSERT INTO `service_request_status` VALUES (1,'Requested'),(2,'Assigned'),(3,'Completed'),(4,'Declined'),(5,'Cancelled'),(6,'Rejected');
+/*!40000 ALTER TABLE `service_request_status` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -297,59 +298,6 @@ BEGIN
 	WHERE (s.CaregiverId = _CaregiverId OR _CaregiverId = -1)
     AND (s.RequesterId = _requesterId OR _requesterId = -1)
     AND (s.Status = _status OR _status = -1);
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `getrequestbyroleid` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getrequestbyroleid`(
- _roleid int(11)
-)
-BEGIN
-	SELECT id, RequesterId, RoleId, CaregiverId, ServiceId, Status, TimeOfServiceStart, 
-    TimeOfServiceEnds, Comments, ModifiedBy, ModifiedOn
-	FROM home_service_db.service_request
-	WHERE RoleId = _roleid;
-
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `getrequestbyuserid` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getrequestbyuserid`(
- _roleid int(11)
-)
-BEGIN
-	SELECT sv.servicename, u.address, s.id, s.RequesterId, s.RoleId, 
-    s.CaregiverId, s.ServiceId ,s.Status, s.TimeOfServiceStart, 
-    s.TimeOfServiceEnds, s.Comments, s.ModifiedBy, s.ModifiedOn
-	FROM home_service_db.service_request s
-    inner join services sv on sv.id = s.serviceid
-    inner join user u on u.idUser = s.RequesterId
-	WHERE s.RoleId = _roleid;
-
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -620,4 +568,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-29 18:15:23
+-- Dump completed on 2016-11-29 18:42:15

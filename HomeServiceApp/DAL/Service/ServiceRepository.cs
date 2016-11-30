@@ -15,6 +15,7 @@ namespace HSM.DAL
         {
             try
             {
+                int id = serviceDetails.id;
                 string serviceName = serviceDetails.serviceName;
                 string serviceDesc = serviceDetails.serviceDesc;
                 int serviceStatus = serviceDetails.serviceStatus;
@@ -26,7 +27,7 @@ namespace HSM.DAL
                         con.Open();
                         cmd.Connection = con;
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("id", null);
+                        cmd.Parameters.AddWithValue("_id", id);
                         cmd.Parameters.AddWithValue("serviceName", serviceName);
                         cmd.Parameters.AddWithValue("servicesDesc", serviceDesc);
                         cmd.Parameters.AddWithValue("IsActive", serviceStatus);
@@ -36,41 +37,6 @@ namespace HSM.DAL
                     }
                 }
                
-            }
-            catch (Exception ex)
-            {
-                var objErr = new ErrorClass(ex, "");
-                objErr.LogException();
-            }
-            return false;
-        }
-
-        public Boolean updateService(Service serviceDetails)
-        {
-            try
-            {
-                int id = serviceDetails.id;
-                string serviceName = serviceDetails.serviceName;
-                string serviceDesc = serviceDetails.serviceDesc;
-                int serviceStatus = serviceDetails.serviceStatus;
-
-                using (MySqlConnection con = new MySqlConnection(ConfigurationManager.AppSettings["connectionString"]))
-                {
-                    using (MySqlCommand cmd = new MySqlCommand("addservice"))
-                    {
-                        con.Open();
-                        cmd.Connection = con;
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("id", id);
-                        cmd.Parameters.AddWithValue("serviceName", serviceName);
-                        cmd.Parameters.AddWithValue("servicesDesc", serviceDesc);
-                        cmd.Parameters.AddWithValue("IsActive", serviceStatus);
-                        cmd.ExecuteReader();
-                        con.Close();
-                        return true;
-                    }
-                }
-
             }
             catch (Exception ex)
             {

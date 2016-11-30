@@ -22,11 +22,6 @@ namespace HSM.BL
             return _serviceRepo.AddService(serviceDetails);
         }
 
-        public bool updateService(Service serviceDetails)
-        {
-            return _serviceRepo.updateService(serviceDetails);
-        }
-
         public List<Service> GetAllServices()
         {
             return _serviceRepo.GetAllServices();

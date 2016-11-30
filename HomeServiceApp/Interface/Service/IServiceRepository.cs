@@ -13,11 +13,6 @@ namespace HSM.Interface
         bool AddService(Service serviceDetails);
 
         /// <summary>
-        /// Update service
-        /// </summary>
-        bool updateService(Service serviceDetails);
-
-        /// <summary>
         /// Get all services
         /// </summary>
         List<Service> GetAllServices();
