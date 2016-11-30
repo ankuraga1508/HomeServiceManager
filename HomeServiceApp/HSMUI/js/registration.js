@@ -48,7 +48,7 @@ $(document).ready(function () {
 				    alert(result + " result");
 					if (result) {
 					    alert('success');
-					    window.location = "SeniorDashboard.aspx";
+					    window.location = "Default.aspx";
 					}
 				},
 				error: function (msg) {
