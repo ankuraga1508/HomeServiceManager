@@ -35,7 +35,7 @@ CREATE TABLE `service_request` (
   `CreatedOn` datetime DEFAULT NULL,
   `ModifiedBy` int(11) DEFAULT NULL,
   `ModifiedOn` datetime DEFAULT NULL,
-  `ScheduleDate` date DEFAULT NULL,
+  `ScheduleDate` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -46,7 +46,7 @@ CREATE TABLE `service_request` (
 
 LOCK TABLES `service_request` WRITE;
 /*!40000 ALTER TABLE `service_request` DISABLE KEYS */;
-INSERT INTO `service_request` VALUES (1,2221,2,22,1,1,'1000-01-01','1000-01-01','aaa','2016-11-27 01:43:38',1000,'2016-11-27 01:58:40',NULL),(2,0,1,1,1,1,'1000-01-01','1000-01-01','aaa','2016-11-27 01:46:16',1000,'1000-01-01 00:00:00',NULL),(3,0,3,1,1,1,'1000-01-01','1000-01-01','aaa','2016-11-27 01:46:32',1000,'1000-01-01 00:00:00',NULL),(4,11,3,1,1,1,'1000-01-01','1000-01-01','aaa','2016-11-27 11:55:39',1000,'1000-01-01 00:00:00',NULL),(5,12,3,2,121,1,'1000-01-01','1000-01-01','aaa','2016-11-27 12:15:44',1000,'2016-11-27 12:18:44',NULL),(6,12,3,2,121,1,'1000-01-01','1000-01-01','aaa','2016-11-27 14:48:49',1000,'1000-01-01 00:00:00',NULL),(7,12,3,2,121,1,'1000-01-01','1000-01-01','aaa','2016-11-27 14:49:10',1000,'1000-01-01 00:00:00',NULL),(8,123,22,121,1,1,'1000-01-01','1000-01-01','aaa','2016-11-27 17:26:19',1000,'1000-01-01 00:00:00',NULL),(9,123,22,121,1,1,'1000-01-01','1000-01-01','aaa','2016-11-27 17:27:37',1,'0001-01-01 00:00:00',NULL),(10,123,22,121,1,1,'1000-01-01','1000-01-01',NULL,'2016-11-27 17:27:59',1,'0001-01-01 00:00:00',NULL),(11,1,2,1,1,1,'1000-01-01','1000-01-01','aaa','2016-11-28 02:38:32',1000,'1000-01-01 00:00:00',NULL),(12,2,2,1,1,1,'1000-01-01','1000-01-01','aaa','2016-11-28 18:55:58',1000,'1000-01-01 00:00:00',NULL),(13,1,2,1,1,1,'1000-01-01','1000-01-01','aaa','2016-11-28 18:56:24',1000,'1000-01-01 00:00:00',NULL),(14,3,1,2,1,1,'1000-01-01','1000-01-01','CBGGa','2016-11-29 18:06:20',1,'2016-11-29 18:09:45',NULL),(15,0,0,0,0,0,'11:11','14:22',NULL,'2016-11-29 22:07:53',1,'0001-01-01 00:00:00','1111-11-11'),(16,0,0,0,0,0,'11:11','14:22',NULL,'2016-11-29 22:08:24',1,'0001-01-01 00:00:00','1111-11-11'),(17,0,0,0,0,0,'11:11','14:22',NULL,'2016-11-29 22:23:51',0,'2016-11-29 22:23:51','1111-11-11'),(18,0,0,0,0,0,'11:11','12:22',NULL,'2016-11-29 22:33:45',1,'2016-11-29 22:33:45','1111-11-11'),(19,0,0,0,0,0,'11:11','14:22',NULL,'2016-11-29 22:35:12',1,'2016-11-29 22:35:12','0001-11-11'),(20,0,0,0,0,0,'14:20','14:30',NULL,'2016-11-29 22:41:05',1,'2016-11-29 22:41:05','2016-03-22');
+INSERT INTO `service_request` VALUES (1,2221,2,22,1,1,'11:11','14:22','aaa','2016-11-29 23:14:35',1000,'2016-11-29 23:14:19','2016-11-29'),(2,0,1,1,1,1,'11:11','14:22','aaa','2016-11-29 23:14:35',1000,'2016-11-29 23:14:19','2016-11-29'),(3,0,3,1,1,1,'11:11','14:22','aaa','2016-11-29 23:14:35',1000,'2016-11-29 23:14:19','2016-11-29'),(4,11,3,1,1,1,'11:11','14:22','aaa','2016-11-29 23:14:35',1000,'2016-11-29 23:14:19','2016-11-29'),(5,12,3,2,121,1,'11:11','14:22','aaa','2016-11-29 23:14:35',1000,'2016-11-29 23:14:19','2016-11-29'),(6,12,3,2,121,1,'11:11','14:22','aaa','2016-11-29 23:14:35',1000,'2016-11-29 23:14:19','2016-11-29'),(7,12,3,2,121,1,'11:11','14:22','aaa','2016-11-29 23:14:35',1000,'2016-11-29 23:14:19','2016-11-29'),(8,123,22,121,1,1,'11:11','14:22','aaa','2016-11-29 23:14:35',1000,'2016-11-29 23:14:19','2016-11-29'),(9,123,22,121,1,1,'11:11','14:22','aaa','2016-11-29 23:14:35',1,'2016-11-29 23:14:19','2016-11-29'),(10,123,22,121,1,1,'11:11','14:22',NULL,'2016-11-29 23:14:35',1,'2016-11-29 23:14:19','2016-11-29'),(11,1,2,1,1,1,'11:11','14:22','aaa','2016-11-29 23:14:35',1000,'2016-11-29 23:14:19','2016-11-29'),(12,2,2,1,1,1,'11:11','14:22','aaa','2016-11-29 23:14:35',1000,'2016-11-29 23:14:19','2016-11-29'),(13,1,2,1,1,1,'11:11','14:22','aaa','2016-11-29 23:14:35',1000,'2016-11-29 23:14:19','2016-11-29'),(14,3,1,2,1,1,'11:11','14:22','CBGGa','2016-11-29 23:14:35',1,'2016-11-29 23:14:19','2016-11-29'),(15,0,0,0,0,0,'11:11','14:22',NULL,'2016-11-29 23:14:35',1,'2016-11-29 23:14:19','2016-11-29'),(16,0,0,0,0,0,'11:11','14:22',NULL,'2016-11-29 23:14:35',1,'2016-11-29 23:14:19','2016-11-29'),(17,0,0,0,0,0,'11:11','14:22',NULL,'2016-11-29 23:14:35',0,'2016-11-29 23:14:19','2016-11-29'),(18,0,0,0,0,0,'11:11','14:22',NULL,'2016-11-29 23:14:35',1,'2016-11-29 23:14:19','2016-11-29'),(19,0,0,0,0,0,'11:11','14:22',NULL,'2016-11-29 23:14:35',1,'2016-11-29 23:14:19','2016-11-29'),(20,0,0,0,0,0,'11:11','14:22',NULL,'2016-11-29 23:14:35',1,'2016-11-29 23:14:19','2016-11-29');
 /*!40000 ALTER TABLE `service_request` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,6 +171,37 @@ UNLOCK TABLES;
 --
 -- Dumping routines for database 'home_service_db'
 --
+/*!50003 DROP FUNCTION IF EXISTS `SPLIT_STRING` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `SPLIT_STRING`( s VARCHAR(1024) , del CHAR(1) , i INT) RETURNS varchar(1024) CHARSET latin1
+    DETERMINISTIC
+BEGIN
+
+        DECLARE n INT ;
+
+        -- get max number of items
+        SET n = LENGTH(s) - LENGTH(REPLACE(s, del, '')) + 1;
+
+        IF i > n THEN
+            RETURN NULL ;
+        ELSE
+            RETURN SUBSTRING_INDEX(SUBSTRING_INDEX(s, del, i) , del , -1 ) ;        
+        END IF;
+
+    END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `addservice` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -287,7 +318,7 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getrequestbyfilters`(
  in _CaregiverId int ,
  in _requesterId int ,
- in _status int
+ in _status varchar(20)
 )
 BEGIN
 	SELECT sv.servicename, u.address, s.id, s.RequesterId, s.RoleId, 
@@ -299,7 +330,7 @@ BEGIN
     inner join user u on u.idUser = s.RequesterId
 	WHERE (s.CaregiverId = _CaregiverId OR _CaregiverId = -1)
     AND (s.RequesterId = _requesterId OR _requesterId = -1)
-    AND (s.Status = _status OR _status = -1);
+    AND (s.Status in ( SELECT SPLIT_STRING(_status,',',1)) OR _status = '');
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -474,7 +505,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_update_request`(
  in _id int(11) ,
@@ -483,7 +514,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_update_request`(
  in CaregiverId int(11) ,
  in ServiceId int(11) ,
  in Status int(11)  ,
- in ScheduleDate date  ,
+ in ScheduleDate varchar(20)  ,
  in StartTime varchar(10)  ,
 in EndTime varchar(10)  ,
  in Comments varchar(200)  ,
@@ -573,4 +604,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-29 22:44:23
+-- Dump completed on 2016-11-29 23:38:07
