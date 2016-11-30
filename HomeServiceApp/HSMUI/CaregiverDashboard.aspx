@@ -9,26 +9,32 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Dashboard for caregiver">
     <meta name="author" content="IanP">
-    <link rel="icon" href="images/favicon.jpg">
 
     <title>Caregiver Dashboard</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-	<link type="text/css" rel="stylesheet" href="js/jsgrid-1.5.2/dist/jsgrid.min.css" />
-	<link type="text/css" rel="stylesheet" href="js/jsgrid-1.5.2/dist/jsgrid-theme.min.css" />
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/adminStyle.css" rel="stylesheet"><!--CHANGE? -->
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="assets/js/ie-emulation-modes-warning.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script type="text/javascript" src="js/jsgrid-1.5.2/dist/jsgrid.min.js"></script>
+    <link rel="icon" href="images/favicon.jpg">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,600,400' rel='stylesheet' type='text/css'>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="css/jsgrid.min.css" />
+	<link type="text/css" rel="stylesheet" href="css/jsgrid-theme.min.css" />
+	<link type="text/css" href="css/adminStyle.css" rel="stylesheet">
+	<link type="text/css" href="css/showRequests.css" rel="stylesheet">
+    <link type="text/css" href="css/assignRequest.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/cupertino/jquery-ui.css">
+    
+    <script src="js/jquery-2.0.0.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+	<script src="js/jsgrid.core.js"></script>
+	<script src="js/jsgrid.load-indicator.js"></script>
+	<script src="js/jsgrid.load-strategies.js"></script>
+	<script src="js/jsgrid.sort-strategies.js"></script>
+	<script src="js/jsgrid.field.js"></script>
+	<script src="js/jsgrid.field.text.js"></script>
+	<script src="js/jsgrid.field.number.js"></script>
+	<script src="js/jsgrid.field.select.js"></script>
+	<script src="js/jsgrid.field.checkbox.js"></script>
+	<script src="js/jsgrid.field.control.js"></script>
 
   </head>
 
@@ -47,9 +53,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
             <li><a href="#">Profile</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="javascript:void(0);" onclick="logout();">Logout</a></li>
           </ul>
         </div>
       </div>
@@ -66,8 +71,8 @@
       </div>
     </div>
     -->
-
-    <div id="jsGrid" name="jsGrid" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 "></div>
+    
+    <div id="jsGrid" name="jsGrid" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 " style="margin-top:50px"></div>
     <div id="assignedRequests">
         <form id="detailsForm">
             <div class="details-form-field">
@@ -91,12 +96,13 @@
                 <label for="reqTimeTo">To:</label>
                 <input id="reqTimeTo" name="reqTimeTo" type="text" disabled />
             </div>
-            <div class="details-form-field">
+            <div class="col-sm-offset-4">
                 <button type="submit" id="accept">Accept</button>
                 <button type="submit" id="complete">Complete</button>
             </div>
         </form>
     </div>
+    
 	<script>
 		$(function() {
 			$("#jsGrid").jsGrid({
@@ -196,8 +202,12 @@
                     type: "POST",
 			        url: "",
 			        success: function (data) {
-			            alert("Request accepted successfully");
-			            $("#jsGrid").jsGrid("refresh");
+			            if (data == 'true') {
+			                alert("Request accepted successfully");
+			                $("#jsGrid").jsGrid("refresh");
+			            } else {
+			                alert("Could not accept request");
+			            }
 			        },
 			        error: function () {
 			            alert("Could not accept request");
@@ -231,16 +241,24 @@
 			});
 		});
 	</script>
+    <script>
+        function logout() {
+            if (sessionStorage && sessionStorage.getItem('name')) {
+                sessionStorage.removeItem('UserId');
+            }
+            window.location = "Default.aspx";
+        }
+    </script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/caregiverDashboardController.js"></script>
+    <script src="/js/caregiverDashboardController.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="assets/js/vendor/holder.min.js"></script>
+    <script src="/assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
