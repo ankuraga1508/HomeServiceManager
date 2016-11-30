@@ -2,13 +2,16 @@
 
     $.ajax({
         type: "GET",
-        url: "/json/db514_seniorActiveReq.json",
+        url: "api/request/getrequestbyfilters?status=1&requesterid=1",
         dataType: "json",
         success: function (data) {
-            $.each(data, function (i, obj) {
-                var tableData = '<tr><td class="tg-yxcv">'+obj.name+'</td><td class="tg-yxcv">'+obj.date+'</td><td class="tg-yxcv">'+obj.from+'</td><td class="tg-yxcv">'+obj.to+'</td></tr>';
+            var jsonData = JSON.parse(data);
+            for (var i = 0; i < jsonData.length; i++) {
+                var obj = jsonData[i];
+                var date = obj.TimeOfServiceStart.match(/^(\d+)-(\d+)-(\d+)T(\d+)\:(\d+)\:(\d+)$/);
+                var tableData = '<tr><td class="tg-yxcv">' + obj.serviceName + '</td><td class="tg-yxcv">' + date[0] + date[1] + date[2] + '</td><td class="tg-yxcv">' + obj.TimeOfServiceStart + '</td><td class="tg-yxcv">' + obj.TimeOfServiceEnds + '</td></tr>';
                 $(tableData).appendTo('#activeReqTable');
-            });
+            }  
         }
     });
 });

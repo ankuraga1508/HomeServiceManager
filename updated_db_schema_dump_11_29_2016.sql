@@ -29,14 +29,15 @@ CREATE TABLE `service_request` (
   `CaregiverId` int(11) DEFAULT NULL,
   `ServiceId` int(11) NOT NULL,
   `Status` int(11) DEFAULT NULL,
-  `TimeOfServiceStart` datetime DEFAULT NULL,
-  `TimeOfServiceEnds` datetime DEFAULT NULL,
+  `StartTime` varchar(10) DEFAULT NULL,
+  `EndTime` varchar(10) DEFAULT NULL,
   `Comments` varchar(200) DEFAULT NULL,
   `CreatedOn` datetime DEFAULT NULL,
-  `ModifiedBy` datetime DEFAULT NULL,
+  `ModifiedBy` int(11) DEFAULT NULL,
   `ModifiedOn` datetime DEFAULT NULL,
+  `ScheduleDate` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +46,7 @@ CREATE TABLE `service_request` (
 
 LOCK TABLES `service_request` WRITE;
 /*!40000 ALTER TABLE `service_request` DISABLE KEYS */;
-INSERT INTO `service_request` VALUES (1,2221,2,22,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 01:43:38','1000-01-01 00:00:00','2016-11-27 01:58:40'),(2,0,1,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 01:46:16','1000-01-01 00:00:00','1000-01-01 00:00:00'),(3,0,3,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 01:46:32','1000-01-01 00:00:00','1000-01-01 00:00:00'),(4,11,3,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 11:55:39','1000-01-01 00:00:00','1000-01-01 00:00:00'),(5,12,3,2,121,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 12:15:44','1000-01-01 00:00:00','2016-11-27 12:18:44'),(6,12,3,2,121,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 14:48:49','1000-01-01 00:00:00','1000-01-01 00:00:00'),(7,12,3,2,121,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 14:49:10','1000-01-01 00:00:00','1000-01-01 00:00:00'),(8,123,22,121,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 17:26:19','1000-01-01 00:00:00','1000-01-01 00:00:00'),(9,123,22,121,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-27 17:27:37','0001-01-01 00:00:00','0001-01-01 00:00:00'),(10,123,22,121,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00',NULL,'2016-11-27 17:27:59','0001-01-01 00:00:00','0001-01-01 00:00:00'),(11,1,2,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-28 02:38:32','1000-01-01 00:00:00','1000-01-01 00:00:00'),(12,2,2,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-28 18:55:58','1000-01-01 00:00:00','1000-01-01 00:00:00'),(13,1,2,1,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','aaa','2016-11-28 18:56:24','1000-01-01 00:00:00','1000-01-01 00:00:00'),(14,3,1,2,1,1,'1000-01-01 00:00:00','1000-01-01 00:00:00','CBGGa','2016-11-29 18:06:20','0001-01-01 00:00:00','2016-11-29 18:09:45');
+INSERT INTO `service_request` VALUES (1,2221,2,22,1,1,'1000-01-01','1000-01-01','aaa','2016-11-27 01:43:38',1000,'2016-11-27 01:58:40',NULL),(2,0,1,1,1,1,'1000-01-01','1000-01-01','aaa','2016-11-27 01:46:16',1000,'1000-01-01 00:00:00',NULL),(3,0,3,1,1,1,'1000-01-01','1000-01-01','aaa','2016-11-27 01:46:32',1000,'1000-01-01 00:00:00',NULL),(4,11,3,1,1,1,'1000-01-01','1000-01-01','aaa','2016-11-27 11:55:39',1000,'1000-01-01 00:00:00',NULL),(5,12,3,2,121,1,'1000-01-01','1000-01-01','aaa','2016-11-27 12:15:44',1000,'2016-11-27 12:18:44',NULL),(6,12,3,2,121,1,'1000-01-01','1000-01-01','aaa','2016-11-27 14:48:49',1000,'1000-01-01 00:00:00',NULL),(7,12,3,2,121,1,'1000-01-01','1000-01-01','aaa','2016-11-27 14:49:10',1000,'1000-01-01 00:00:00',NULL),(8,123,22,121,1,1,'1000-01-01','1000-01-01','aaa','2016-11-27 17:26:19',1000,'1000-01-01 00:00:00',NULL),(9,123,22,121,1,1,'1000-01-01','1000-01-01','aaa','2016-11-27 17:27:37',1,'0001-01-01 00:00:00',NULL),(10,123,22,121,1,1,'1000-01-01','1000-01-01',NULL,'2016-11-27 17:27:59',1,'0001-01-01 00:00:00',NULL),(11,1,2,1,1,1,'1000-01-01','1000-01-01','aaa','2016-11-28 02:38:32',1000,'1000-01-01 00:00:00',NULL),(12,2,2,1,1,1,'1000-01-01','1000-01-01','aaa','2016-11-28 18:55:58',1000,'1000-01-01 00:00:00',NULL),(13,1,2,1,1,1,'1000-01-01','1000-01-01','aaa','2016-11-28 18:56:24',1000,'1000-01-01 00:00:00',NULL),(14,3,1,2,1,1,'1000-01-01','1000-01-01','CBGGa','2016-11-29 18:06:20',1,'2016-11-29 18:09:45',NULL),(15,0,0,0,0,0,'11:11','14:22',NULL,'2016-11-29 22:07:53',1,'0001-01-01 00:00:00','1111-11-11'),(16,0,0,0,0,0,'11:11','14:22',NULL,'2016-11-29 22:08:24',1,'0001-01-01 00:00:00','1111-11-11'),(17,0,0,0,0,0,'11:11','14:22',NULL,'2016-11-29 22:23:51',0,'2016-11-29 22:23:51','1111-11-11'),(18,0,0,0,0,0,'11:11','12:22',NULL,'2016-11-29 22:33:45',1,'2016-11-29 22:33:45','1111-11-11'),(19,0,0,0,0,0,'11:11','14:22',NULL,'2016-11-29 22:35:12',1,'2016-11-29 22:35:12','0001-11-11'),(20,0,0,0,0,0,'14:20','14:30',NULL,'2016-11-29 22:41:05',1,'2016-11-29 22:41:05','2016-03-22');
 /*!40000 ALTER TABLE `service_request` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -281,7 +282,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getrequestbyfilters`(
  in _CaregiverId int ,
@@ -290,8 +291,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `getrequestbyfilters`(
 )
 BEGIN
 	SELECT sv.servicename, u.address, s.id, s.RequesterId, s.RoleId, 
-    s.CaregiverId, s.ServiceId ,s.Status, s.TimeOfServiceStart, 
-    s.TimeOfServiceEnds, s.Comments, s.ModifiedBy, s.ModifiedOn
+    s.CaregiverId, s.ServiceId ,s.Status, s.ScheduleDate, 
+    s.StartTime, 
+    s.EndTime, s.Comments, s.ModifiedBy, s.ModifiedOn
 	FROM home_service_db.service_request s
     inner join services sv on sv.id = s.serviceid
     inner join user u on u.idUser = s.RequesterId
@@ -481,11 +483,11 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_update_request`(
  in CaregiverId int(11) ,
  in ServiceId int(11) ,
  in Status int(11)  ,
- in TimeOfServiceStart datetime  ,
- in TimeOfServiceEnds datetime  ,
+ in ScheduleDate date  ,
+ in StartTime varchar(10)  ,
+in EndTime varchar(10)  ,
  in Comments varchar(200)  ,
- in ModifiedOn datetime  ,
- in ModifiedBy datetime 
+ in ModifiedBy int 
 )
 BEGIN
 	IF (_id = 0 OR _id IS NULL) THEN
@@ -495,8 +497,9 @@ BEGIN
 			,CaregiverId
 			,ServiceId
 			,Status
-			,TimeOfServiceStart
-			,TimeOfServiceEnds
+            ,ScheduleDate
+			,StartTime
+			,EndTime
 			,Comments
             ,CreatedOn
 			,ModifiedOn
@@ -508,11 +511,12 @@ BEGIN
 			,CaregiverId
 			,ServiceId
 			,Status
-			,TimeOfServiceStart
-			,TimeOfServiceEnds
+			,ScheduleDate
+			,StartTime
+			,EndTime
 			,Comments
             ,now()
-			,ModifiedOn
+			,now()
 			,ModifiedBy
 			);
 	ELSE
@@ -522,8 +526,9 @@ BEGIN
 			,CaregiverId = CaregiverId
 			,ServiceId = ServiceId
 			,Status = Status
-			,TimeOfServiceStart = TimeOfServiceStart
-			,TimeOfServiceEnds = TimeOfServiceEnds
+            ,ScheduleDate = ScheduleDate
+			,StartTime = StartTime
+			,EndTime = EndTime
 			,Comments = Comments
 			,ModifiedOn = now()
 			,ModifiedBy = ModifiedBy
@@ -568,4 +573,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-29 18:42:15
+-- Dump completed on 2016-11-29 22:44:23

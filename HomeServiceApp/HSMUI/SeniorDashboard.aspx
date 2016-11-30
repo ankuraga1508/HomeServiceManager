@@ -109,9 +109,12 @@
                             var maxDate = yyyy + 2 + '-' + mm + '-' + dd;
                             document.getElementById("reqDate").setAttribute("max", maxDate);
                         </script>
+                        <div id="success-message">
+                            
+                        </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success" id="submitSchedule">Submit</button>
+                            <button type="button" class="btn btn-success" id="submitSchedule">Submit</button>
                         </div>
                     </form>
                 </div>

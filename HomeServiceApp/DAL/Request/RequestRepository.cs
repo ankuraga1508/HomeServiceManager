@@ -21,11 +21,11 @@ namespace HSM.DAL
                 int CaregiverId = requestDetails.CaregiverId;
                 int ServiceId = requestDetails.ServiceId;
                 int Status = requestDetails.Status;
-                DateTime TimeOfServiceStart = requestDetails.TimeOfServiceStart;
-                DateTime TimeOfServiceEnds = requestDetails.TimeOfServiceEnds;
+                DateTime ScheduleDate = requestDetails.ScheduleDate;
+                string StartTime = requestDetails.StartTime;
+                string EndTime = requestDetails.EndTime;
                 string Comments = requestDetails.Comments;
-                DateTime ModifiedBy = requestDetails.ModifiedBy;
-                DateTime ModifiedOn = requestDetails.ModifiedOn;
+                int ModifiedBy = requestDetails.ModifiedBy;
 
                 using (MySqlConnection con = new MySqlConnection(ConfigurationManager.AppSettings["connectionString"]))
                 {
@@ -40,11 +40,11 @@ namespace HSM.DAL
                         cmd.Parameters.AddWithValue("CaregiverId", CaregiverId);
                         cmd.Parameters.AddWithValue("ServiceId", ServiceId);
                         cmd.Parameters.AddWithValue("Status", Status);
-                        cmd.Parameters.AddWithValue("TimeOfServiceStart", TimeOfServiceStart);
-                        cmd.Parameters.AddWithValue("TimeOfServiceEnds", TimeOfServiceEnds);
+                        cmd.Parameters.AddWithValue("ScheduleDate", ScheduleDate);
+                        cmd.Parameters.AddWithValue("StartTime", StartTime);
+                        cmd.Parameters.AddWithValue("EndTime", EndTime);
                         cmd.Parameters.AddWithValue("Comments", Comments);
                         cmd.Parameters.AddWithValue("ModifiedBy", ModifiedBy);
-                        cmd.Parameters.AddWithValue("ModifiedOn", ModifiedOn);
                         cmd.ExecuteReader();
                         con.Close();
                         return true;
@@ -86,10 +86,11 @@ namespace HSM.DAL
                                 CaregiverId = Int32.Parse(dr["CaregiverId"].ToString()),
                                 ServiceId = Int32.Parse(dr["ServiceId"].ToString()),
                                 Status = Int32.Parse(dr["Status"].ToString()),
-                                TimeOfServiceStart = Convert.ToDateTime(dr["TimeOfServiceStart"].ToString()),
-                                TimeOfServiceEnds = Convert.ToDateTime(dr["TimeOfServiceEnds"].ToString()),
+                                ScheduleDate = Convert.ToDateTime(dr["ScheduleDate"].ToString()),
+                                StartTime = dr["StartTime"].ToString(),
+                                EndTime = dr["EndTime"].ToString(),
                                 Comments = dr["Comments"].ToString(),
-                                ModifiedBy = Convert.ToDateTime(dr["ModifiedBy"].ToString()),
+                                ModifiedBy = Int32.Parse(dr["ModifiedBy"].ToString()),
                                 ModifiedOn = Convert.ToDateTime(dr["ModifiedOn"].ToString()),
                                 Address = dr["Address"].ToString(),
                                 serviceName = dr["serviceName"].ToString()

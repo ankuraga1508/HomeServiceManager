@@ -42,19 +42,19 @@ $(document).ready(function(){
 	        return false;
 	    }
 	    if (serviceName != '' && reqDate != '' && reqTimeFrom != '' && reqTimeTo!='') {
-	        //alert("Data: " + serviceName + " | " + reqDate + " | " + reqTimeFrom + " | " + reqTimeTo);
-	        var postData = {
-	            serviceName: serviceName,
-	            reqDate: reqDate,
-	            reqTimeFrom: reqTimeFrom,
-	            reqTimeTo: reqTimeTo
-	        };
+	       // alert("Data: " + serviceName + " | " + reqDate + " | " + reqTimeFrom + " | " + reqTimeTo);
+	        var postData = "serviceName=" + serviceName + "&ScheduleDate=" + reqDate + "&StartTime=" + reqTimeFrom + "&EndTime=" + reqTimeTo
+            + "&ModifiedBy=" + "1";
 
 	        $.ajax({
 	            type: "POST",
-	            url: "",
+	            url: "/api/request/postrequest/",
 	            data: postData,
 	            success: function (result) {
+	               if (result == "true") {
+	                   var divData = '<div class="alert alert-success"><strong>Success!</strong>Request submitted successfully</strong></div>';
+	                   $(divData).appendTo('#success-message');
+	               }
 	            },
 	            error: function (msg) {
 	            }
