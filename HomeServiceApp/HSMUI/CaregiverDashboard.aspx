@@ -48,7 +48,6 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Logout</a></li>
           </ul>
@@ -56,15 +55,182 @@
       </div>
     </nav>
 
+    <!--
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-12 col-sm-offset-0 col-md-12 col-md-offset-0 main">
-          <h1 class="page-header">Active Requests</h1>
+          <h1 class="page-header">Assigned Requests</h1>
 
 		  <div id="jsGrid"></div>
         </div>
       </div>
     </div>
+    -->
+
+    <div id="jsGrid" name="jsGrid" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 "></div>
+    <div id="assignedRequests">
+        <form id="detailsForm">
+            <div class="details-form-field">
+                <label for="reqName">Requester Name:</label>
+                <input id="reqName" name="reqName" type="text" disabled/>
+                <input type="hidden" id="reqId" />
+            </div>
+            <div class="details-form-field">
+                <label for="reqLocation">Location:</label>
+                <input id="reqLocation" name="reqLocation" type="text" disabled/>
+            </div>
+            <div class="details-form-field">
+                <label for="reqDate">Date:</label>
+                <input id="reqDate" name="reqDate" type="text" disabled />
+            </div>
+            <div class="details-form-field">
+                <label for="reqTimeFrom">From:</label>
+                <input id="reqTimeFrom" name="reqTimeFrom" type="text" disabled />
+            </div>
+            <div class="details-form-field">
+                <label for="reqTimeTo">To:</label>
+                <input id="reqTimeTo" name="reqTimeTo" type="text" disabled />
+            </div>
+            <div class="details-form-field">
+                <button type="submit" id="accept">Accept</button>
+                <button type="submit" id="complete">Complete</button>
+            </div>
+        </form>
+    </div>
+	<script>
+		$(function() {
+			$("#jsGrid").jsGrid({
+				width: "53%",
+				height: "80%",
+				filtering: true,
+				editing: false,
+				sorting: true,
+				paging: true,
+				autoload: true,
+				pageSize: 10,
+				pageButtonCount: 5,
+				deleteConfirm: "Do you really want to decline this request?",
+				noDataContent: "No assigned service requests at the moment",
+				loadMessage: "Fetching Assigned Requests...",
+				loadShading: true,
+				controller: {
+				    loadData: function (filter) {
+				        var reqData = $.Deferred();
+				        $.ajax({
+				            type: "GET",
+				            //dataType: "json",
+				            url: "",
+				        }).done(function (result) {
+				            result = $.grep(result, function (request) {
+				                return (!filter.RequestId || request.RequestId.indexOf(filter.RequestId) > -1)
+                                && (!filter.Name || request.Name.indexOf(filter.Name) > -1)
+                                && (!filter.Service || request.Service.indexOf(filter.Service) > -1)
+                                && (!filter.Date || request.Date.indexOf(filter.Date) > -1)
+                                && (!filter.From || request.From.indexOf(filter.From) > -1)
+                                && (!filter.To || request.To.indexOf(filter.To) > -1)
+                                && (!filter.Location || request.Location.indexOf(filter.Location) > -1);
+				            });
+				            reqData.resolve(result);
+				        })
+				        return reqData.promise();
+				    }
+				},
+				rowClick: function(args) {
+				    showAssignedReq(args.item);
+				},
+				fields: [
+					{ name: "RequestId", type: "number", width: 10 },
+					{ name: "Name", type: "text", width: 20 },
+					{ name: "Service", type: "text", width: 25 },
+					{ name: "Date", type: "text", width: 15 },
+					{ name: "From", type: "text", width: 15 },
+					{ name: "To", type: "text", width: 15 },
+					{ name: "Location", type: "text", width: 30 },
+					{ type: "control", width: 10, editButton: false, modeSwitchButton: false }
+				]
+			});
+
+			$("#assignedRequests").dialog({
+			    autoOpen: false,
+			    width: 450,
+			    close: function () {
+			        $("#detailsForm").validate().resetForm();
+			        $("#detailsForm").find(".error").removeClass("error");
+			    }
+			});
+
+            /*
+			$("#detailsForm").validate({
+			    rules: {
+			        availableCG: "required"
+			    },
+			    messages: {
+			        availableCG: "Please assign the request to an available caregiver"
+			    },
+			    submitHandler: function () {
+			        formSubmitHandler();
+			    }
+			});
+            */
+
+			//var formSubmitHandler = $.noop;
+
+			var showAssignedReq = function (request) {
+			    $("#reqId").val(request.RequestId);
+			    $("#reqName").val(request.Name);
+			    $("#reqLocation").val(request.Location);
+			    $("#reqDate").val(request.Date);
+			    $("#reqTimeFrom").val(request.From);
+			    $("#reqTimeTo").val(request.To);
+
+			    //formSubmitHandler = function () {
+			    //    respondToRequest(request);
+			    //};
+
+			    $("#assignedRequests").dialog("open");
+			};
+
+			var respondToRequest = function (request) {
+			    alert(request.RequestId);
+			    $.ajax({
+                    type: "POST",
+			        url: "",
+			        success: function (data) {
+			            alert("Request accepted successfully");
+			            $("#jsGrid").jsGrid("refresh");
+			        },
+			        error: function () {
+			            alert("Could not accept request");
+			        }
+			    });
+
+			    $("#assignedRequests").dialog("close");
+			};
+
+			var closeRequest = function (request) {
+			    alert(request.RequestId);
+			    $.ajax({
+			        type: "POST",
+			        url: "",
+			        success: function (data) {
+			            alert("Request closed successfully");
+			            $("#jsGrid").jsGrid("refresh");
+			        },
+			        error: function () {
+			            alert("Could not close request");
+			        }
+			    });
+
+			    $("#assignedRequests").dialog("close");
+			};
+			$('#accept').click(function (request) {
+			    respondToRequest(request);
+			});
+			$('#complete').click(function (request) {
+			    closeRequest(request);
+			});
+		});
+	</script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

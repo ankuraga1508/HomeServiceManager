@@ -81,6 +81,7 @@
                         <div class="form-group">
                             <label for="serviceName" class="control-label">Service Type:</label>
                             <input type="text" class="form-control" id="serviceName" disabled>
+                            <input type="hidden" id="serviceId" />
                         </div>
                         <div class="form-group">
                             <label for="reqDate" class="control-label">Date:</label>

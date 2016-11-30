@@ -65,8 +65,8 @@
 			<div class="col-sm-3 col-md-2 sidebar" id="sidebar">
 				<ul class="nav nav-sidebar">
 					<li class="active"><a href="#">Active Requests <span class="sr-only">(current)</span></a></li>
-					<li><a href="">Completed Requests</a></li>
-					<li><a href="">Rejected Requests</a></li>
+					<li><a href="AdminCompletedRequests.aspx">Completed Requests</a></li>
+					<li><a href="AdminRejectedRequests.aspx">Rejected Requests</a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
 					<li><a href="AddService.aspx">Add Service</a></li>

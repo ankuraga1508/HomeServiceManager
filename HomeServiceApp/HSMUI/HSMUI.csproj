@@ -203,6 +203,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdminRejectedRequests.aspx" />
+    <Content Include="AdminCompletedRequests.aspx" />
     <Content Include="css\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="css\scheduleServiceModal.css" />
     <Content Include="css\seniorDashboard.css" />
