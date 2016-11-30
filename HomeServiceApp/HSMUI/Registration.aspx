@@ -51,10 +51,6 @@
 		<input type="text" class="form-control" id="addressLine1" name="addressLine1" placeholder="Address Line 1" required>
 	    </div>
 	    <div class="form-group">
-	    <label for="addressLine2" class="control-label">Address Line 2</label>
-		<input type="text" class="form-control" id="addressLine2" name="addressLine2" placeholder="Address Line 2" required>
-	    </div>
-	    <div class="form-group">
 	    <label for="sex" class="control-label">Sex</label>
 		<input type="text" class="form-control" id="sex" name="sex" placeholder="Sex" required>
 	    </div>

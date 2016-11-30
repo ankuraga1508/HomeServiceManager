@@ -7,7 +7,6 @@ $(document).ready(function () {
     var password = $("#password").val().trim();
     var contactNum = $("#contactNum").val().trim();
     var addressLine1 = $("#addressLine1").val().trim();
-    var addressLine2 = $("#addressLine2").val().trim();
     var sex = $("#sex").val().trim();
 
     function Field(value, id) {
@@ -35,9 +34,14 @@ $(document).ready(function () {
     }
 
     if (completeForm === 1) {
+        var currentDate = new Date();
+        var ModifiedOn = currentDate.getFullYear() + "-" + minTwoDigits(currentDate.getMonth()) + "-" + minTwoDigits(currentDate.getDay()) + " " +
+          minTwoDigits(currentDate.getHours()) + ":" + minTwoDigits(currentDate.getMinutes()) + ":" + minTwoDigits(currentDate.getSeconds());
+
         var postData = "UserName=" + username + "&FirstName=" + firstName + "&LastName=" + lastName +
-        "&LoginPassword=" + password + "&UserMobile=" + contactNum + "&Address=" + addressLine1 + " " + addressLine2 +
-        "&Sex=" + sex + "&UserRoleId=" + "1" + "&CreatedBy=" + "1" + "&ModifiedBy=" + "1" + "&IsActive=" + "1" + "&ModifiedOn=" + "";
+        "&LoginPassword=" + password + "&UserMobile=" + contactNum + "&Address=" + addressLine1 +
+        "&Sex=" + sex + "&UserRoleId=" + "1" + "&CreatedBy=" + "1" + "&ModifiedBy=" + "1" + "&IsActive=" + "1" + "&ModifiedOn=" + ModifiedOn +
+        "&_idUser=" + "" + "&UserEmail=" + "" + "&UserSSN=" + "" + "&LoginID=" + "";
       alert(postData);
 			$.ajax({
 				type: "POST",
@@ -60,3 +64,11 @@ $(document).ready(function () {
         }
     });
 });
+
+function minTwoDigits(n) {
+    if (n < 10 && n > -10) {
+        return "0" + n;
+    } else {
+        return n;
+    }
+};
