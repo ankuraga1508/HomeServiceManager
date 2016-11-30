@@ -7,19 +7,18 @@
             $.ajax({
                 type: "GET",
                 dataType: "json",
-                url: "api/request/getrequestbyfilters",
+                url: "api/request/getrequestbyfilters?status=1,2",
             }).done(function (result) {
-                alert(result);
-                filter = result[0];
-                result = $.grep(result, function (request) {
+                var resultJson = JSON.parse(result);
+                result = $.grep(resultJson, function (request) {
                     return (!filter.Status || request.Status === filter.Status)
-					&& (!filter.RequestId || request.RequestId.indexOf(filter.RequestId) > -1)
-					&& (!filter.Name || request.Name.indexOf(filter.Name) > -1)
-					&& (!filter.Service || request.Service.indexOf(filter.Service) > -1)
-					&& (!filter.Date || request.Date.indexOf(filter.Date) > -1)
-					&& (!filter.StartTime || request.From.indexOf(filter.From) > -1)
-					&& (!filter.EndTime || request.To.indexOf(filter.To) > -1)
-					&& (!filter.Location || request.Location.indexOf(filter.Location) > -1);
+					&& (!filter.id || request.id.indexOf(filter.id) > -1)
+					&& (!filter.RequesterId || request.RequesterId.indexOf(filter.RequesterId) > -1)
+					&& (!filter.serviceName || request.serviceName.indexOf(filter.serviceName) > -1)
+					&& (!filter.ScheduleDate || request.ScheduleDate.indexOf(filter.ScheduleDate) > -1)
+					&& (!filter.StartTime || request.StartTime.indexOf(filter.StartTime) > -1)
+					&& (!filter.EndTime || request.EndTime.indexOf(filter.EndTime) > -1)
+					&& (!filter.Address || request.Address.indexOf(filter.Address) > -1);
                 });
 
                 reqData.resolve(result);
@@ -29,14 +28,14 @@
 
         deleteItem: function(deletingReq) {
 			//This part of the code will remove the item to delete from the dom
-			//alert(deletingReq.RequestId);
+			//alert(deletingReq.id);
             //var reqIndex = $.inArray(deletingReq, this.requests);
             //this.requests.splice(reqIndex, 1);
             //end
   
             return $.ajax({
                 type: "DELETE",
-                url: "" + deletingReq.RequestId,
+                url: "" + deletingReq.id,
                 success: function () {
                     $("#jsGrid").jsGrid("refresh");
                 },
@@ -51,9 +50,8 @@
     window.adminDashboardController = adminDashboardController;
 
     adminDashboardController.status = [
-        { Name: ""},
-		{ Name: "Requested"},
-		{ Name: "Declined"}
+		{ Name: "Requested", Value: "1" },
+		{ Name: "Declined", Value: "2" }
     ];
 	
 }());

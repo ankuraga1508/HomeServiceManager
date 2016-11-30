@@ -210,6 +210,7 @@
     <Content Include="css\seniorDashboard.css" />
     <Content Include="css\registration.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="js\logout.js" />
     <Content Include="js\scheduleServiceModal.js" />
     <Content Include="js\seniorCompletedRequests.js" />
     <Content Include="js\seniorRejectedRequests.js" />

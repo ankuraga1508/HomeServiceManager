@@ -35,6 +35,7 @@
 	<script src="js/jsgrid.field.checkbox.js"></script>
 	<script src="js/jsgrid.field.control.js"></script>
 	<script src="js/adminDashboardController.js"></script>
+    <script src="js/logout.js"></script>
 </head>
 
 <body>
@@ -52,9 +53,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="javascript:void(0);" onclick="logout();">Logout</a></li>
           </ul>
         </div>
       </div>
@@ -92,7 +91,7 @@
     <div id="assignRequest">
         <form id="detailsForm">
             <div class="details-form-field">
-                <label for="reqName">Requester Name:</label>
+                <label for="reqName">RequesterId:</label>
                 <input id="reqName" name="reqName" type="text" disabled/>
             </div>
             <div class="details-form-field">
@@ -134,7 +133,7 @@
 				pageSize: 10,
 				pageButtonCount: 5,
 				deleteConfirm: "Do you really want to reject this request?",
-				noDataContent: "No active service requests at the moment",
+				noDataContent: "No service requests matching your criteria",
 				loadMessage: "Fetching Active Requests...",
 				loadShading: true,
 				controller: adminDashboardController,
@@ -142,14 +141,14 @@
 				    showAvailableCG(args.item);
 				},
 				fields: [
-					{ name: "Status", type: "select", width: 20, items: adminDashboardController.status, valueField: "Name", textField: "Name" },
-					{ name: "RequestId", type: "number", width: 10 },
-					{ name: "Name", type: "text", width: 20 },
-					{ name: "Service", type: "text", width: 25 },
-					{ name: "Date", type: "text", width: 15 },
-					{ name: "From", type: "text", width: 15 },
-					{ name: "To", type: "text", width: 15 },
-					{ name: "Location", type: "text", width: 30 },
+					{ name: "Status", type: "select", width: 20, items: adminDashboardController.status, valueField: "Value", textField: "Name" },
+					{ name: "id", type: "number", width: 10 },
+					{ name: "RequesterId", type: "text", width: 20 },
+					{ name: "serviceName", type: "text", width: 25 },
+					{ name: "ScheduleDate", type: "text", width: 15 },
+					{ name: "StartTime", type: "text", width: 15 },
+					{ name: "EndTime", type: "text", width: 15 },
+					{ name: "Address", type: "text", width: 30 },
 					{ type: "control", width: 10, editButton: false, modeSwitchButton: false }
 				]
 			});
@@ -178,24 +177,21 @@
 			var formSubmitHandler = $.noop;
 
 			var showAvailableCG = function (request) {
-			    $("#reqName").val(request.Name);
-			    $("#reqLocation").val(request.Location);
-			    $("#reqDate").val(request.Date);
-			    $("#reqTimeFrom").val(request.From);
-			    $("#reqTimeTo").val(request.To);
+			    $("#reqName").val(request.RequesterId);
+			    $("#reqLocation").val(request.Address);
+			    $("#reqDate").val(request.ScheduleDate);
+			    $("#reqTimeFrom").val(request.StartTime);
+			    $("#reqTimeTo").val(request.EndTime);
 
-			    var urlParams = "?servicetype="+request.Service+"&reqdate="+request.Date+"&reqtimefrom="+request.From
-                                +"&reqtimeto="+request.To;
-			    console.log(urlParams);
 			    $.ajax({
 			        type: "GET",
-			        //url: ""+urlParams,
-			        url: "/json/db514_availableCG.json",
+			        url: "api/user/getalluser?roleId=2",
 			        dataType: "json",
 			        success: function (data) {
+			            var jsonData = JSON.parse(data);
 			            $('#availableCG').find('option').remove().end();
-			            $.each(data, function (i, obj) {
-			                var divData = "<option value=" + obj.cgUserName + ">" + obj.cgName + " (" + obj.cgUserName + ")</option>";
+			            $.each(jsonData, function (i, obj) {
+			                var divData = "<option value=" + obj.idUser + ">" + obj.FirstName + " " + obj.LastName + " (" + obj.UserName + ")</option>";
 			                $(divData).appendTo('#availableCG');
 			            });
 			        }
@@ -209,12 +205,12 @@
 			};
 
 			var assignToAvailableCG = function (request) {
-			    alert(request.RequestId + ", " + $("#availableCG").val());
+			    alert(request.id + ", " + $("#availableCG").val());
 			    $.ajax({
                     type: "POST",
 			        url: "",
 			        data: {
-			            reqId: request.RequestId,
+			            reqId: request.id,
 			            cgUserId: $("#availableCG").val()
 			        },
 			        success: function (data) {
