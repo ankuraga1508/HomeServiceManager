@@ -22,24 +22,10 @@ namespace HSM.BL
             return _requestRepo.addRequest(requestDetails);
         }
 
-        public bool updateRequest(Request requestDetails)
-        {
-            return _requestRepo.updateRequest(requestDetails);
-        }
 
-        public List<Request> getRequestByRequesterId(int RequesterId)
+        public List<Request> getRequestsByFilters(int caregiverId, int requesterId, int status)
         {
-            return _requestRepo.getRequestByRequesterId(RequesterId);
-        }
-
-        public List<Request> getRequestByCaregiverId(int CaregiverId)
-        {
-            return _requestRepo.getRequestByCaregiverId(CaregiverId);
-        }
-
-        public List<Request> getAllRequests()
-        {
-            return _requestRepo.getAllRequests();
+            return _requestRepo.getRequestsByFilters(caregiverId, requesterId, status);
         }
     }
 }
