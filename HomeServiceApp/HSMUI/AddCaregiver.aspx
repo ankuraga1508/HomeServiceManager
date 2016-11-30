@@ -115,4 +115,3 @@
     <script src="js/addCaregiver.js"></script>
   </body>
 </html>
-
