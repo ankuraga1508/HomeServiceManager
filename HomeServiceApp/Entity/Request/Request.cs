@@ -12,8 +12,8 @@ namespace HSM.Entity
         public int RoleId { get; set; }
         public int CaregiverId { get; set; }
         public int ServiceId { get; set; }
-        public int Status { get; set; }
-        public DateTime ScheduleDate { get; set; }
+        public string Status { get; set; }
+        public string ScheduleDate { get; set; }
         public string StartTime { get; set; }
         public string EndTime { get; set; }
         public string Comments { get; set; }

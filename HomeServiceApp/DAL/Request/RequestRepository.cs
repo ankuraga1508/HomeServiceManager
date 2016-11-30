@@ -20,8 +20,8 @@ namespace HSM.DAL
                 int RoleId = requestDetails.RoleId;
                 int CaregiverId = requestDetails.CaregiverId;
                 int ServiceId = requestDetails.ServiceId;
-                int Status = requestDetails.Status;
-                DateTime ScheduleDate = requestDetails.ScheduleDate;
+                string Status = requestDetails.Status;
+                string ScheduleDate = requestDetails.ScheduleDate;
                 string StartTime = requestDetails.StartTime;
                 string EndTime = requestDetails.EndTime;
                 string Comments = requestDetails.Comments;
@@ -61,7 +61,7 @@ namespace HSM.DAL
         }
 
 
-        public List<Request> getRequestsByFilters(int caregiverId, int requesterId, int status)
+        public List<Request> getRequestsByFilters(int caregiverId, int requesterId, string status)
         {
             var requestList = new List<Request>();
 
@@ -85,8 +85,8 @@ namespace HSM.DAL
                                 RoleId = Int32.Parse(dr["RoleId"].ToString()),
                                 CaregiverId = Int32.Parse(dr["CaregiverId"].ToString()),
                                 ServiceId = Int32.Parse(dr["ServiceId"].ToString()),
-                                Status = Int32.Parse(dr["Status"].ToString()),
-                                ScheduleDate = Convert.ToDateTime(dr["ScheduleDate"].ToString()),
+                                Status = dr["Status"].ToString(),
+                                ScheduleDate = dr["ScheduleDate"].ToString(),
                                 StartTime = dr["StartTime"].ToString(),
                                 EndTime = dr["EndTime"].ToString(),
                                 Comments = dr["Comments"].ToString(),
