@@ -7,16 +7,18 @@
             $.ajax({
                 type: "GET",
                 dataType: "json",
-                url: "/json/db514_activeRequests.json",
+                url: "api/request/getrequestbyfilters",
             }).done(function (result) {
+                alert(result);
+                filter = result[0];
                 result = $.grep(result, function (request) {
                     return (!filter.Status || request.Status === filter.Status)
 					&& (!filter.RequestId || request.RequestId.indexOf(filter.RequestId) > -1)
 					&& (!filter.Name || request.Name.indexOf(filter.Name) > -1)
 					&& (!filter.Service || request.Service.indexOf(filter.Service) > -1)
 					&& (!filter.Date || request.Date.indexOf(filter.Date) > -1)
-					&& (!filter.From || request.From.indexOf(filter.From) > -1)
-					&& (!filter.To || request.To.indexOf(filter.To) > -1)
+					&& (!filter.StartTime || request.From.indexOf(filter.From) > -1)
+					&& (!filter.EndTime || request.To.indexOf(filter.To) > -1)
 					&& (!filter.Location || request.Location.indexOf(filter.Location) > -1);
                 });
 
