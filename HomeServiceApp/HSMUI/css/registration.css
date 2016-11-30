@@ -20,6 +20,8 @@ html {
   max-width: 330px;
   padding: 15px;
   margin: 0 auto;
+  background-color: white;
+  border-radius: 25px;
 }
 .form-signin .form-signin-heading{
 	margin-top: 50px;

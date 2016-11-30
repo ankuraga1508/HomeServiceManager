@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#"  %>
+﻿<%@ Page Language="C#" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,18 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="Manage an existing service here">
-    <meta name="author" content="ArjunB">
+    <meta name="description" content="Manage a caregiver here">
+    <meta name="author" content="IanP">
     <link rel="icon" href="images/favicon.jpg">
 
-    <title>Manage Service</title>
+    <title>Manage Caregiver</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="css/adminStyle.css" rel="stylesheet">
-
-    <script src="js/jquery-2.0.0.min.js"></script>
+    <!--#include virtual="/includes/globalscript.aspx"-->
 
   </head>
 
@@ -51,18 +46,18 @@
         <div class="col-sm-3 col-md-2 sidebar" id="sidebar">
           <ul class="nav nav-sidebar">
             <li><a href="AdminDashboard.aspx">Active Requests</a></li>
-			<li><a href="">Completed Requests</a></li>
+			      <li><a href="">Completed Requests</a></li>
             <li><a href="">Rejected Requests</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-		  <li><a href="AddService.aspx">Add Service</a></li>
-			<li class="active"><a href="#">Manage Service <span class="sr-only">(current)</span></a></li>
+	          <li><a href="AddService.aspx">Add Service</a></li>
+            <li><a href="ManageService.aspx">Manage Service</a></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="AddCaregiver.aspx">Add Caregiver</a></li>
-            <li><a href="ManageCaregiver.aspx">Manage Caregiver</a></li>
+            <li class="active"><a href="#">Manage Caregiver <span class="sr-only">(current)</span></a></li>
           </ul>
-		  
+
 		  <ul class="nav nav-sidebar">
             <li><a href="#">Reports</a></li>
             <li><a href="#">Analytics</a></li>
@@ -70,38 +65,36 @@
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Manage Service</h1>
+          <h1 class="page-header">Manage Caregiver</h1>
 			<form class="form-horizontal col-sm-8" style="margin-top: 50px;">
+              <div class="form-group">
+                <label for="username" class="col-sm-4 control-label">Username</label>
+                <div class="col-sm-6">
+					<select class="form-control" id="username" name="username">
+                    </select>
+                </div>
+              </div>
 			  <div class="form-group">
-				<label for="serviceName" class="col-sm-4 control-label">Service Name</label>
+				<label for="firstName" class="col-sm-4 control-label">First Name</label>
 				<div class="col-sm-6">
-					<select class="form-control" id="serviceName" name="serviceName">
-					</select>
+				  <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
 				</div>
 			  </div>
 			  <div class="form-group">
-				<label for="serviceDesc" class="col-sm-4 control-label">Service Description</label>
+				<label for="lastName" class="col-sm-4 control-label">Last Name</label>
 				<div class="col-sm-6">
-				  <textarea class="form-control" id="serviceDesc" name="serviceDesc" placeholder="Service Description"></textarea>
+				  <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
 				</div>
 			  </div>
-			  <div class="form-group">
-				<div class="col-sm-offset-4 col-sm-5">
-				  <div class="radio-inline">
-					<label>
-					  <input type="radio" id="serviceActive" name="serviceStatus" value="Y" checked/> Service Active
-					</label>
-				  </div>
-				  <div class="radio-inline">
-					<label>
-					  <input type="radio" id="serviceInactive" name="serviceStatus" value="N"/> Service Inactive
-					</label>
-				  </div>
+            <div class="form-group">
+				<label for="password" class="col-sm-4 control-label">Password</label>
+				<div class="col-sm-6">
+				  <input type="text" class="form-control" id="password" name="password" placeholder="Password" required>
 				</div>
 			  </div>
 			  <div class="form-group">
 				<div class="col-sm-offset-4 col-sm-10">
-				  <button type="submit" class="btn btn-success" id="manageService" name="manageService">Submit</button>
+				  <button class="btn btn-success" id="addCaregiver" name="updateCaregiver" >Submit</button>
 				</div>
 			  </div>
 			</form>
@@ -112,10 +105,13 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    
+
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="js/bootstrap.min.js"></script>
-	<script src="js/manageService.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="assets/js/vendor/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="js/manageCaregiver.js"></script>
   </body>
 </html>
-
-

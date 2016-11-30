@@ -203,6 +203,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="js\manageCaregiver.js" />
+    <Content Include="ManageCaregiver.aspx" />
     <Content Include="css\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="css\scheduleServiceModal.css" />
     <Content Include="css\seniorDashboard.css" />
