@@ -120,7 +120,7 @@ CREATE TABLE `user` (
   `ModifiedBy` int(11) DEFAULT NULL,
   `LoginId` varchar(45) DEFAULT NULL,
   `LoginPassword` varchar(200) DEFAULT NULL,
-  `IsActive` bit(1) DEFAULT NULL,
+  `IsActive` int(11) DEFAULT NULL,
   `Address` varchar(200) DEFAULT NULL,
   `FirstName` varchar(45) DEFAULT NULL,
   `LastName` varchar(45) DEFAULT NULL,
@@ -135,7 +135,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'ankur',NULL,NULL,0,NULL,'2016-11-22 14:52:42',0,'2016-11-28 17:26:13',0,NULL,'test','\0','address','vikas','vikas','Male'),(2,'Vikas','vj@iastate.edu','7735100198',1,'777888999','2016-11-22 14:52:44',1,'2016-11-22 14:52:44',1,'test','test','',NULL,NULL,NULL,NULL),(3,NULL,NULL,NULL,0,NULL,'2016-11-28 00:33:25',0,'0001-01-01 00:00:00',0,'ankur','test','\0','abcd','ankur','agarwal','Male'),(4,NULL,NULL,NULL,0,NULL,'2016-11-28 01:07:42',0,'0001-01-01 00:00:00',0,'11','test','\0','ab','ankur','agarwal','Male'),(5,'ank',NULL,NULL,0,NULL,'2016-11-28 18:14:19',0,'0001-01-01 00:00:00',0,NULL,'test','\0','address','ankur','agarwal','Male'),(6,'ankur123',NULL,NULL,0,NULL,'2016-11-28 18:16:13',0,'0001-01-01 00:00:00',0,NULL,'password','\0','address123','ankur','agarwal','Male');
+INSERT INTO `user` VALUES (1,'ankur',NULL,NULL,0,NULL,'2016-11-22 14:52:42',0,'2016-11-28 17:26:13',0,NULL,'test',0,'address','vikas','vikas','Male'),(2,'Vikas','vj@iastate.edu','7735100198',1,'777888999','2016-11-22 14:52:44',1,'2016-11-22 14:52:44',1,'test','test',1,NULL,NULL,NULL,NULL),(3,NULL,NULL,NULL,1,NULL,'2016-11-28 00:33:25',0,'0001-01-01 00:00:00',0,'ankur','test',1,'abcd','ankur','agarwal','Male'),(4,NULL,NULL,NULL,2,NULL,'2016-11-28 01:07:42',0,'0001-01-01 00:00:00',0,'11','test',0,'ab','ankur','agarwal','Male'),(5,'ank',NULL,NULL,3,NULL,'2016-11-28 18:14:19',0,'0001-01-01 00:00:00',0,NULL,'test',1,'address','ankur','agarwal','Male'),(6,'ankur123',NULL,NULL,0,NULL,'2016-11-28 18:16:13',0,'0001-01-01 00:00:00',0,NULL,'password',1,'address123','ankur','agarwal','Male');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -273,10 +273,10 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getalluser`(
-_UserRoleId int
+_UserRoleId int(11)
 )
 BEGIN
 	SELECT 
@@ -284,7 +284,6 @@ BEGIN
 	UserName ,
 	UserEmail ,
 	UserMobile ,
-	UserRoleId ,
 	UserSSN ,
 	CreatedOn ,
 	CreatedBy ,
@@ -292,6 +291,7 @@ BEGIN
 	ModifiedBy ,
 	LoginId ,
 	LoginPassword ,
+    IsActive,
     Address ,
     FirstName , 
     LastName ,
@@ -604,4 +604,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-30  1:32:47
+-- Dump completed on 2016-11-30 14:23:15

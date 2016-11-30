@@ -24,7 +24,7 @@ namespace HSM.DAL
                 using (MySqlCommand cmd = new MySqlCommand("getalluser"))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("_UserRoleId", MySqlDbType.Int32).Value = roleId;
+                    cmd.Parameters.AddWithValue("_UserRoleId", roleId);
                     Database db = new Database();
                     using (MySqlDataReader dr = db.SelectQry(cmd))
                     {
@@ -43,6 +43,7 @@ namespace HSM.DAL
                                 CreatedBy = Int32.Parse(dr["CreatedBy"].ToString()),
                                 ModifiedOn = Convert.ToDateTime(dr["ModifiedOn"].ToString()),
                                 ModifiedBy = Int32.Parse(dr["ModifiedBy"].ToString()),
+                                IsActive = Int32.Parse(dr["IsActive"].ToString()),
                                 Address = dr["Address"].ToString(),
                                 FirstName = dr["FirstName"].ToString(),
                                 LastName = dr["LastName"].ToString(),
