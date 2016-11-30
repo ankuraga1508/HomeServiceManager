@@ -70,31 +70,30 @@
 			  <div class="form-group">
 				<label for="firstName" class="col-sm-4 control-label">First Name</label>
 				<div class="col-sm-6">
-				  <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name">
+				  <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
 				</div>
 			  </div>
 			  <div class="form-group">
 				<label for="lastName" class="col-sm-4 control-label">Last Name</label>
 				<div class="col-sm-6">
-				  <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name">
+				  <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
 				</div>
 			  </div>
         <div class="form-group">
         <label for="username" class="col-sm-4 control-label">Username</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+          <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
         </div>
         </div>
         <div class="form-group">
 				<label for="password" class="col-sm-4 control-label">Password</label>
 				<div class="col-sm-6">
-				  <input type="text" class="form-control" id="password" name="password" placeholder="Password">
+				  <input type="text" class="form-control" id="password" name="password" placeholder="Password" required>
 				</div>
 			  </div>
 			  <div class="form-group">
 				<div class="col-sm-offset-4 col-sm-10">
 				  <button class="btn btn-success" id="addCaregiver" name="addCaregiver" >Submit</button>
-                    <input id="btnDealerOffer" class="btn btn-orange btn-dealer-ad" onclick="InitDealerOffer(this)" type="button" value="Get The Best Deal">
 				</div>
 			  </div>
 			</form>

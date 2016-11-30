@@ -1,5 +1,7 @@
 $(document).ready(function () {
-  $("#request").click(function () {
+    //Change serveice to sent value
+    $("#request").click(function (e) {
+    e.preventDefault();
     var startDate = $("#startDate").val().trim();
     var endDate = $("#endDate").val().trim();
     var comments = $("#comments").val().trim();
@@ -26,27 +28,49 @@ $(document).ready(function () {
       if(endAMPM === "PM") {
         endHour = 12 + endHour + "";
       }
-      var startTime = startDate + " " + startHour + ":" + startMinutes;
-      var endTime = endDate + " " + endHour + ":" + endMinutes;
 
-      var postData = JSON.stringify({
-        "startTime": startTime,
-        "endTime": endTime,
-        "comments": comments
-      });
+      startHour = minTwoDigits(startHour);
+      endHour = minTwoDigits(endHour);
+
+      var startTime = startDate + " " + startHour + ":" + startMinutes + ":00";
+      var endTime = endDate + " " + endHour + ":" + endMinutes + ":00";
+      var ServiceId = 0;
+      var UserId = window.sessionStorage.getItem("UserId");
+      var currentDate = new Date();
+      var ModifiedOn = currentDate.getFullYear() + "-" + minTwoDigits(currentDate.getMonth()) + "-" + minTwoDigits(currentDate.getDay()) + " " +
+          minTwoDigits(currentDate.getHours()) + ":" + minTwoDigits(currentDate.getMinutes()) + ":" + minTwoDigits(currentDate.getSeconds());
+
+        //TODO get and set ServiceId
+      var postData = "RequesterId=" + UserId + "&RoleId= 1" + "&CaregiverId=" + "" +
+          "&ServiceId=" + ServiceId + "&Status=1" + "&TimeOfServiceStart=" + startTime + "&TimeOfSericeEnd=" + endTime +
+          "&Comments=" + comments + "&ModifiedBy=" + UserId + "&ModifiedOn=" + ModifiedOn;
+
       alert(postData);
       $.ajax({
         type: "POST",
-        url: "",
+        url: "/api/request/addrequest",
         data: postData,
-        contentType: "application/json; charset=utf-8",
-				success: function (result) {
-					if (result.d) {
+        contentType: "application/x-www-form-urlencoded; charset=utf-8",
+		success: function (result) {
+					if (result) {
 						alert('success');
 					}
+					window.location = "SeniorDashboard.aspx";
 				},
-				error: function (msg) { alert(msg); }
+		error: function (msg) { alert(msg); }
       });
     }
-  });
+    });
+
+    $("#request-cancel").click(function () {
+        window.location = "SeniorDashboard.aspx";
+    });
 });
+
+function minTwoDigits(n) {
+    if (n < 10 && n > -10) {
+        return "0" + n;
+    } else {
+        return n;
+    }
+};

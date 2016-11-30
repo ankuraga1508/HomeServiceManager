@@ -29,26 +29,6 @@ namespace HSM.Services
             return Ok(response);
         }
 
-        [System.Web.Http.HttpPost]
-        [System.Web.Http.ActionName("updateservice")]
-        public IHttpActionResult updateService([FromBody] Entity.Service serviceDetails)
-        {
-            string response = null;
-            IUnityContainer container = new UnityContainer();
-            ServiceBL serviceBl = new ServiceBL(container);
-
-            try
-            {
-                response = JsonConvert.SerializeObject(serviceBl.updateService(serviceDetails));
-            }
-            catch (Exception ex)
-            {
-                var objErr = new ErrorClass(ex, "");
-                objErr.LogException();
-            }
-            return Ok(response);
-        }
-
         [System.Web.Http.HttpGet]
         [System.Web.Http.ActionName("services")]
         public IHttpActionResult GetAllServices()

@@ -12,24 +12,14 @@ namespace HSM.Interface
         /// </summary>
         bool addRequest(Request requestDetails);
 
+       
         /// <summary>
-        /// Send Request
+        /// 
         /// </summary>
-        bool updateRequest(Request requestDetails);
-
-        /// <summary>
-        /// Get Request by RequesterId
-        /// </summary>
-        List<Request> getRequestByRequesterId(int RequesterId);
-
-        /// <summary>
-        /// Get Request by roleid
-        /// </summary>
-        List<Request> getRequestByCaregiverId(int CaregiverId);
-
-        /// <summary>
-        /// Get All Requests
-        /// </summary>
-        List<Request> getAllRequests();
+        /// <param name="caregiverId"></param>
+        /// <param name="requesterId"></param>
+        /// <param name="status"></param>
+        /// <returns></returns>
+        List<Request> getRequestsByFilters(int caregiverId, int requesterId, int status);
     }
 }
