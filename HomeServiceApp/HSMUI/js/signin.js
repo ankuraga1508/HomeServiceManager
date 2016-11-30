@@ -22,8 +22,8 @@ $(document).ready(function () {
 				url: "/api/user/userlogin",
 				data: postData,
 				success: function (result) {
-				    alert(result+" new");
-				    if (result) {
+				    alert(result);
+				    if (result != 'null') {
 				        var r = jQuery.parseJSON(result);
 				        var UserRoleId = r.UserRoleId;
 				        var UserId = r.UserId;
