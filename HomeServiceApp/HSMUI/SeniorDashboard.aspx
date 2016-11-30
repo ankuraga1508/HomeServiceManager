@@ -54,7 +54,7 @@
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar" id="sidebar">
                 <ul class="nav nav-sidebar">
-                    <li class="active"><a href="#">Shedule a Service<span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a href="#">Schedule a Service<span class="sr-only">(current)</span></a></li>
                     <li><a href="SeniorActiveRequests.aspx">Requests Being Serviced</a></li>
                     <li><a href="SeniorCompletedRequests.aspx">Completed Requests</a></li>
                     <li><a href="SeniorRejectedRequests.aspx">Rejected Requests</a></li>
@@ -110,9 +110,12 @@
                             var maxDate = yyyy + 2 + '-' + mm + '-' + dd;
                             document.getElementById("reqDate").setAttribute("max", maxDate);
                         </script>
+                        <div id="success-message">
+                            
+                        </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success" id="submitSchedule">Submit</button>
+                            <button type="button" class="btn btn-success" id="submitSchedule">Submit</button>
                         </div>
                     </form>
                 </div>

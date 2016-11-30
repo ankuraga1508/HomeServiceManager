@@ -55,7 +55,7 @@
           </ul>
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Add Caregiver <span class="sr-only">(current)</span></a></li>
-            <li><a href="">Manage Caregiver</a></li>
+            <li><a href="ManageCaregiver.aspx">Manage Caregiver</a></li>
           </ul>
 
 		  <ul class="nav nav-sidebar">

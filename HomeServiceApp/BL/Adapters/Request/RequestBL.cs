@@ -23,7 +23,7 @@ namespace HSM.BL
         }
 
 
-        public List<Request> getRequestsByFilters(int caregiverId, int requesterId, int status)
+        public List<Request> getRequestsByFilters(int caregiverId, int requesterId, string status)
         {
             return _requestRepo.getRequestsByFilters(caregiverId, requesterId, status);
         }

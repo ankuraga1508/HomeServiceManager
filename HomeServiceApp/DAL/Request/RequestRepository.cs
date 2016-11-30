@@ -20,12 +20,12 @@ namespace HSM.DAL
                 int RoleId = requestDetails.RoleId;
                 int CaregiverId = requestDetails.CaregiverId;
                 int ServiceId = requestDetails.ServiceId;
-                int Status = requestDetails.Status;
-                DateTime TimeOfServiceStart = requestDetails.TimeOfServiceStart;
-                DateTime TimeOfServiceEnds = requestDetails.TimeOfServiceEnds;
+                string Status = requestDetails.Status;
+                string ScheduleDate = requestDetails.ScheduleDate;
+                string StartTime = requestDetails.StartTime;
+                string EndTime = requestDetails.EndTime;
                 string Comments = requestDetails.Comments;
-                DateTime ModifiedBy = requestDetails.ModifiedBy;
-                DateTime ModifiedOn = requestDetails.ModifiedOn;
+                int ModifiedBy = requestDetails.ModifiedBy;
 
                 using (MySqlConnection con = new MySqlConnection(ConfigurationManager.AppSettings["connectionString"]))
                 {
@@ -40,11 +40,11 @@ namespace HSM.DAL
                         cmd.Parameters.AddWithValue("CaregiverId", CaregiverId);
                         cmd.Parameters.AddWithValue("ServiceId", ServiceId);
                         cmd.Parameters.AddWithValue("Status", Status);
-                        cmd.Parameters.AddWithValue("TimeOfServiceStart", TimeOfServiceStart);
-                        cmd.Parameters.AddWithValue("TimeOfServiceEnds", TimeOfServiceEnds);
+                        cmd.Parameters.AddWithValue("ScheduleDate", ScheduleDate);
+                        cmd.Parameters.AddWithValue("StartTime", StartTime);
+                        cmd.Parameters.AddWithValue("EndTime", EndTime);
                         cmd.Parameters.AddWithValue("Comments", Comments);
                         cmd.Parameters.AddWithValue("ModifiedBy", ModifiedBy);
-                        cmd.Parameters.AddWithValue("ModifiedOn", ModifiedOn);
                         cmd.ExecuteReader();
                         con.Close();
                         return true;
@@ -61,7 +61,7 @@ namespace HSM.DAL
         }
 
 
-        public List<Request> getRequestsByFilters(int caregiverId, int requesterId, int status)
+        public List<Request> getRequestsByFilters(int caregiverId, int requesterId, string status)
         {
             var requestList = new List<Request>();
 
@@ -85,11 +85,12 @@ namespace HSM.DAL
                                 RoleId = Int32.Parse(dr["RoleId"].ToString()),
                                 CaregiverId = Int32.Parse(dr["CaregiverId"].ToString()),
                                 ServiceId = Int32.Parse(dr["ServiceId"].ToString()),
-                                Status = Int32.Parse(dr["Status"].ToString()),
-                                TimeOfServiceStart = Convert.ToDateTime(dr["TimeOfServiceStart"].ToString()),
-                                TimeOfServiceEnds = Convert.ToDateTime(dr["TimeOfServiceEnds"].ToString()),
+                                Status = dr["Status"].ToString(),
+                                ScheduleDate = dr["ScheduleDate"].ToString(),
+                                StartTime = dr["StartTime"].ToString(),
+                                EndTime = dr["EndTime"].ToString(),
                                 Comments = dr["Comments"].ToString(),
-                                ModifiedBy = Convert.ToDateTime(dr["ModifiedBy"].ToString()),
+                                ModifiedBy = Int32.Parse(dr["ModifiedBy"].ToString()),
                                 ModifiedOn = Convert.ToDateTime(dr["ModifiedOn"].ToString()),
                                 Address = dr["Address"].ToString(),
                                 serviceName = dr["serviceName"].ToString()

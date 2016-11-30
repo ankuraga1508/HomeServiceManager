@@ -20,6 +20,6 @@ namespace HSM.Interface
         /// <param name="requesterId"></param>
         /// <param name="status"></param>
         /// <returns></returns>
-        List<Request> getRequestsByFilters(int caregiverId, int requesterId, int status);
+        List<Request> getRequestsByFilters(int caregiverId, int requesterId, string status);
     }
 }

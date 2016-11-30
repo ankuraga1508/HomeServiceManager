@@ -74,7 +74,7 @@
 				</ul>
 				<ul class="nav nav-sidebar">
 					<li><a href="AddCaregiver.aspx">Add Caregiver</a></li>
-					<li><a href="">Manage Caregiver</a></li>
+					<li><a href="ManageCaregiver.aspx">Manage Caregiver</a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
 					<li><a href="#">Reports</a></li>

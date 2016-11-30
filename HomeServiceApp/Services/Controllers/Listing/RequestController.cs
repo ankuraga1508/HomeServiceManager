@@ -40,7 +40,7 @@ namespace HSM.Services
 
             int requesterid = (QueryString["requesterid"] != null && !String.IsNullOrEmpty(QueryString["requesterid"].ToString())) ? Convert.ToInt32(QueryString["requesterid"]) : -1;
             int caregiverid = (QueryString["caregiverid"] != null && !String.IsNullOrEmpty(QueryString["caregiverid"].ToString())) ? Convert.ToInt32(QueryString["caregiverid"]) : -1;
-            int status = (QueryString["status"] != null && !String.IsNullOrEmpty(QueryString["status"].ToString())) ? Convert.ToInt32(QueryString["status"]) : -1;
+            string status = (QueryString["status"] != null && !String.IsNullOrEmpty(QueryString["status"].ToString())) ? QueryString["status"] : "";
 
             IUnityContainer container = new UnityContainer();
             RequestBL requestBL = new RequestBL(container);
