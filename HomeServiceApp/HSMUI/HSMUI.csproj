@@ -206,6 +206,7 @@
     <Content Include="css\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="css\scheduleServiceModal.css" />
     <Content Include="css\seniorDashboard.css" />
+    <Content Include="css\registration.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="js\scheduleServiceModal.js" />
     <Content Include="js\seniorCompletedRequests.js" />
