@@ -22,8 +22,8 @@ $(document).ready(function () {
 				    if (result != 'null') {
 				        var r = jQuery.parseJSON(result);
 				        var UserRoleId = r.UserRoleId;
-				        var UserId = r.UserId;
-				        window.sessionStorage.setItem("UserId", UserId);
+				        var idUser = r.idUser;
+				        sessionStorage.setItem("idUser", idUser);
 				        if (UserRoleId === 1) {
 				            window.location = "SeniorDashboard.aspx";
 				        } else if (UserRoleId === 2) {
