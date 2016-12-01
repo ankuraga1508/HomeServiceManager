@@ -76,6 +76,8 @@
     <div id="assignedRequests">
         <form id="detailsForm">
             <div class="details-form-field">
+                <input type="hidden" id="ServiceRequestId" />
+                <input type="hidden" id="ServiceId" />
                 <label for="reqName">Requester Name:</label>
                 <input id="reqName" name="reqName" type="text" disabled/>
                 <input type="hidden" id="reqId" />
@@ -96,6 +98,7 @@
                 <label for="reqTimeTo">To:</label>
                 <input id="reqTimeTo" name="reqTimeTo" type="text" disabled />
             </div>
+           
             <div class="col-sm-offset-4">
                 <button type="submit" id="accept">Accept</button>
                 <button type="submit" id="complete">Complete</button>
@@ -132,8 +135,11 @@
 				            var resultJson = JSON.parse(result);
 				             
 				            result = $.grep(resultJson, function (request) {
-				                    return (!filter.RequesterId || request.RequesterId.indexOf(filter.RequesterId) > -1)
+				                return (!filter.RequesterId || request.RequesterId.indexOf(filter.RequesterId) > -1)
                                     && (!filter.RequesterName || request.RequesterName.indexOf(filter.RequesterName) > -1)
+                                    && (!filter.id || request.id.indexOf(filter.id) > -1)
+                                    && (!filter.ServiceId || request.ServiceId.indexOf(filter.ServiceId) > -1)
+                                    && (!filter.FirstName || request.FirstName.indexOf(filter.FirstName) > -1)
                                     && (!filter.serviceName || request.serviceName.indexOf(filter.serviceName) > -1)
                                     && (!filter.ScheduleDate || request.ScheduleDate.indexOf(filter.ScheduleDate) > -1)
                                     && (!filter.StartTime || request.StartTime.indexOf(filter.StartTime) > -1)
@@ -164,6 +170,8 @@
 				    showAssignedReq(args.item);
 				},
 				fields: [
+                    { name: "id", type: "number", width: 5, align: "center" },
+                    { name: "ServiceId", type: "number", width: 0, align: "center", css: "hide" },
 					{ name: "RequesterId", type: "number", width: 10 },
 					{ name: "RequesterName", type: "text", width: 20 },
 					{ name: "serviceName", type: "text", width: 25 },
@@ -201,12 +209,14 @@
 			//var formSubmitHandler = $.noop;
 
 			var showAssignedReq = function (request) {
-			    $("#reqId").val(request.RequestId);
-			    $("#reqName").val(request.Name);
-			    $("#reqLocation").val(request.Location);
-			    $("#reqDate").val(request.Date);
-			    $("#reqTimeFrom").val(request.From);
-			    $("#reqTimeTo").val(request.To);
+			    $("#reqId").val(request.RequesterId);
+			    $("#reqName").val(request.RequesterName);
+			    $("#reqLocation").val(request.Address);
+			    $("#reqDate").val(request.ScheduleDate);
+			    $("#reqTimeFrom").val(request.StartTime);
+			    $("#reqTimeTo").val(request.EndTime);
+			    $("#ServiceRequestId").val(request.id);
+			    $("#ServiceId").val(request.ServiceId);
 
 			    //formSubmitHandler = function () {
 			    //    respondToRequest(request);
@@ -216,12 +226,17 @@
 			};
 
 			var respondToRequest = function (request) {
-			    alert(request.RequestId);
+			    
+			    var postData = 'id=' + $("#ServiceRequestId").val() + '&RequesterId=' + $("#reqId").val() + '&RoleId=' + 2 +
+'&CaregiverId=' + '1' + '&ServiceId=' + $("#ServiceId").val() + '&Status=' + '2' + '&ScheduleDate=' + $("#reqDate").val() +
+'&StartTime=' + $("#reqTimeFrom").val() + '&EndTime=' + $("#reqTimeTo").val() + '&Comments=' + 'aabbcc' + '&ModifiedBy=' + 2;
+			    //alert(postData);
 			    $.ajax({
                     type: "POST",
-			        url: "",
+                    url: "/api/request/postrequest",
+                    data: postData,
 			        success: function (data) {
-			            if (data == 'true') {
+			            if (data != 'null') {
 			                alert("Request accepted successfully");
 			                $("#jsGrid").jsGrid("refresh");
 			            } else {
@@ -237,10 +252,14 @@
 			};
 
 			var closeRequest = function (request) {
-			    alert(request.RequestId);
+			    var postData = 'id=' + $("#ServiceRequestId").val() + '&RequesterId=' + $("#reqId").val() + '&RoleId=' + 2 +
+'&CaregiverId=' + '1' + '&ServiceId=' + $("#ServiceId").val() + '&Status=' + '3' + '&ScheduleDate=' + $("#reqDate").val() +
+'&StartTime=' + $("#reqTimeFrom").val() + '&EndTime=' + $("#reqTimeTo").val() + '&Comments=' + 'aabbcc' + '&ModifiedBy=' + 2;
+			    //alert(postData);
 			    $.ajax({
 			        type: "POST",
-			        url: "",
+			        url: "/api/request/postrequest",
+			        data: postData,
 			        success: function (data) {
 			            alert("Request closed successfully");
 			            $("#jsGrid").jsGrid("refresh");
