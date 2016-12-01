@@ -96,7 +96,7 @@ CREATE TABLE `services` (
 
 LOCK TABLES `services` WRITE;
 /*!40000 ALTER TABLE `services` DISABLE KEYS */;
-INSERT INTO `services` VALUES (1,'Grooming, and Hygiene','Comfort Keepers’ goal is to assist our clients with their personal care routines so they can look and feel their best. Studies have proven how effective and positive it is for seniors to have regular hygiene and grooming.  For clients who fear falling while bathing, or have physical or cognitive limitations that make bath-time difficult, our caregivers are there to help. We can assist with shampooing, shaving (with an electric shaver), hair combing and styling, and other grooming needs.',1),(2,'Mobility Assistance','Remaining active in your golden years is one of the best ways to maintain the quality of life. Our caregivers help seniors remain active by assisting them in getting from place to place in comfort and safety.',1),(3,'Transferring and Positioning','One of our top priorities is helping our clients move around their homes. This may include getting in and out of bed, chairs, and wheelchairs.  Proper transferring and positioning can contribute to reducing bedsore risks. This also helps reduce muscle atrophy, while encouraging proper breathing and digestion. It can also lower the risk of falls and injuries, as well as keep our clients as comfortable as possible',1),(4,'Toileting and Incontinence Care','We understand the sensitive nature of toileting and incontinence care for our clients. Without proper help, seniors can face many issues. These may include skin infections, unpleasant odors, and general hygiene problems. Our caregivers offer compassionate, dignified help with these personal aspects of daily living.',1);
+INSERT INTO `services` VALUES (1,'Grooming and Hygiene','Comfort Keepers’ goal is to assist our clients with their personal care routines so they can look and feel their best. Studies have proven how effective and positive it is for seniors to have regular hygiene and grooming.  For clients who fear falling while bathing, or have physical or cognitive limitations that make bath-time difficult, our caregivers are there to help. We can assist with shampooing, shaving (with an electric shaver), hair combing and styling, and other grooming needs.',1),(2,'Mobility Assistance','Remaining active in your golden years is one of the best ways to maintain the quality of life. Our caregivers help seniors remain active by assisting them in getting from place to place in comfort and safety.',1),(3,'Transferring and Positioning','One of our top priorities is helping our clients move around their homes. This may include getting in and out of bed, chairs, and wheelchairs.  Proper transferring and positioning can contribute to reducing bedsore risks. This also helps reduce muscle atrophy, while encouraging proper breathing and digestion. It can also lower the risk of falls and injuries, as well as keep our clients as comfortable as possible',1),(4,'Toileting and Incontinence Care','We understand the sensitive nature of toileting and incontinence care for our clients. Without proper help, seniors can face many issues. These may include skin infections, unpleasant odors, and general hygiene problems. Our caregivers offer compassionate, dignified help with these personal aspects of daily living.',1);
 /*!40000 ALTER TABLE `services` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -367,7 +367,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `getrequestbyfilters`(
  in _status varchar(20)
 )
 BEGIN
-	SELECT sv.servicename, u.address, s.id, s.RequesterId, s.RoleId, 
+	SELECT u.FirstName, u.LastName, sv.servicename, u.address, s.id, s.RequesterId, s.RoleId, 
     s.CaregiverId, s.ServiceId ,s.Status, s.ScheduleDate, 
     s.StartTime, 
     s.EndTime, s.Comments, s.ModifiedBy, s.ModifiedOn
@@ -651,4 +651,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-30 18:32:34
+-- Dump completed on 2016-11-30 19:19:30
