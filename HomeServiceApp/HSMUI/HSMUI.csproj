@@ -216,6 +216,7 @@
     <Content Include="js\seniorRejectedRequests.js" />
     <Content Include="js\seniorActiveRequests.js" />
     <Content Include="js\seniorDashboard.js" />
+    <Content Include="ManageCaregiver.aspx" />
     <Content Include="SeniorCompletedRequests.aspx" />
     <Content Include="SeniorRejectedRequests.aspx" />
     <Content Include="SeniorActiveRequests.aspx" />
