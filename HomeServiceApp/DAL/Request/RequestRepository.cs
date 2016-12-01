@@ -95,7 +95,9 @@ namespace HSM.DAL
                                     ModifiedBy = Int32.Parse(dr["ModifiedBy"].ToString()),
                                     ModifiedOn = Convert.ToDateTime(dr["ModifiedOn"].ToString()),
                                     Address = dr["Address"].ToString(),
-                                    serviceName = dr["serviceName"].ToString()
+                                    serviceName = dr["serviceName"].ToString(),
+                                    FirstName = dr["FirstName"].ToString(),
+                                    LastName = dr["LastName"].ToString()
 
                                 });
                             }

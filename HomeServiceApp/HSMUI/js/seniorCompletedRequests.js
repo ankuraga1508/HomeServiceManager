@@ -1,8 +1,8 @@
 ﻿$(document).ready(function () {
-
+    var requesterid = sessionStorage.getItem("idUser");
     $.ajax({
         type: "GET",
-        url: "api/request/getrequestbyfilters?status=3&requesterid=1",
+        url: "api/request/getrequestbyfilters?status=3&requesterid="+requesterid,
         dataType: "json",
         success: function (data) {
             var jsonData = JSON.parse(data);
