@@ -151,7 +151,7 @@
 				    },
 
 				    deleteItem: function (item) {
-				        alert(item.id);
+				        
 				        var postData = "id=" + item.id + "&RequesterId=" + item.RequesterId + "&RoleId=" + item.RoleId +
                             "&CaregiverId=" + item.CaregiverId + "&ServiceId=" + item.ServiceId + "&Status=6" +
 				            "&StartTime=" + item.StartTime + "&EndTime=" + item.EndTime + "&Comments=" + item.Comments + "&ModifiedBy=" + item.CaregiverId;
@@ -169,15 +169,15 @@
 				    showAssignedReq(args.item);
 				},
 				fields: [
-                    { name: "id", type: "number", width: 5, align: "center" },
-                    { name: "ServiceId", type: "number", width: 0, align: "center", css: "hide" },
-					{ name: "RequesterId", type: "number", width: 10 },
-					{ name: "RequesterName", type: "text", width: 20 },
-					{ name: "serviceName", type: "text", width: 25 },
-					{ name: "ScheduleDate", type: "text", width: 15 },
-					{ name: "StartTime", type: "text", width: 15 },
-					{ name: "EndTime", type: "text", width: 15 },
-					{ name: "Address", type: "text", width: 30 },
+                    { title:"Id", name: "id", type: "number", width: 3, align: "center" },
+                    { title: "Service Id", name: "ServiceId", type: "number", width: 0, align: "center", css: "hide" },
+					{ title: "Requester Id", name: "RequesterId", type: "number", width: 10 },
+					{ title: "Requester Name", name: "RequesterName", type: "text", width: 25 },
+					{ title: "Service Name", name: "serviceName", type: "text", width: 25 },
+					{ title: "Schedule Date", name: "ScheduleDate", type: "text", width: 20 },
+					{ title: "Start Time", name: "StartTime", type: "text", width: 15 },
+					{ title: "End Time", name: "EndTime", type: "text", width: 15 },
+					{ title: "Address", name: "Address", type: "text", width: 30 },
 					{ type: "control", width: 10, editButton: false, modeSwitchButton: false }
 				]
 			});
