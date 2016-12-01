@@ -124,19 +124,30 @@
 				        var reqData = $.Deferred();
 				        $.ajax({
 				            type: "GET",
-				            //dataType: "json",
-				            url: "",
+				            dataType: "json",
+				            url: "/api/request/getrequestbyfilters?caregiverid=1",
 				        }).done(function (result) {
-				            result = $.grep(result, function (request) {
-				                return (!filter.RequestId || request.RequestId.indexOf(filter.RequestId) > -1)
-                                && (!filter.Name || request.Name.indexOf(filter.Name) > -1)
-                                && (!filter.Service || request.Service.indexOf(filter.Service) > -1)
-                                && (!filter.Date || request.Date.indexOf(filter.Date) > -1)
-                                && (!filter.From || request.From.indexOf(filter.From) > -1)
-                                && (!filter.To || request.To.indexOf(filter.To) > -1)
-                                && (!filter.Location || request.Location.indexOf(filter.Location) > -1);
-				            });
-				            reqData.resolve(result);
+				            
+				            
+				            var resultJson = JSON.parse(result);
+				            
+
+				            
+				            result = $.grep(resultJson, function (request) {
+				                    return (!filter.RequesterId || request.RequesterId.indexOf(filter.RequesterId) > -1)
+                                    && (!filter.FirstName || request.FirstName.indexOf(filter.FirstName) > -1)
+                                    && (!filter.serviceName || request.serviceName.indexOf(filter.serviceName) > -1)
+                                    && (!filter.ScheduleDate || request.ScheduleDate.indexOf(filter.ScheduleDate) > -1)
+                                    && (!filter.StartTime || request.StartTime.indexOf(filter.StartTime) > -1)
+                                    && (!filter.EndTime || request.EndTime.indexOf(filter.EndTime) > -1)
+                                    && (!filter.Address || request.Address.indexOf(filter.Address) > -1);
+				                });
+				                reqData.resolve(result);
+				            
+
+				               
+
+				            
 				        })
 				        return reqData.promise();
 				    }
@@ -145,13 +156,13 @@
 				    showAssignedReq(args.item);
 				},
 				fields: [
-					{ name: "RequestId", type: "number", width: 10 },
-					{ name: "Name", type: "text", width: 20 },
-					{ name: "Service", type: "text", width: 25 },
-					{ name: "Date", type: "text", width: 15 },
-					{ name: "From", type: "text", width: 15 },
-					{ name: "To", type: "text", width: 15 },
-					{ name: "Location", type: "text", width: 30 },
+					{ name: "RequesterId", type: "number", width: 10 },
+					{ name: "FirstName", type: "text", width: 20 },
+					{ name: "serviceName", type: "text", width: 25 },
+					{ name: "ScheduleDate", type: "text", width: 15 },
+					{ name: "StartTime", type: "text", width: 15 },
+					{ name: "EndTime", type: "text", width: 15 },
+					{ name: "Address", type: "text", width: 30 },
 					{ type: "control", width: 10, editButton: false, modeSwitchButton: false }
 				]
 			});
