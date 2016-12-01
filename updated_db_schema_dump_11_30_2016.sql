@@ -46,7 +46,7 @@ CREATE TABLE `service_request` (
 
 LOCK TABLES `service_request` WRITE;
 /*!40000 ALTER TABLE `service_request` DISABLE KEYS */;
-INSERT INTO `service_request` VALUES (1,2221,2,22,1,1,'11:11','14:22','aaa','2016-11-29 23:14:35',1000,'2016-11-29 23:14:19','2016-11-29'),(2,0,1,1,1,1,'11:11','14:22','aaa','2016-11-29 23:14:35',1000,'2016-11-29 23:14:19','2016-11-29'),(3,0,3,1,1,1,'11:11','14:22','aaa','2016-11-29 23:14:35',1000,'2016-11-29 23:14:19','2016-11-29'),(4,11,3,1,1,1,'11:11','14:22','aaa','2016-11-29 23:14:35',1000,'2016-11-29 23:14:19','2016-11-29'),(5,12,3,2,121,1,'11:11','14:22','aaa','2016-11-29 23:14:35',1000,'2016-11-29 23:14:19','2016-11-29'),(6,12,3,2,121,1,'11:11','14:22','aaa','2016-11-29 23:14:35',1000,'2016-11-29 23:14:19','2016-11-29'),(7,12,3,2,121,1,'11:11','14:22','aaa','2016-11-29 23:14:35',1000,'2016-11-29 23:14:19','2016-11-29'),(8,123,22,121,1,1,'11:11','14:22','aaa','2016-11-29 23:14:35',1000,'2016-11-29 23:14:19','2016-11-29'),(9,123,22,121,1,1,'11:11','14:22','aaa','2016-11-29 23:14:35',1,'2016-11-29 23:14:19','2016-11-29'),(10,123,22,121,1,1,'11:11','14:22',NULL,'2016-11-29 23:14:35',1,'2016-11-29 23:14:19','2016-11-29'),(11,1,2,1,1,1,'11:11','14:22','aaa','2016-11-29 23:14:35',1000,'2016-11-29 23:14:19','2016-11-29'),(12,2,2,1,1,1,'11:11','14:22','aaa','2016-11-29 23:14:35',1000,'2016-11-29 23:14:19','2016-11-29'),(13,1,2,1,1,1,'11:11','14:22','aaa','2016-11-29 23:14:35',1000,'2016-11-29 23:14:19','2016-11-29'),(14,1,1,2,1,3,'12:22','01:33','caskk','2016-11-29 23:14:35',1,'2016-11-30 01:29:53','2016-11-20'),(15,0,0,0,0,0,'11:11','14:22',NULL,'2016-11-29 23:14:35',1,'2016-11-29 23:14:19','2016-11-29'),(16,0,0,0,0,0,'11:11','14:22',NULL,'2016-11-29 23:14:35',1,'2016-11-29 23:14:19','2016-11-29'),(17,0,0,0,0,0,'11:11','14:22',NULL,'2016-11-29 23:14:35',0,'2016-11-29 23:14:19','2016-11-29'),(18,0,0,0,0,0,'11:11','14:22',NULL,'2016-11-29 23:14:35',1,'2016-11-29 23:14:19','2016-11-29'),(19,0,0,0,0,0,'11:11','14:22',NULL,'2016-11-29 23:14:35',1,'2016-11-29 23:14:19','2016-11-29'),(20,0,0,0,0,0,'11:11','14:22',NULL,'2016-11-29 23:14:35',1,'2016-11-29 23:14:19','2016-11-29'),(21,1,1,2,1,6,'12:22','01:33','caskk','2016-11-30 01:31:33',1,'2016-11-30 01:31:33','2016-11-20');
+INSERT INTO `service_request` VALUES (1,1,1,1,1,1,'15:30','16:30','Need grooming and hygiene service. Thank you.','2016-11-29 23:14:35',3,'2016-11-29 23:14:19','2016-12-03'),(2,1,1,1,3,3,'12:30','14:30','Need help with transfer and positioning','2016-11-29 23:14:35',3,'2016-11-29 23:14:19','2016-12-05'),(3,1,1,1,2,2,'13:30','15:00','Require help in mobility assistance.','2016-11-29 23:14:35',3,'2016-11-29 23:14:19','2016-12-06'),(4,1,1,1,1,4,'13:30','15:00','Need help with transfer and positioning','2016-11-29 23:14:35',3,'2016-11-29 23:14:19','2016-12-07'),(5,1,1,1,2,5,'13:30','15:00','Require help in mobility assistance.','2016-11-29 23:14:35',3,'2016-11-29 23:14:19','2016-12-08'),(6,1,1,1,3,6,'13:30','15:00','Require help in mobility assistance.','2016-11-29 23:14:35',3,'2016-11-29 23:14:19','2016-12-09');
 /*!40000 ALTER TABLE `service_request` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,7 +96,7 @@ CREATE TABLE `services` (
 
 LOCK TABLES `services` WRITE;
 /*!40000 ALTER TABLE `services` DISABLE KEYS */;
-INSERT INTO `services` VALUES (1,'swe','description',0),(2,'wwww','description',1),(3,'swe','description',0),(4,'swe','description',0);
+INSERT INTO `services` VALUES (1,'Grooming, and Hygiene','Comfort Keepers’ goal is to assist our clients with their personal care routines so they can look and feel their best. Studies have proven how effective and positive it is for seniors to have regular hygiene and grooming.  For clients who fear falling while bathing, or have physical or cognitive limitations that make bath-time difficult, our caregivers are there to help. We can assist with shampooing, shaving (with an electric shaver), hair combing and styling, and other grooming needs.',1),(2,'Mobility Assistance','Remaining active in your golden years is one of the best ways to maintain the quality of life. Our caregivers help seniors remain active by assisting them in getting from place to place in comfort and safety.',1),(3,'Transferring and Positioning','One of our top priorities is helping our clients move around their homes. This may include getting in and out of bed, chairs, and wheelchairs.  Proper transferring and positioning can contribute to reducing bedsore risks. This also helps reduce muscle atrophy, while encouraging proper breathing and digestion. It can also lower the risk of falls and injuries, as well as keep our clients as comfortable as possible',1),(4,'Toileting and Incontinence Care','We understand the sensitive nature of toileting and incontinence care for our clients. Without proper help, seniors can face many issues. These may include skin infections, unpleasant odors, and general hygiene problems. Our caregivers offer compassionate, dignified help with these personal aspects of daily living.',1);
 /*!40000 ALTER TABLE `services` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -135,7 +135,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'ankur',NULL,NULL,0,NULL,'2016-11-22 14:52:42',0,'2016-11-28 17:26:13',0,NULL,'test',0,'address','vikas','vikas','Male'),(2,'Vikas','vj@iastate.edu','7735100198',1,'777888999','2016-11-22 14:52:44',1,'2016-11-22 14:52:44',1,'test','test',1,NULL,NULL,NULL,NULL),(3,NULL,NULL,NULL,1,NULL,'2016-11-28 00:33:25',0,'0001-01-01 00:00:00',0,'ankur','test',1,'abcd','ankur','agarwal','Male'),(4,NULL,NULL,NULL,2,NULL,'2016-11-28 01:07:42',0,'0001-01-01 00:00:00',0,'11','test',0,'ab','ankur','agarwal','Male'),(5,'ank',NULL,NULL,3,NULL,'2016-11-28 18:14:19',0,'0001-01-01 00:00:00',0,NULL,'test',1,'address','ankur','agarwal','Male'),(6,'ankur123',NULL,NULL,0,NULL,'2016-11-28 18:16:13',0,'0001-01-01 00:00:00',0,NULL,'password',1,'address123','ankur','agarwal','Male');
+INSERT INTO `user` VALUES (1,'david','david@gmail.com','9999999999',1,'777888999','2016-11-22 14:52:42',3,'2016-11-28 17:26:13',1,'1','test',1,'Campus Ave','David','Jones','Male'),(2,'Vikas','vj@iastate.edu','7735100198',1,'777888999','2016-11-22 14:52:44',3,'2016-11-22 14:52:44',1,'2','test',1,'Campus Ave','Vikas','Jyoti','Male'),(3,'michael','michael@gmail.com','7735100198',2,'777888999','2016-11-22 14:52:44',3,'2016-11-22 14:52:44',2,'3','test',1,'Campus Ave','Michael','Phelps','Male'),(4,'admin','admin@gmail.com','7735100198',3,'777888999','2016-11-22 14:52:44',3,'2016-11-22 14:52:44',3,'4','test',1,'Campus Ave','Ankur','Agarwal','Male'),(5,'Simon','simon@gmail.com','7735100198',1,'777888999','2016-11-22 14:52:44',3,'2016-11-22 14:52:44',3,'5','test',1,'Campus Ave','Simon','cowell','Male');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -160,7 +160,7 @@ CREATE TABLE `user_role` (
 
 LOCK TABLES `user_role` WRITE;
 /*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
-INSERT INTO `user_role` VALUES (1,'admin',''),(2,'caregiver',''),(3,'user','');
+INSERT INTO `user_role` VALUES (1,'user',''),(2,'caregiver',''),(3,'admin','');
 /*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,6 +171,29 @@ UNLOCK TABLES;
 --
 -- Dumping routines for database 'home_service_db'
 --
+/*!50003 DROP FUNCTION IF EXISTS `SPLIT_STR` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `SPLIT_STR`(
+  x VARCHAR(255),
+  delim VARCHAR(12),
+  pos INT
+) RETURNS varchar(255) CHARSET latin1
+RETURN REPLACE(SUBSTRING(SUBSTRING_INDEX(x, delim, pos),
+       LENGTH(SUBSTRING_INDEX(x, delim, pos -1)) + 1),
+       delim, '') ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP FUNCTION IF EXISTS `SPLIT_STRING` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -197,6 +220,29 @@ BEGIN
         END IF;
 
     END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `SPLIT_STRR` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `SPLIT_STRR`(
+  x VARCHAR(255),
+  delim VARCHAR(12),
+  pos INT
+) RETURNS varchar(255) CHARSET latin1
+RETURN REPLACE(SUBSTRING(SUBSTRING_INDEX(x, delim, pos),
+       LENGTH(SUBSTRING_INDEX(x, delim, pos -1)) + 1),
+       delim, '') ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
@@ -313,7 +359,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getrequestbyfilters`(
  in _CaregiverId int ,
@@ -330,7 +376,8 @@ BEGIN
     inner join user u on u.idUser = s.RequesterId
 	WHERE (s.CaregiverId = _CaregiverId OR _CaregiverId = -1)
     AND (s.RequesterId = _requesterId OR _requesterId = -1)
-    AND (s.Status in ( SELECT SPLIT_STRING(_status,',',1)) OR _status = '');
+-- 	AND (s.Status in (select SPLIT_STR(_status, ',', 1)) 
+	AND (s.Status = _status OR _status = '');
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -604,4 +651,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-30 14:23:15
+-- Dump completed on 2016-11-30 18:32:34

@@ -69,35 +69,39 @@ namespace HSM.DAL
             {
                 using (MySqlCommand cmd = new MySqlCommand("getrequestbyfilters"))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("_CaregiverId", caregiverId);
-                    cmd.Parameters.AddWithValue("_requesterId", requesterId);
-                    cmd.Parameters.AddWithValue("_status", status);
-                    Database db = new Database();
-                    using (MySqlDataReader dr = db.SelectQry(cmd))
-                    {
-                        while (dr.Read())
+                    string[] statusArr = status.Split(',');
+                    for (int i = 0; i < statusArr.Length; i++) {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("_CaregiverId", caregiverId);
+                        cmd.Parameters.AddWithValue("_requesterId", requesterId);
+                        cmd.Parameters.AddWithValue("_status", statusArr[i]);
+                        Database db = new Database();
+                        using (MySqlDataReader dr = db.SelectQry(cmd))
                         {
-                            requestList.Add(new Request()
+                            while (dr.Read())
                             {
-                                id = Int32.Parse(dr["id"].ToString()),
-                                RequesterId = Int32.Parse(dr["RequesterId"].ToString()),
-                                RoleId = Int32.Parse(dr["RoleId"].ToString()),
-                                CaregiverId = Int32.Parse(dr["CaregiverId"].ToString()),
-                                ServiceId = Int32.Parse(dr["ServiceId"].ToString()),
-                                Status = dr["Status"].ToString(),
-                                ScheduleDate = dr["ScheduleDate"].ToString(),
-                                StartTime = dr["StartTime"].ToString(),
-                                EndTime = dr["EndTime"].ToString(),
-                                Comments = dr["Comments"].ToString(),
-                                ModifiedBy = Int32.Parse(dr["ModifiedBy"].ToString()),
-                                ModifiedOn = Convert.ToDateTime(dr["ModifiedOn"].ToString()),
-                                Address = dr["Address"].ToString(),
-                                serviceName = dr["serviceName"].ToString()
+                                requestList.Add(new Request()
+                                {
+                                    id = Int32.Parse(dr["id"].ToString()),
+                                    RequesterId = Int32.Parse(dr["RequesterId"].ToString()),
+                                    RoleId = Int32.Parse(dr["RoleId"].ToString()),
+                                    CaregiverId = Int32.Parse(dr["CaregiverId"].ToString()),
+                                    ServiceId = Int32.Parse(dr["ServiceId"].ToString()),
+                                    Status = dr["Status"].ToString(),
+                                    ScheduleDate = dr["ScheduleDate"].ToString(),
+                                    StartTime = dr["StartTime"].ToString(),
+                                    EndTime = dr["EndTime"].ToString(),
+                                    Comments = dr["Comments"].ToString(),
+                                    ModifiedBy = Int32.Parse(dr["ModifiedBy"].ToString()),
+                                    ModifiedOn = Convert.ToDateTime(dr["ModifiedOn"].ToString()),
+                                    Address = dr["Address"].ToString(),
+                                    serviceName = dr["serviceName"].ToString()
 
-                            });
+                                });
+                            }
                         }
                     }
+                    
                 }
             }
             catch (Exception ex)
