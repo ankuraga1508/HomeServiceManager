@@ -43,7 +43,8 @@ $(document).ready(function () {
                 contentType: "application/x-www-form-urlencoded; charset=utf-8",
                 success: function (result) {
                     if (result) {
-                        window.location = "AdminDashboard.aspx";
+                        location.reload();
+                        //window.location = "AdminDashboard.aspx";
                     }
                 },
                 error: function (msg) { alert(msg); }

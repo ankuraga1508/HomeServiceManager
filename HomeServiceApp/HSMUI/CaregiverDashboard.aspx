@@ -152,7 +152,7 @@
 
 				    deleteItem: function (item) {
 				        var postData = "id=" + item.id + "&RequesterId=" + item.RequesterId + "&RoleId=" + item.RoleId +
-                            "&CaregiverId=" + item.CaregiverId + "&ServiceId=" + item.ServiceId + "&Status=4" +
+                            "&CaregiverId=" + item.CaregiverId + "&ServiceId=" + item.ServiceId + "&Status=4" + '&ScheduleDate=' + item.ScheduleDate +
 				            "&StartTime=" + item.StartTime + "&EndTime=" + item.EndTime + "&Comments=" + item.Comments + "&ModifiedBy=" + item.CaregiverId;
 
 			            return $.ajax({

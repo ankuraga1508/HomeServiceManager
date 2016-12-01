@@ -2,7 +2,7 @@
     var requesterid = sessionStorage.getItem("idUser");
     $.ajax({
         type: "GET",
-        url: "api/request/getrequestbyfilters?status=4,6&requesterid="+requesterid,
+        url: "api/request/getrequestbyfilters?status=6&requesterid="+requesterid,
         dataType: "json",
         success: function (data) {
             var jsonData = JSON.parse(data);

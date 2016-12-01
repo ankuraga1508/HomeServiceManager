@@ -21,7 +21,7 @@ $(document).ready(function () {
 		    postData.serviceDec = serviceDesc;
 		    postData.serviceStatus = serviceStatus;
 
-			alert(postData);
+			
 			$.ajax({
 				type: "POST",
 				url: "/api/service/addservice",
@@ -29,8 +29,8 @@ $(document).ready(function () {
 				contentType: "application/json; charset=utf-8",
 				success: function (result) {
 					if (result) {
-					    alert('success');
-					    window.location = "AdminDashboard.aspx";
+					    location.reload();
+					    //window.location = "AdminDashboard.aspx";
 					}
 				},
 				error: function (msg) { alert(msg); }

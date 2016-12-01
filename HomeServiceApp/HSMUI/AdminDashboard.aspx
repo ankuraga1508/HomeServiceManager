@@ -221,6 +221,7 @@
                     url: "/api/request/postrequest",
 			        data: postData,
 			        success: function (data) {
+			            
 			            if (data == "true") {
 			                var divData = '<div class="alert alert-success"><strong>Success! </strong>Request assigned to '+ $('#cgName').val() +'</strong></div>';
 			                $(divData).appendTo('#success-message');

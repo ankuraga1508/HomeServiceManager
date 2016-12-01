@@ -4,10 +4,11 @@ $(document).ready(function(){
 	//Getting data from backend
 	$.ajax({
 		type: "GET",
-		url: "/api/service/services",
+		url: "api/service/services",
 		dataType: "json",
 		success: function (data) {
-			$.each(data, function(i, obj) {
+		    var jsonData = JSON.parse(data);
+		    $.each(jsonData, function (i, obj) {
 				var divData="<option value="+obj.id+">"+obj.serviceName+"</option>";
 				$(divData).appendTo('#serviceName');
 			});
