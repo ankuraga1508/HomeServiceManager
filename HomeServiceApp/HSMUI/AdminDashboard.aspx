@@ -91,8 +91,14 @@
     <div id="assignRequest">
         <form id="detailsForm">
             <div class="details-form-field">
-                <label for="reqName">RequesterId:</label>
-                <input id="reqName" name="reqName" type="text" disabled/>
+                <label for="reqesterName">Requester Name:</label>
+                <input id="reqesterName" name="reqesterName" type="text" disabled/>
+            </div>
+            <div id="hidden-fields">
+                <input id="reqestId" name="reqestId" type="hidden"/>
+                <input id="reqesterId" name="reqesterId" type="hidden"/>
+                <input id="serviceId" name="serviceId" type="hidden"/>
+                <input id="cgName" name="cgName" type="hidden"/>
             </div>
             <div class="details-form-field">
                 <label for="reqLocation">Location:</label>
@@ -114,6 +120,7 @@
                 <label for="availableCG">Assign To:</label>
                 <select id="availableCG" name="availableCG"></select>
             </div>
+            <div id="success-message"></div>
             <div class="details-form-field">
                 <button type="submit" id="assign">Assign</button>
             </div>
@@ -142,16 +149,17 @@
 				    showAvailableCG(args.item);
 				},
 				fields: [
-					{ name: "Status", type: "select", width: 20, items: adminDashboardController.status, valueField: "Value", textField: "Name" },
-					{ name: "id", type: "number", width: 5, align: "center" },
-					{ name: "RequesterId", type: "text", css: "hide", width: 0 },
-                    //{ name: "", type: "text", width: 10, align: "center" },
-					{ name: "serviceName", type: "text", width: 25, align: "center" },
-					{ name: "ScheduleDate", type: "text", width: 20, align: "center" },
-					{ name: "StartTime", type: "text", width: 15, align: "center" },
-					{ name: "EndTime", type: "text", width: 15, align: "center" },
-					{ name: "Address", type: "text", width: 30, align: "center" },
-					{ type: "control", width: 10, editButton: false, modeSwitchButton: false }
+					{ title:"Status", name: "Status", type: "select", width: 15, items: adminDashboardController.status, valueField: "Value", textField: "Name" },
+					{ title:"Request Id", name: "id", type: "number", width: 5, align: "center" },
+					{ title:"Requester Id", name: "RequesterId", type: "text", css: "hide", width: 0 },
+                    { title:"Requester", name: "RequesterName", type: "text", width: 18, align: "center" },
+					{ title:"Service", name: "serviceName", type: "text", width: 25, align: "center" },
+                    { title:"Srv Id", name: "ServiceId", type: "text", css: "hide", width: 0 },
+					{ title:"Date", name: "ScheduleDate", type: "text", width: 15, align: "center" },
+					{ title:"From", name: "StartTime", type: "text", width: 15, align: "center" },
+					{ title:"To", name: "EndTime", type: "text", width: 15, align: "center" },
+					{ title:"Location", name: "Address", type: "text", width: 20, align: "center" },
+					{ title:"", type: "control", width: 10, editButton: false, modeSwitchButton: false }
 				]
 			});
 
@@ -179,11 +187,14 @@
 			var formSubmitHandler = $.noop;
 
 			var showAvailableCG = function (request) {
-			    $("#reqName").val(request.RequesterId);
+			    $('#reqestId').val(request.id);
+			    $("#reqesterName").val(request.RequesterName);
+			    $("#reqesterId").val(request.RequesterId);
 			    $("#reqLocation").val(request.Address);
 			    $("#reqDate").val(request.ScheduleDate);
 			    $("#reqTimeFrom").val(request.StartTime);
 			    $("#reqTimeTo").val(request.EndTime);
+			    $('#serviceId').val(request.ServiceId);
 
 			    $.ajax({
 			        type: "GET",
@@ -195,6 +206,8 @@
 			            $.each(jsonData, function (i, obj) {
 			                var divData = "<option value=" + obj.idUser + ">" + obj.FirstName + " " + obj.LastName + " (" + obj.UserName + ")</option>";
 			                $(divData).appendTo('#availableCG');
+			                var fullName = obj.FirstName + " " + obj.LastName;
+			                $('#cgName').val(fullName);
 			            });
 			        }
 			    });
@@ -207,16 +220,18 @@
 			};
 
 			var assignToAvailableCG = function (request) {
-			    alert(request.id + ", " + $("#availableCG").val());
+			    //alert(request.id + ", " + $("#availableCG").val());
+			    var postData = 'id=' + $('#requestId').val() + '&RequesterId=' + $("#requesterId").val() + '&RoleId=' + sessionStorage.getItem('UserRoleId') + '&CaregiverId=' + $("#availableCG").val() + '&ServiceId=' + $('#serviceId').val() + '&Status=' + '2' + '&ScheduleDate=' + $("#reqDate").val() + '&StartTime=' + $("#reqTimeFrom").val() + '&EndTime=' + $("#reqTimeTo").val() + '&Comments=' + '' + '&ModifiedBy=' + sessionStorage.getItem('idUser');
 			    $.ajax({
                     type: "POST",
-			        url: "",
-			        data: {
-			            reqId: request.id,
-			            cgUserId: $("#availableCG").val()
-			        },
+                    url: "/api/request/postrequest",
+			        data: postData,
 			        success: function (data) {
-			            alert("Request assigned successfully");
+			            alert(data);
+			            if (data == "true") {
+			                var divData = '<div class="alert alert-success"><strong>Success! </strong>Request assigned to '+ $('#cgName').val() +'</strong></div>';
+			                $(divData).appendTo('#success-message');
+			            }
 			            $("#jsGrid").jsGrid("refresh");
 			        },
 			        error: function () {
