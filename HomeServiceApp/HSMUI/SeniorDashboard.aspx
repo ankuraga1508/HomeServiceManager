@@ -44,7 +44,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="SeniorDashboard.aspx">Home</a></li>
                     <li><a href="#">Edit Profile</a></li>
-                    <li><a href="#">Logout</a></li>
+                    <li><a href="javascript:void(0);" onclick="logout();">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -81,11 +81,7 @@
                         <div class="form-group">
                             <label for="serviceName" class="control-label">Service Type:</label>
                             <input type="text" class="form-control" id="serviceName" disabled>
-                            <input type="hidden" id="userId" />
-                            <input type="hidden" id="requesterId" />
-                            <input type="hidden" id="roleId" />
                             <input type="hidden" id="serviceId" />
-                            <input type="hidden" id="address" />
                         </div>
                         <div class="form-group">
                             <label for="reqDate" class="control-label">Date:</label>
@@ -127,6 +123,7 @@
         </div>
     </div>
     <script src="/js/seniorDashboard.js"></script>
+    <script src="js/logout.js"></script>
 </body>
 </html>
 
