@@ -127,37 +127,44 @@
 				            dataType: "json",
 				            url: "/api/request/getrequestbyfilters?caregiverid=1",
 				        }).done(function (result) {
-				            
-				            
-				            var resultJson = JSON.parse(result);
-				            
 
-				            
+				            var resultJson = JSON.parse(result);
+				             
 				            result = $.grep(resultJson, function (request) {
 				                    return (!filter.RequesterId || request.RequesterId.indexOf(filter.RequesterId) > -1)
-                                    && (!filter.FirstName || request.FirstName.indexOf(filter.FirstName) > -1)
+                                    && (!filter.RequesterName || request.RequesterName.indexOf(filter.RequesterName) > -1)
                                     && (!filter.serviceName || request.serviceName.indexOf(filter.serviceName) > -1)
                                     && (!filter.ScheduleDate || request.ScheduleDate.indexOf(filter.ScheduleDate) > -1)
                                     && (!filter.StartTime || request.StartTime.indexOf(filter.StartTime) > -1)
                                     && (!filter.EndTime || request.EndTime.indexOf(filter.EndTime) > -1)
                                     && (!filter.Address || request.Address.indexOf(filter.Address) > -1);
 				                });
-				                reqData.resolve(result);
-				            
-
-				               
-
-				            
+				                reqData.resolve(result); 
 				        })
 				        return reqData.promise();
-				    }
-				},
-				rowClick: function(args) {
+				    },
+
+				    deleteItem: function (item) {
+				        alert(item.id);
+				        var postData = "id=" + item.id + "&RequesterId=" + item.RequesterId + "&RoleId=" + item.RoleId +
+                            "&CaregiverId=" + item.CaregiverId + "&ServiceId=" + item.ServiceId + "&Status=6" +
+				            "&StartTime=" + item.StartTime + "&EndTime=" + item.EndTime + "&Comments=" + item.Comments + "&ModifiedBy=" + item.CaregiverId;
+
+			            return $.ajax({
+			            type: "POST",
+			            url: "/api/request/postrequest",
+			            data: postData,
+			            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+			            });
+			        },
+                },
+
+				rowClick: function (args) {
 				    showAssignedReq(args.item);
 				},
 				fields: [
 					{ name: "RequesterId", type: "number", width: 10 },
-					{ name: "FirstName", type: "text", width: 20 },
+					{ name: "RequesterName", type: "text", width: 20 },
 					{ name: "serviceName", type: "text", width: 25 },
 					{ name: "ScheduleDate", type: "text", width: 15 },
 					{ name: "StartTime", type: "text", width: 15 },
