@@ -121,11 +121,12 @@
 				loadShading: true,
 				controller: {
 				    loadData: function (filter) {
+				        var caregiverid = window.sessionStorage.getItem("idUser");
 				        var reqData = $.Deferred();
 				        $.ajax({
 				            type: "GET",
 				            dataType: "json",
-				            url: "/api/request/getrequestbyfilters?caregiverid=1",
+				            url: "/api/request/getrequestbyfilters?caregiverid=" + caregiverid + "&Status=2",
 				        }).done(function (result) {
 
 				            var resultJson = JSON.parse(result);
