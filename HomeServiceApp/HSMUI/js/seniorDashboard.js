@@ -47,7 +47,6 @@ $(document).ready(function(){
 	    
 	    if (serviceId != '' && serviceName != '' && reqDate != '' && reqTimeFrom != '' && reqTimeTo != '') {
 	        var postData = 'RequesterId=' + sessionStorage.getItem('idUser') + '&RoleId=' + sessionStorage.getItem('UserRoleId') + '&CaregiverId=' + '0' + '&ServiceId=' + serviceId + '&Status=' + '1' + '&ScheduleDate=' + reqDate + '&StartTime=' + reqTimeFrom + '&EndTime=' + reqTimeTo + '&Comments=' + '' + '&ModifiedBy=' + sessionStorage.getItem('idUser');
-	        alert(postData);
             
 	        $.ajax({
 	            type: "POST",

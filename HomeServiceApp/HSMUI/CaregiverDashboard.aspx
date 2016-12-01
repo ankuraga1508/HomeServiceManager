@@ -152,7 +152,7 @@
 
 				    deleteItem: function (item) {
 				        var postData = "id=" + item.id + "&RequesterId=" + item.RequesterId + "&RoleId=" + item.RoleId +
-                            "&CaregiverId=" + item.CaregiverId + "&ServiceId=" + item.ServiceId + "&Status=6" +
+                            "&CaregiverId=" + item.CaregiverId + "&ServiceId=" + item.ServiceId + "&Status=4" +
 				            "&StartTime=" + item.StartTime + "&EndTime=" + item.EndTime + "&Comments=" + item.Comments + "&ModifiedBy=" + item.CaregiverId;
 
 			            return $.ajax({
@@ -208,7 +208,7 @@
 			    var postData = 'id=' + $("#ServiceRequestId").val() + '&RequesterId=' + $("#reqId").val() + '&RoleId=' + 2 +
 '&CaregiverId=' + '1' + '&ServiceId=' + $("#ServiceId").val() + '&Status=' + '2' + '&ScheduleDate=' + $("#reqDate").val() +
 '&StartTime=' + $("#reqTimeFrom").val() + '&EndTime=' + $("#reqTimeTo").val() + '&Comments=' + 'aabbcc' + '&ModifiedBy=' + 2;
-			    //alert(postData);
+			    
 			    $.ajax({
                     type: "POST",
                     url: "/api/request/postrequest",

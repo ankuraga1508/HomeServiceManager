@@ -43,7 +43,6 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="SeniorDashboard.aspx">Home</a></li>
-                    <li><a href="#">Edit Profile</a></li>
                     <li><a href="javascript:void(0);" onclick="logout();">Logout</a></li>
                 </ul>
             </div>

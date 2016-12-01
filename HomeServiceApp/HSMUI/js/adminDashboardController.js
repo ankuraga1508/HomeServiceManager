@@ -29,12 +29,6 @@
         },
 
         deleteItem: function(deletingReq) {
-			//This part of the code will remove the item to delete from the dom
-			//alert(deletingReq.id);
-            //var reqIndex = $.inArray(deletingReq, this.requests);
-            //this.requests.splice(reqIndex, 1);
-            //end
-  
             $('#reqestId').val(deletingReq.id);
             $("#reqesterName").val(deletingReq.RequesterName);
             $("#reqesterId").val(deletingReq.RequesterId);
@@ -44,17 +38,12 @@
             $("#reqTimeTo").val(deletingReq.EndTime);
             $('#serviceId').val(deletingReq.ServiceId);
 
-            var postData = 'id=' + $('#requestId').val() + '&RequesterId=' + $("#requesterId").val() + '&RoleId=' + sessionStorage.getItem('UserRoleId') + '&CaregiverId=' + $("#availableCG").val() + '&ServiceId=' + $('#serviceId').val() + '&Status=' + '6' + '&ScheduleDate=' + $("#reqDate").val() + '&StartTime=' + $("#reqTimeFrom").val() + '&EndTime=' + $("#reqTimeTo").val() + '&Comments=' + '' + '&ModifiedBy=' + sessionStorage.getItem('idUser');
-            alert(postData);
+            var postData = 'id=' + $('#reqestId').val() + '&RequesterId=' + $("#reqesterId").val() + '&RoleId=' + sessionStorage.getItem('UserRoleId') + '&CaregiverId=' + $("#availableCG").val() + '&ServiceId=' + $('#serviceId').val() + '&Status=' + '6' + '&ScheduleDate=' + $("#reqDate").val() + '&StartTime=' + $("#reqTimeFrom").val() + '&EndTime=' + $("#reqTimeTo").val() + '&Comments=' + '' + '&ModifiedBy=' + sessionStorage.getItem('idUser');
             $.ajax({
                 type: "POST",
                 url: "/api/request/postrequest",
                 data: postData,
                 success: function (data) {
-                    alert(data);
-                    if (data == "true") {
-                        alert('')
-                    }
                     $("#jsGrid").jsGrid("refresh");
                 },
                 error: function () {
@@ -71,7 +60,7 @@
 
     adminDashboardController.status = [
 		{ Name: "Requested", Value: "1" },
-		{ Name: "Declined", Value: "2" }
+		{ Name: "Declined", Value: "4" }
     ];
 	
 }());

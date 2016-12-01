@@ -33,8 +33,6 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="AdminDashboard.aspx">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
             <li><a href="#">Logout</a></li>
           </ul>
         </div>
@@ -88,7 +86,7 @@
         <div class="form-group">
 				<label for="password" class="col-sm-4 control-label">Password</label>
 				<div class="col-sm-6">
-				  <input type="text" class="form-control" id="password" name="password" placeholder="Password" required>
+				  <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
 				</div>
 			  </div>
 			  <div class="form-group">

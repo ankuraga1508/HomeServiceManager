@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#"%>
+﻿    <%@ Page Language="C#"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -215,14 +215,12 @@
 			};
 
 			var assignToAvailableCG = function (request) {
-			    //alert(request.id + ", " + $("#availableCG").val());
-			    var postData = 'id=' + $('#requestId').val() + '&RequesterId=' + $("#requesterId").val() + '&RoleId=' + sessionStorage.getItem('UserRoleId') + '&CaregiverId=' + $("#availableCG").val() + '&ServiceId=' + $('#serviceId').val() + '&Status=' + '2' + '&ScheduleDate=' + $("#reqDate").val() + '&StartTime=' + $("#reqTimeFrom").val() + '&EndTime=' + $("#reqTimeTo").val() + '&Comments=' + '' + '&ModifiedBy=' + sessionStorage.getItem('idUser');
+			    var postData = 'id=' + request.id + '&RequesterId=' + $("#reqesterId").val() + '&RoleId=' + sessionStorage.getItem('UserRoleId') + '&CaregiverId=' + $("#availableCG").val() + '&ServiceId=' + $('#serviceId').val() + '&Status=' + '2' + '&ScheduleDate=' + $("#reqDate").val() + '&StartTime=' + $("#reqTimeFrom").val() + '&EndTime=' + $("#reqTimeTo").val() + '&Comments=' + '' + '&ModifiedBy=' + sessionStorage.getItem('idUser');
 			    $.ajax({
                     type: "POST",
                     url: "/api/request/postrequest",
 			        data: postData,
 			        success: function (data) {
-			            alert(data);
 			            if (data == "true") {
 			                var divData = '<div class="alert alert-success"><strong>Success! </strong>Request assigned to '+ $('#cgName').val() +'</strong></div>';
 			                $(divData).appendTo('#success-message');

@@ -42,16 +42,16 @@ $(document).ready(function () {
         "&LoginPassword=" + password + "&UserMobile=" + contactNum + "&Address=" + addressLine1 +
         "&Sex=" + sex + "&UserRoleId=" + "1" + "&CreatedBy=" + "1" + "&ModifiedBy=" + "1" + "&IsActive=" + "1" + "&ModifiedOn=" + ModifiedOn +
         "&_idUser=" + "" + "&UserEmail=" + "" + "&UserSSN=" + "" + "&LoginID=" + "";
-      alert(postData);
+      
 			$.ajax({
 				type: "POST",
 				url: "/api/user/PostAddUser",
 				data: postData,
 				contentType: "application/x-www-form-urlencoded; charset=utf-8",
 				success: function (result) {
-				    alert(result + " result");
+				    
 					if (result) {
-					    alert('success');
+					    
 					    window.location = "Default.aspx";
 					}
 				},
