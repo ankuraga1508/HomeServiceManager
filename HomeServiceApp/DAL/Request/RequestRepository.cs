@@ -97,7 +97,8 @@ namespace HSM.DAL
                                     Address = dr["Address"].ToString(),
                                     serviceName = dr["serviceName"].ToString(),
                                     FirstName = dr["FirstName"].ToString(),
-                                    LastName = dr["LastName"].ToString()
+                                    LastName = dr["LastName"].ToString(),
+                                    RequesterName = dr["FirstName"].ToString() +" "+ dr["LastName"].ToString()
 
                                 });
                             }
