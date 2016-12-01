@@ -137,18 +137,20 @@
 				loadMessage: "Fetching Active Requests...",
 				loadShading: true,
 				controller: adminDashboardController,
+				colNames: ['Status', 'Request Id', 'Requester Id', 'Service', 'Request Date', 'Start Time', 'End Time', 'Location'],
 				rowClick: function(args) {
 				    showAvailableCG(args.item);
 				},
 				fields: [
 					{ name: "Status", type: "select", width: 20, items: adminDashboardController.status, valueField: "Value", textField: "Name" },
-					{ name: "id", type: "number", width: 10 },
-					{ name: "RequesterId", type: "text", width: 20 },
-					{ name: "serviceName", type: "text", width: 25 },
-					{ name: "ScheduleDate", type: "text", width: 15 },
-					{ name: "StartTime", type: "text", width: 15 },
-					{ name: "EndTime", type: "text", width: 15 },
-					{ name: "Address", type: "text", width: 30 },
+					{ name: "id", type: "number", width: 5, align: "center" },
+					{ name: "RequesterId", type: "text", css: "hide", width: 0 },
+                    //{ name: "", type: "text", width: 10, align: "center" },
+					{ name: "serviceName", type: "text", width: 25, align: "center" },
+					{ name: "ScheduleDate", type: "text", width: 20, align: "center" },
+					{ name: "StartTime", type: "text", width: 15, align: "center" },
+					{ name: "EndTime", type: "text", width: 15, align: "center" },
+					{ name: "Address", type: "text", width: 30, align: "center" },
 					{ type: "control", width: 10, editButton: false, modeSwitchButton: false }
 				]
 			});
