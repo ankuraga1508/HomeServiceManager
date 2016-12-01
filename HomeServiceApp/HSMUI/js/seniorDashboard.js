@@ -16,7 +16,7 @@ $(document).ready(function(){
 		        var class4 = "panel-body";
 		        var divData = '<div class=' + class1 + ' style=' + style1 + '><div class=' + class2
                     + '><h3 class=' + class3 + ' style=' + style2 + '>' + obj.serviceName
-                    + '<button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#schSrvModal" data-whatever=' + obj.name + ' data-svcId=' + obj.id + '>Click Here to Schedule Service</button></h3></div><div class='
+                    + '<button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#schSrvModal" data-whatever=' + obj.serviceName + ',' + obj.id +'>Click Here to Schedule Service</button></h3></div><div class='
 					+ class4 + '>' + obj.serviceDesc + '</div></div>';
 		        $(divData).appendTo('#servicesDiv');
 		    }
@@ -26,11 +26,11 @@ $(document).ready(function(){
 	$('#schSrvModal').on('show.bs.modal', function (event) {
 	    var button = $(event.relatedTarget);
 	    var serviceType = button.data('whatever');
-	    var serviceId = button.data('svcId');
+	    
 	    var modal = $(this);
 	    modal.find('.modal-title').text('New Request: ' + serviceType);
 	    modal.find('.modal-body input').val(serviceType);
-	    modal.find('.modal-body input').val(serviceId);
+	    
 	})
 
 	$('#submitSchedule').click(function () {
