@@ -53,7 +53,6 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Profile</a></li>
             <li><a href="javascript:void(0);" onclick="logout();">Logout</a></li>
           </ul>
         </div>
@@ -152,7 +151,6 @@
 				    },
 
 				    deleteItem: function (item) {
-				        
 				        var postData = "id=" + item.id + "&RequesterId=" + item.RequesterId + "&RoleId=" + item.RoleId +
                             "&CaregiverId=" + item.CaregiverId + "&ServiceId=" + item.ServiceId + "&Status=6" +
 				            "&StartTime=" + item.StartTime + "&EndTime=" + item.EndTime + "&Comments=" + item.Comments + "&ModifiedBy=" + item.CaregiverId;
@@ -192,22 +190,6 @@
 			    }
 			});
 
-            /*
-			$("#detailsForm").validate({
-			    rules: {
-			        availableCG: "required"
-			    },
-			    messages: {
-			        availableCG: "Please assign the request to an available caregiver"
-			    },
-			    submitHandler: function () {
-			        formSubmitHandler();
-			    }
-			});
-            */
-
-			//var formSubmitHandler = $.noop;
-
 			var showAssignedReq = function (request) {
 			    $("#reqId").val(request.RequesterId);
 			    $("#reqName").val(request.RequesterName);
@@ -217,10 +199,6 @@
 			    $("#reqTimeTo").val(request.EndTime);
 			    $("#ServiceRequestId").val(request.id);
 			    $("#ServiceId").val(request.ServiceId);
-
-			    //formSubmitHandler = function () {
-			    //    respondToRequest(request);
-			    //};
 
 			    $("#assignedRequests").dialog("open");
 			};
