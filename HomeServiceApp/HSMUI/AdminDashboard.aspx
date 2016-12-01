@@ -75,11 +75,6 @@
 					<li><a href="AddCaregiver.aspx">Add Caregiver</a></li>
 					<li><a href="ManageCaregiver.aspx">Manage Caregiver</a></li>
 				</ul>
-				<ul class="nav nav-sidebar">
-					<li><a href="#">Reports</a></li>
-					<li><a href="#">Analytics</a></li>
-					<li><a href="#">Export</a></li>
-				</ul>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h1 class="page-header" >Active Requests</h1>

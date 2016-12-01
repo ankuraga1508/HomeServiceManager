@@ -53,7 +53,6 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Profile</a></li>
             <li><a href="javascript:void(0);" onclick="logout();">Logout</a></li>
           </ul>
         </div>
@@ -76,6 +75,8 @@
     <div id="assignedRequests">
         <form id="detailsForm">
             <div class="details-form-field">
+                <input type="hidden" id="ServiceRequestId" />
+                <input type="hidden" id="ServiceId" />
                 <label for="reqName">Requester Name:</label>
                 <input id="reqName" name="reqName" type="text" disabled/>
                 <input type="hidden" id="reqId" />
@@ -96,6 +97,7 @@
                 <label for="reqTimeTo">To:</label>
                 <input id="reqTimeTo" name="reqTimeTo" type="text" disabled />
             </div>
+           
             <div class="col-sm-offset-4">
                 <button type="submit" id="accept">Accept</button>
                 <button type="submit" id="complete">Complete</button>
@@ -121,20 +123,21 @@
 				loadShading: true,
 				controller: {
 				    loadData: function (filter) {
+				        var caregiverid = window.sessionStorage.getItem("idUser");
 				        var reqData = $.Deferred();
 				        $.ajax({
 				            type: "GET",
 				            dataType: "json",
-				            url: "/api/request/getrequestbyfilters?caregiverid=1",
+				            url: "/api/request/getrequestbyfilters?caregiverid=" + caregiverid + "&Status=2",
 				        }).done(function (result) {
-				            
-				            
-				            var resultJson = JSON.parse(result);
-				            
 
-				            
+				            var resultJson = JSON.parse(result);
+				             
 				            result = $.grep(resultJson, function (request) {
-				                    return (!filter.RequesterId || request.RequesterId.indexOf(filter.RequesterId) > -1)
+				                return (!filter.RequesterId || request.RequesterId.indexOf(filter.RequesterId) > -1)
+                                    && (!filter.RequesterName || request.RequesterName.indexOf(filter.RequesterName) > -1)
+                                    && (!filter.id || request.id.indexOf(filter.id) > -1)
+                                    && (!filter.ServiceId || request.ServiceId.indexOf(filter.ServiceId) > -1)
                                     && (!filter.FirstName || request.FirstName.indexOf(filter.FirstName) > -1)
                                     && (!filter.serviceName || request.serviceName.indexOf(filter.serviceName) > -1)
                                     && (!filter.ScheduleDate || request.ScheduleDate.indexOf(filter.ScheduleDate) > -1)
@@ -142,27 +145,38 @@
                                     && (!filter.EndTime || request.EndTime.indexOf(filter.EndTime) > -1)
                                     && (!filter.Address || request.Address.indexOf(filter.Address) > -1);
 				                });
-				                reqData.resolve(result);
-				            
-
-				               
-
-				            
+				                reqData.resolve(result); 
 				        })
 				        return reqData.promise();
-				    }
-				},
-				rowClick: function(args) {
+				    },
+
+				    deleteItem: function (item) {
+				        var postData = "id=" + item.id + "&RequesterId=" + item.RequesterId + "&RoleId=" + item.RoleId +
+                            "&CaregiverId=" + item.CaregiverId + "&ServiceId=" + item.ServiceId + "&Status=6" +
+				            "&StartTime=" + item.StartTime + "&EndTime=" + item.EndTime + "&Comments=" + item.Comments + "&ModifiedBy=" + item.CaregiverId;
+
+			            return $.ajax({
+			            type: "POST",
+			            url: "/api/request/postrequest",
+			            data: postData,
+			            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+			            });
+			        },
+                },
+
+				rowClick: function (args) {
 				    showAssignedReq(args.item);
 				},
 				fields: [
-					{ name: "RequesterId", type: "number", width: 10 },
-					{ name: "FirstName", type: "text", width: 20 },
-					{ name: "serviceName", type: "text", width: 25 },
-					{ name: "ScheduleDate", type: "text", width: 15 },
-					{ name: "StartTime", type: "text", width: 15 },
-					{ name: "EndTime", type: "text", width: 15 },
-					{ name: "Address", type: "text", width: 30 },
+                    { title:"Id", name: "id", type: "number", width: 3, align: "center" },
+                    { title: "Service Id", name: "ServiceId", type: "number", width: 0, align: "center", css: "hide" },
+					{ title: "Requester Id", name: "RequesterId", type: "number", width: 10, align: "center" },
+					{ title: "Requester Name", name: "RequesterName", type: "text", width: 25, align: "center" },
+					{ title: "Service Name", name: "serviceName", type: "text", width: 25, align: "center" },
+					{ title: "Schedule Date", name: "ScheduleDate", type: "text", width: 20, align: "center" },
+					{ title: "Start Time", name: "StartTime", type: "text", width: 15, align: "center" },
+					{ title: "End Time", name: "EndTime", type: "text", width: 15, align: "center" },
+					{ title: "Address", name: "Address", type: "text", width: 30, align: "center" },
 					{ type: "control", width: 10, editButton: false, modeSwitchButton: false }
 				]
 			});
@@ -176,44 +190,31 @@
 			    }
 			});
 
-            /*
-			$("#detailsForm").validate({
-			    rules: {
-			        availableCG: "required"
-			    },
-			    messages: {
-			        availableCG: "Please assign the request to an available caregiver"
-			    },
-			    submitHandler: function () {
-			        formSubmitHandler();
-			    }
-			});
-            */
-
-			//var formSubmitHandler = $.noop;
-
 			var showAssignedReq = function (request) {
-			    $("#reqId").val(request.RequestId);
-			    $("#reqName").val(request.Name);
-			    $("#reqLocation").val(request.Location);
-			    $("#reqDate").val(request.Date);
-			    $("#reqTimeFrom").val(request.From);
-			    $("#reqTimeTo").val(request.To);
-
-			    //formSubmitHandler = function () {
-			    //    respondToRequest(request);
-			    //};
+			    $("#reqId").val(request.RequesterId);
+			    $("#reqName").val(request.RequesterName);
+			    $("#reqLocation").val(request.Address);
+			    $("#reqDate").val(request.ScheduleDate);
+			    $("#reqTimeFrom").val(request.StartTime);
+			    $("#reqTimeTo").val(request.EndTime);
+			    $("#ServiceRequestId").val(request.id);
+			    $("#ServiceId").val(request.ServiceId);
 
 			    $("#assignedRequests").dialog("open");
 			};
 
 			var respondToRequest = function (request) {
-			    alert(request.RequestId);
+			    
+			    var postData = 'id=' + $("#ServiceRequestId").val() + '&RequesterId=' + $("#reqId").val() + '&RoleId=' + 2 +
+'&CaregiverId=' + '1' + '&ServiceId=' + $("#ServiceId").val() + '&Status=' + '2' + '&ScheduleDate=' + $("#reqDate").val() +
+'&StartTime=' + $("#reqTimeFrom").val() + '&EndTime=' + $("#reqTimeTo").val() + '&Comments=' + 'aabbcc' + '&ModifiedBy=' + 2;
+			    //alert(postData);
 			    $.ajax({
                     type: "POST",
-			        url: "",
+                    url: "/api/request/postrequest",
+                    data: postData,
 			        success: function (data) {
-			            if (data == 'true') {
+			            if (data != 'null') {
 			                alert("Request accepted successfully");
 			                $("#jsGrid").jsGrid("refresh");
 			            } else {
@@ -229,10 +230,14 @@
 			};
 
 			var closeRequest = function (request) {
-			    alert(request.RequestId);
+			    var postData = 'id=' + $("#ServiceRequestId").val() + '&RequesterId=' + $("#reqId").val() + '&RoleId=' + 2 +
+'&CaregiverId=' + '1' + '&ServiceId=' + $("#ServiceId").val() + '&Status=' + '3' + '&ScheduleDate=' + $("#reqDate").val() +
+'&StartTime=' + $("#reqTimeFrom").val() + '&EndTime=' + $("#reqTimeTo").val() + '&Comments=' + 'aabbcc' + '&ModifiedBy=' + 2;
+			    //alert(postData);
 			    $.ajax({
 			        type: "POST",
-			        url: "",
+			        url: "/api/request/postrequest",
+			        data: postData,
 			        success: function (data) {
 			            alert("Request closed successfully");
 			            $("#jsGrid").jsGrid("refresh");

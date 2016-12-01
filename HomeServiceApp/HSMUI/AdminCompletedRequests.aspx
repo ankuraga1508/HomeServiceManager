@@ -51,7 +51,6 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="AdminDashboard.aspx">Dashboard</a></li>
-            <li><a href="#">Profile</a></li>
             <li><a href="Default.aspx">Logout</a></li>
           </ul>
         </div>
@@ -72,12 +71,7 @@
 				</ul>
 				<ul class="nav nav-sidebar">
 					<li><a href="AddCaregiver.aspx">Add Caregiver</a></li>
-					<li><a href="">Manage Caregiver</a></li>
-				</ul>
-				<ul class="nav nav-sidebar">
-					<li><a href="#">Reports</a></li>
-					<li><a href="#">Analytics</a></li>
-					<li><a href="#">Export</a></li>
+					<li><a href="ManageCaregiver.aspx">Manage Caregiver</a></li>
 				</ul>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
