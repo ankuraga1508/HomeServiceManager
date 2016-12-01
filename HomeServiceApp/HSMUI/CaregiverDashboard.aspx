@@ -172,13 +172,13 @@
 				fields: [
                     { title:"Id", name: "id", type: "number", width: 3, align: "center" },
                     { title: "Service Id", name: "ServiceId", type: "number", width: 0, align: "center", css: "hide" },
-					{ title: "Requester Id", name: "RequesterId", type: "number", width: 10 },
-					{ title: "Requester Name", name: "RequesterName", type: "text", width: 25 },
-					{ title: "Service Name", name: "serviceName", type: "text", width: 25 },
-					{ title: "Schedule Date", name: "ScheduleDate", type: "text", width: 20 },
-					{ title: "Start Time", name: "StartTime", type: "text", width: 15 },
-					{ title: "End Time", name: "EndTime", type: "text", width: 15 },
-					{ title: "Address", name: "Address", type: "text", width: 30 },
+					{ title: "Requester Id", name: "RequesterId", type: "number", width: 10, align: "center" },
+					{ title: "Requester Name", name: "RequesterName", type: "text", width: 25, align: "center" },
+					{ title: "Service Name", name: "serviceName", type: "text", width: 25, align: "center" },
+					{ title: "Schedule Date", name: "ScheduleDate", type: "text", width: 20, align: "center" },
+					{ title: "Start Time", name: "StartTime", type: "text", width: 15, align: "center" },
+					{ title: "End Time", name: "EndTime", type: "text", width: 15, align: "center" },
+					{ title: "Address", name: "Address", type: "text", width: 30, align: "center" },
 					{ type: "control", width: 10, editButton: false, modeSwitchButton: false }
 				]
 			});
