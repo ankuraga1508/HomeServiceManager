@@ -1,7 +1,9 @@
--- MySQL dump 10.16  Distrib 10.1.13-MariaDB, for Win32 (AMD64)
+CREATE DATABASE  IF NOT EXISTS `home_service_db` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `home_service_db`;
+-- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 --
--- Host: localhost    Database: home_service_db
--- -------------------------------------------------------
+-- Host: 127.0.0.1    Database: home_service_db
+-- ------------------------------------------------------
 -- Server version	5.7.14-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -163,6 +165,484 @@ LOCK TABLES `user_role` WRITE;
 INSERT INTO `user_role` VALUES (1,'user',''),(2,'caregiver',''),(3,'admin','');
 /*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'home_service_db'
+--
+
+--
+-- Dumping routines for database 'home_service_db'
+--
+/*!50003 DROP FUNCTION IF EXISTS `SPLIT_STR` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `SPLIT_STR`(
+  x VARCHAR(255),
+  delim VARCHAR(12),
+  pos INT
+) RETURNS varchar(255) CHARSET latin1
+RETURN REPLACE(SUBSTRING(SUBSTRING_INDEX(x, delim, pos),
+       LENGTH(SUBSTRING_INDEX(x, delim, pos -1)) + 1),
+       delim, '') ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `SPLIT_STRING` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `SPLIT_STRING`( s VARCHAR(1024) , del CHAR(1) , i INT) RETURNS varchar(1024) CHARSET latin1
+    DETERMINISTIC
+BEGIN
+
+        DECLARE n INT ;
+
+        
+        SET n = LENGTH(s) - LENGTH(REPLACE(s, del, '')) + 1;
+
+        IF i > n THEN
+            RETURN NULL ;
+        ELSE
+            RETURN SUBSTRING_INDEX(SUBSTRING_INDEX(s, del, i) , del , -1 ) ;        
+        END IF;
+
+    END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `SPLIT_STRR` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `SPLIT_STRR`(
+  x VARCHAR(255),
+  delim VARCHAR(12),
+  pos INT
+) RETURNS varchar(255) CHARSET latin1
+RETURN REPLACE(SUBSTRING(SUBSTRING_INDEX(x, delim, pos),
+       LENGTH(SUBSTRING_INDEX(x, delim, pos -1)) + 1),
+       delim, '') ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `addservice` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `addservice`(
+ in _id int(11) ,
+ in serviceName varchar(45)  ,
+ in servicesDesc varchar(500) ,
+ in IsActive bit
+)
+BEGIN
+	IF (_id IS NULL) THEN
+		INSERT INTO home_service_db.services (
+			ServiceName
+			,ServicesDesc
+			,IsActive
+			)
+		VALUES (
+			serviceName
+			,servicesDesc
+			,IsActive
+			);
+	ELSE
+		UPDATE home_service_db.services
+		SET ServiceName = serviceName
+			,ServicesDesc = servicesDesc
+			,IsActive = IsActive
+		WHERE id = _id;
+		END
+
+	IF ;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `getallservices` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getallservices`()
+BEGIN
+	SELECT *
+	FROM home_service_db.services;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `getalluser` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getalluser`(
+_UserRoleId int(11)
+)
+BEGIN
+	SELECT 
+    idUser ,
+	UserName ,
+	UserEmail ,
+	UserMobile ,
+	UserSSN ,
+	CreatedOn ,
+	CreatedBy ,
+	ModifiedOn ,
+	ModifiedBy ,
+	LoginId ,
+	LoginPassword ,
+    IsActive,
+    Address ,
+    FirstName , 
+    LastName ,
+    Sex
+	FROM home_service_db.user
+    WHERE UserRoleId= _UserRoleId OR _UserRoleId = -1;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `getrequestbyfilters` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getrequestbyfilters`(
+ in _CaregiverId int ,
+ in _requesterId int ,
+ in _status varchar(20)
+)
+BEGIN
+	SELECT u.FirstName, u.LastName, sv.servicename, u.address, s.id, s.RequesterId, s.RoleId, 
+    s.CaregiverId, s.ServiceId ,s.Status, s.ScheduleDate, 
+    s.StartTime, 
+    s.EndTime, s.Comments, s.ModifiedBy, s.ModifiedOn
+	FROM home_service_db.service_request s
+    inner join services sv on sv.id = s.serviceid
+    inner join user u on u.idUser = s.RequesterId
+	WHERE (s.CaregiverId = _CaregiverId OR _CaregiverId = -1)
+    AND (s.RequesterId = _requesterId OR _requesterId = -1)
+
+	AND (s.Status = _status OR _status = '');
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `getuserbyid` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getuserbyid`(
+ idUser int(11)
+)
+BEGIN
+	SELECT 
+    idUser,
+	UserName ,
+	UserEmail ,
+	UserMobile ,
+	UserRoleId ,
+	UserSSN ,
+	CreatedOn ,
+	CreatedBy ,
+	ModifiedOn ,
+	ModifiedBy ,
+	LoginId ,
+	LoginPassword ,
+    IsActive, 
+    Address,
+    FirstName,
+    LastName,
+    Sex
+	FROM home_service_db.user
+	WHERE idUser = idUser;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `getuserbyusername` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getuserbyusername`(
+ _UserName varchar(45)
+)
+BEGIN
+	SELECT *
+	FROM home_service_db.user
+	WHERE UserName = _UserName;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `insertorupdate_user` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertorupdate_user`(
+ in _idUser int(11) ,
+ in UserName varchar(45)  ,
+ in UserEmail varchar(45)  ,
+ in UserMobile varchar(20)  ,
+ in UserRoleId int(11)  ,
+ in UserSSN varchar(10)  ,
+ in CreatedBy int(11)  ,
+ in ModifiedOn datetime  ,
+ in ModifiedBy int(11)  ,
+ in LoginId varchar(45)  ,
+ in LoginPassword varchar(200) ,
+ in IsActive bit,
+ in Address varchar(200)  ,
+ in FirstName varchar(45)  ,
+ in LastName varchar(45)  ,
+ in Sex varchar(45) 
+)
+BEGIN
+
+
+	IF (_idUser IS NULL OR _idUser = 0) THEN
+		INSERT INTO home_service_db.user (
+			UserName
+			,UserEmail
+			,UserMobile
+			,UserRoleId
+			,UserSSN
+			,CreatedOn
+			,CreatedBy
+			,ModifiedOn
+			,ModifiedBy
+			,LoginId
+			,LoginPassword
+			,IsActive
+            ,Address
+            ,FirstName
+            ,LastName
+            ,Sex
+			)
+		VALUES (
+			UserName
+			,UserEmail
+			,UserMobile
+			,UserRoleId
+			,UserSSN
+			,now()
+			,CreatedBy
+			,ModifiedOn
+			,ModifiedBy
+			,LoginId
+			,LoginPassword
+			,IsActive
+            ,Address
+            ,FirstName
+            ,LastName
+            ,Sex
+			);
+	ELSE
+		UPDATE home_service_db.user
+		SET UserName = UserName
+			,UserEmail = UserEmail
+			,UserMobile = UserMobile
+			,UserRoleId = UserRoleId
+			,UserSSN = UserSSN
+			,CreatedBy = CreatedBy
+			,ModifiedOn = now()
+			,ModifiedBy = ModifiedBy
+			,LoginId = LoginId
+			,LoginPassword = LoginPassword
+			,IsActive = IsActive
+            ,Address = Address
+            ,FirstName = FirstName
+            ,LastName = LastName
+            ,Sex = Sex
+		WHERE idUser = _idUser;
+		END
+
+	IF ;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `insert_update_request` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_update_request`(
+ in _id int(11) ,
+ in RoleId int(11),
+ in RequesterId int(11)  ,
+ in CaregiverId int(11) ,
+ in ServiceId int(11) ,
+ in Status int(11)  ,
+ in ScheduleDate varchar(20)  ,
+ in StartTime varchar(10)  ,
+in EndTime varchar(10)  ,
+ in Comments varchar(200)  ,
+ in ModifiedBy int 
+)
+BEGIN
+	IF (_id = 0 OR _id IS NULL) THEN
+		INSERT INTO home_service_db.service_request (
+			RequesterId
+            ,RoleId
+			,CaregiverId
+			,ServiceId
+			,Status
+            ,ScheduleDate
+			,StartTime
+			,EndTime
+			,Comments
+            ,CreatedOn
+			,ModifiedOn
+			,ModifiedBy
+			)
+		VALUES (
+			RequesterId
+            ,RoleId
+			,CaregiverId
+			,ServiceId
+			,Status
+			,ScheduleDate
+			,StartTime
+			,EndTime
+			,Comments
+            ,now()
+			,now()
+			,ModifiedBy
+			);
+	ELSE
+		UPDATE home_service_db.service_request
+		SET RequesterId = RequesterId
+			,RoleId = RoleId
+			,CaregiverId = CaregiverId
+			,ServiceId = ServiceId
+			,Status = Status
+            ,ScheduleDate = ScheduleDate
+			,StartTime = StartTime
+			,EndTime = EndTime
+			,Comments = Comments
+			,ModifiedOn = now()
+			,ModifiedBy = ModifiedBy
+		WHERE id = _id;
+		END
+
+	IF ;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `userlogin` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `userlogin`(_username varchar(45), _password varchar(200))
+BEGIN
+SELECT *
+	FROM home_service_db.user
+    WHERE UserName = _username AND LoginPassword = _password;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -173,4 +653,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-12-07  2:49:48
+-- Dump completed on 2016-12-07 17:23:32
