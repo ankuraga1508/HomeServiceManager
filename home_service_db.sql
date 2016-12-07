@@ -1,7 +1,7 @@
 -- MySQL dump 10.16  Distrib 10.1.13-MariaDB, for Win32 (AMD64)
 --
 -- Host: localhost    Database: home_service_db
--- ------------------------------------------------------
+-- -------------------------------------------------------
 -- Server version	5.7.14-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
