@@ -18,7 +18,10 @@ $(document).ready(function(){
                     + '><h3 class=' + class3 + ' style=' + style2 + '>' + obj.serviceName
                     + '<button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#schSrvModal" data-whatever="' + obj.serviceName + ',' + obj.id +'">Click Here to Schedule Service</button></h3></div><div class='
 					+ class4 + '>' + obj.serviceDesc + '</div></div>';
-		        $(divData).appendTo('#servicesDiv');
+		        
+		        if (obj.serviceStatus && obj.serviceStatus == 1) {
+		            $(divData).appendTo('#servicesDiv');
+		        }
 		    }
 		}
 	});
@@ -53,9 +56,11 @@ $(document).ready(function(){
 	            url: "/api/request/postrequest",
 	            data: postData,
 	            success: function (result) {
-	               if (result == "true") {
+	                if (result == "true") {
+                    /*
 	                   var divData = '<div class="alert alert-success"><strong>Success! </strong>Request submitted successfully</strong></div>';
 	                   $(divData).appendTo('#success-message');
+                    */
 	               }
 	            },
 	            error: function (msg) {

@@ -5,6 +5,9 @@ $(document).ready(function () {
 		var serviceDesc = $("#serviceDesc").val().trim();
 		var serviceStatus = $("input:radio[name=serviceStatus]:checked").val();
 		
+		if (serviceName != '' && serviceName.includes(",")) {
+		    serviceName = serviceName.replace(",", "");
+		}
 		if (serviceName == '') {
 			$("#serviceName").css("border","2px solid red");
 			$("#serviceName").css("box-shadow","0 0 3px red");
@@ -15,19 +18,15 @@ $(document).ready(function () {
 		} 
 		if (serviceName != '' && serviceDesc != '' && serviceStatus!='') {
 
-		    var postData = new Object();
-
-		    postData.serviceName = serviceName;
-		    postData.serviceDec = serviceDesc;
-		    postData.serviceStatus = serviceStatus;
-
-			
+		    var postData = "serviceName=" + serviceName + "&serviceDesc=" + serviceDesc + "&serviceStatus=" + serviceStatus;
+		    
 			$.ajax({
 				type: "POST",
 				url: "/api/service/addservice",
 				data: postData,
-				contentType: "application/json; charset=utf-8",
+				//contentType: "application/json; charset=utf-8",
 				success: function (result) {
+				    
 					if (result) {
 					    location.reload();
 					    //window.location = "AdminDashboard.aspx";

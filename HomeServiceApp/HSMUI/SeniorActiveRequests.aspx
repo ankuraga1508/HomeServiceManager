@@ -3,6 +3,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="js/signinCheck.js"></script>
+    <script>
+        if (redirectHandler(sessionStorage && sessionStorage.getItem('idUser') && sessionStorage.getItem('UserRoleId') == 1, 'Default.aspx'));
+    </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,7 +47,7 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="SeniorDashboard.aspx">Home</a></li>
-                    <li><a href="Default.aspx">Logout</a></li>
+                    <li><a href="javascript:void(0);" onclick="logout();">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -81,10 +85,8 @@
             </div>
         </div>
     </div>
-
-    
-    
     <script src="/js/seniorActiveRequests.js"></script>
+    <script src="js/logout.js"></script>
 </body>
 </html>
 

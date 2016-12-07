@@ -1,7 +1,8 @@
 ﻿
 function logout() {
-    if (sessionStorage && sessionStorage.getItem('UserId')) {
-	    sessionStorage.removeItem('UserId');
+    if (sessionStorage && sessionStorage.getItem('idUser')) {
+        sessionStorage.removeItem('idUser');
+        sessionStorage.clear();
 	}
 	window.location = "Default.aspx";
 }

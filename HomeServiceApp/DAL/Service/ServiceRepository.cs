@@ -27,7 +27,10 @@ namespace HSM.DAL
                         con.Open();
                         cmd.Connection = con;
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("_id", id);
+                        if(id==0)
+                            cmd.Parameters.AddWithValue("_id", null);
+                        else
+                            cmd.Parameters.AddWithValue("_id", id);
                         cmd.Parameters.AddWithValue("serviceName", serviceName);
                         cmd.Parameters.AddWithValue("servicesDesc", serviceDesc);
                         cmd.Parameters.AddWithValue("IsActive", serviceStatus);

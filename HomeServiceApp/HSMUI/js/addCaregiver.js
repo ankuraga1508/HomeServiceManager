@@ -31,10 +31,10 @@ $(document).ready(function () {
             postData.FirstName = firstName;
             postData.LastName = lastName;
             postData.LoginPassword = password;
-            postData.IsActive = 1;
-            postData.CreatedBy = 23;//UserId;
-            postData.ModifiedBy = 23;//UserId;
-            postData.UserRoleId = 2;
+            postData.IsActive = 1;//Active by default
+            postData.CreatedBy = UserId;
+            postData.ModifiedBy = UserId;
+            postData.UserRoleId = 2;//Role id of caregiver
        
             $.ajax({
                 type: "POST",

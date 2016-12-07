@@ -3,6 +3,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="js/signinCheck.js"></script>
+    <script>
+        if (redirectHandler(sessionStorage && sessionStorage.getItem('idUser') && sessionStorage.getItem('UserRoleId') == 3, 'Default.aspx'));
+    </script>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,7 +52,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Home Service Manager</a>
+          <a class="navbar-brand" href="AdminDashboard.aspx">Home Service Manager</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -115,7 +119,7 @@
                 <label for="availableCG">Assign To:</label>
                 <select id="availableCG" name="availableCG"></select>
             </div>
-            <div id="success-message"></div>
+            <!-- <div id="success-message"></div> -->
             <div class="details-form-field">
                 <button type="submit" id="assign">Assign</button>
             </div>
@@ -221,11 +225,12 @@
                     url: "/api/request/postrequest",
 			        data: postData,
 			        success: function (data) {
-			            
+			            /*
 			            if (data == "true") {
 			                var divData = '<div class="alert alert-success"><strong>Success! </strong>Request assigned to '+ $('#cgName').val() +'</strong></div>';
 			                $(divData).appendTo('#success-message');
 			            }
+                        */
 			            $("#jsGrid").jsGrid("refresh");
 			        },
 			        error: function () {

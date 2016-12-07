@@ -3,6 +3,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="js/signinCheck.js"></script>
+    <script>
+        if (redirectHandler(sessionStorage && sessionStorage.getItem('idUser') && sessionStorage.getItem('UserRoleId') == 1, 'Default.aspx'));
+    </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,7 +42,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Home Service Manager</a>
+                <a class="navbar-brand" href="SeniorDashboard.aspx">Home Service Manager</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -109,12 +113,10 @@
                             var maxDate = yyyy + 2 + '-' + mm + '-' + dd;
                             document.getElementById("reqDate").setAttribute("max", maxDate);
                         </script>
-                        <div id="success-message">
-                            
-                        </div>
+                        <!-- <div id="success-message"></div> -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-success" id="submitSchedule">Submit</button>
+                            <button type="button" class="btn btn-success" data-dismiss="modal" id="submitSchedule">Submit</button>
                         </div>
                     </form>
                 </div>

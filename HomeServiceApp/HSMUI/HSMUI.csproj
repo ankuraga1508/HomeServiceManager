@@ -211,11 +211,13 @@
     <Content Include="css\registration.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="js\logout.js" />
+    <Content Include="js\manageCaregiver.js" />
     <Content Include="js\scheduleServiceModal.js" />
     <Content Include="js\seniorCompletedRequests.js" />
     <Content Include="js\seniorRejectedRequests.js" />
     <Content Include="js\seniorActiveRequests.js" />
     <Content Include="js\seniorDashboard.js" />
+    <Content Include="js\signinCheck.js" />
     <Content Include="ManageCaregiver.aspx" />
     <Content Include="SeniorCompletedRequests.aspx" />
     <Content Include="SeniorRejectedRequests.aspx" />
@@ -251,7 +253,6 @@
     <Content Include="js\jsgrid.validation.js" />
     <Content Include="Registration.aspx" />
     <Content Include="CaregiverDashboard.aspx" />
-    <Content Include="RequestService.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="AdminDashboard.aspx" />
     <Content Include="AddService.aspx" />
