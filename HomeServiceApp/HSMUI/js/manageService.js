@@ -1,7 +1,6 @@
-
 $(document).ready(function () {
     var select = document.getElementById("serviceName");
-    //Getting data from backend
+    //Getting current service data from backend and populating the values on the page.
     $.ajax({
         type: "GET",
         url: "api/service/services",
@@ -16,7 +15,6 @@ $(document).ready(function () {
             var selValue = select.options[select.selectedIndex].value;
             $.each(jsonData, function (i, obj) {
                 if (obj.id == selValue) {
-                    //alert(obj.FirstName + " " + obj.LastName + " " + obj.LoginPassword);
                     $('#svcId').val(obj.id);
                     $('#serviceNameTxt').val(obj.serviceName);
                     $('#serviceDesc').val(obj.serviceDesc);
@@ -32,7 +30,6 @@ $(document).ready(function () {
                 var selValue = select.options[select.selectedIndex].value;
                 $.each(jsonData, function (i, obj) {
                     if (obj.id == selValue) {
-                        //alert(obj.FirstName + " " + obj.LastName + " " + obj.LoginPassword);
                         $('#svcId').val(obj.id);
                         $('#serviceNameTxt').val(obj.serviceName);
                         $('#serviceDesc').val(obj.serviceDesc);
@@ -47,10 +44,8 @@ $(document).ready(function () {
         }
     });
 
-
-    //Sending data to backend
+    //Sending updated data to backend.
     $("#manageService").click(function (e) {
-        //e.preventDefault();
         var serviceId = $('#svcId').val();
         var serviceNameTxt = $("#serviceNameTxt").val().trim();
         var serviceDesc = $("#serviceDesc").val().trim();
@@ -74,7 +69,6 @@ $(document).ready(function () {
                 contentType: "application/x-www-form-urlencoded; charset=utf-8",
                 success: function (result) {
                     if (result) {
-                        //alert('success');
                     }
                 },
                 error: function (msg) { alert(msg); }

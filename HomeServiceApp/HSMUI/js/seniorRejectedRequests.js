@@ -1,4 +1,5 @@
-﻿$(document).ready(function () {
+﻿//Get the currenly rejected requests for the given senior.
+$(document).ready(function () {
     var requesterid = sessionStorage.getItem("idUser");
     $.ajax({
         type: "GET",

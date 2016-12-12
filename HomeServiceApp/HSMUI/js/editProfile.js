@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  //Upadate the profile of a senior.
   $("#update").click(function () {
     var firstName = $("#firstName").val().trim();
     var lastName = $("#lastName").val().trim();
@@ -67,7 +68,6 @@ $(document).ready(function () {
 				success: function (result) {
 					if (result.d) {
 						alert('success');
-                      //TODO direct to new page
 					}
 				},
 				error: function (msg) { alert(msg); }

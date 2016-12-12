@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  //Request an update to the time of a servie request.
   $("#request-time").click(function () {
     var startDate = $("#startDate").val().trim();
     var endDate = $("#endDate").val().trim();
@@ -50,6 +51,7 @@ $(document).ready(function () {
     }
   });
 
+  //Request the stop of a servie request.
   $("#request-stop").click(function () {
     $.ajax({
       type: "DELETE",
@@ -63,6 +65,7 @@ $(document).ready(function () {
     });
   });
 
+  //Request a comment request to a servie request.
   $("#request-other").click(function () {
     var comments = $("#comments").val().trim();
     if (comments == '') {

@@ -13,13 +13,10 @@ $(document).ready(function () {
             $.each(jsonData, function (i, obj) {
                 var divData = "<option value=" + obj.idUser + ">" + obj.FirstName + " " + obj.LastName + " (" + obj.UserName + ")</option>";
                 $(divData).appendTo('#username');
-                //var fullName = obj.FirstName + " " + obj.LastName;
-                //$('#username').val(fullName);
             });
             var selValue = select.options[select.selectedIndex].value;
             $.each(jsonData, function (i, obj) {
                 if (obj.idUser == selValue) {
-                    //alert(obj.FirstName + " " + obj.LastName + " " + obj.LoginPassword);
                     $('#idUser').val(obj.id);
                     $('#UserName').val(obj.UserName);
                     $('#firstName').val(obj.FirstName);
@@ -42,7 +39,6 @@ $(document).ready(function () {
                 var selValue = select.options[select.selectedIndex].value;
                 $.each(jsonData, function (i, obj) {
                     if (obj.idUser == selValue) {
-                        //alert(obj.FirstName + " " + obj.LastName + " " + obj.LoginPassword);
                         $('#idUser').val(obj.id);
                         $('#UserName').val(obj.UserName);
                         $('#firstName').val(obj.FirstName);

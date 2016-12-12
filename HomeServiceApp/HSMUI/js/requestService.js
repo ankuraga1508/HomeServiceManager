@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    //Change serveice to sent value
+    //Submit a new service request.
     $("#request").click(function (e) {
     e.preventDefault();
     var startDate = $("#startDate").val().trim();
@@ -40,12 +40,10 @@ $(document).ready(function () {
       var ModifiedOn = currentDate.getFullYear() + "-" + minTwoDigits(currentDate.getMonth()) + "-" + minTwoDigits(currentDate.getDay()) + " " +
           minTwoDigits(currentDate.getHours()) + ":" + minTwoDigits(currentDate.getMinutes()) + ":" + minTwoDigits(currentDate.getSeconds());
 
-        //TODO get and set ServiceId
       var postData = "RequesterId=" + UserId + "&RoleId= 1" + "&CaregiverId=" + "" +
           "&ServiceId=" + ServiceId + "&Status=1" + "&TimeOfServiceStart=" + startTime + "&TimeOfSericeEnd=" + endTime +
           "&Comments=" + comments + "&ModifiedBy=" + UserId + "&ModifiedOn=" + ModifiedOn;
 
-      alert(postData);
       $.ajax({
         type: "POST",
         url: "/api/request/postrequest",
@@ -62,11 +60,13 @@ $(document).ready(function () {
     }
     });
 
+    //Cancel the request.
     $("#request-cancel").click(function () {
         window.location = "SeniorDashboard.aspx";
     });
 });
 
+//Convert a one digit number to a string with a leading 0.
 function minTwoDigits(n) {
     if (n < 10 && n > -10) {
         return "0" + n;

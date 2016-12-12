@@ -1,5 +1,5 @@
-$(document).ready(function(){
-	
+$(document).ready(function () {
+    //Get the list of available services and update the page.
 	$.ajax({
 		type: "GET",
 		url: "api/service/services",
@@ -36,6 +36,7 @@ $(document).ready(function(){
 	    $(".modal-body #serviceId").val(arr[1]);
 	})
 
+    //Submit a request for a service.
 	$('#submitSchedule').click(function () {
 	    var serviceId = $("#serviceId").val().trim();
 	    var serviceName = $("#serviceName").val().trim();
@@ -56,12 +57,6 @@ $(document).ready(function(){
 	            url: "/api/request/postrequest",
 	            data: postData,
 	            success: function (result) {
-	                if (result == "true") {
-                    /*
-	                   var divData = '<div class="alert alert-success"><strong>Success! </strong>Request submitted successfully</strong></div>';
-	                   $(divData).appendTo('#success-message');
-                    */
-	               }
 	            },
 	            error: function (msg) {
 	            }

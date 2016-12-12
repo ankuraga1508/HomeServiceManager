@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    //Submit a new caregiver profile.
     $("#addCaregiver").click(function (e) {
         e.preventDefault();
         var firstName = $("#firstName").val().trim();
@@ -44,7 +45,6 @@ $(document).ready(function () {
                 success: function (result) {
                     if (result) {
                         location.reload();
-                        //window.location = "AdminDashboard.aspx";
                     }
                 },
                 error: function (msg) { alert(msg); }

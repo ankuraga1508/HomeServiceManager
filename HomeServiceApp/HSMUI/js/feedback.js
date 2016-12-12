@@ -1,4 +1,6 @@
+//This feature has not been implemented yet.
 $(document).ready(function () {
+    //Submit feedback from a senior about a service.
 	$("#submitFeedback").click(function () {
 		var serviceReceived = $("#serviceReceived").val().trim();
 		var comments = $("#comments").val().trim();
@@ -23,7 +25,7 @@ $(document).ready(function () {
 			alert(postData);
 			$.ajax({
 				type: "POST",
-				url: "",
+				url: "", //TODO add url
 				data: postData,
 				contentType: "application/json; charset=utf-8",
 				success: function (result) {

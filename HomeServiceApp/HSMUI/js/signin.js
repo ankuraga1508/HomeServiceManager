@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    //Submit a request to login.
     $("#userLogin").click(function (e) {
         e.preventDefault();
 		var username = $("#username").val().trim();
@@ -46,6 +47,7 @@ $(document).ready(function () {
 		}
 	});
 	
+    //Prompt registration.
     $("#userReg").click(function (e) {
         e.preventDefault();
 		window.location = "Registration.aspx";

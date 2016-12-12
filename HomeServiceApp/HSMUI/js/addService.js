@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    //Submit addition of a new type of service.
     $("#addService").click(function (e) {
         e.preventDefault();
 		var serviceName = $("#serviceName").val().trim();
@@ -24,12 +25,10 @@ $(document).ready(function () {
 				type: "POST",
 				url: "/api/service/addservice",
 				data: postData,
-				//contentType: "application/json; charset=utf-8",
 				success: function (result) {
 				    
 					if (result) {
 					    location.reload();
-					    //window.location = "AdminDashboard.aspx";
 					}
 				},
 				error: function (msg) { alert(msg); }
