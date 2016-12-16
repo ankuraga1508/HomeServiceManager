@@ -7,10 +7,19 @@ using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Collections.Generic;
 
+/// <summary>
+/// This class make connection with database and call different stored procedures related to service requests.
+/// </summary>
+
 namespace HSM.DAL
 {
     public class RequestRepository : IRequestRepository
     {
+        /// <summary>
+        /// This method calls stored procedure insert_update_request to add a new request or update an existiing request.
+        /// </summary>
+        /// <param name="requestDetails"></param>
+        /// <returns>boolean</returns>
         public Boolean addRequest(Request requestDetails)
         {
             try
@@ -60,7 +69,13 @@ namespace HSM.DAL
             return false;
         }
 
-
+        /// <summary>
+        /// This method calls stored procedure getrequestbyfilters to get all service requests based on filters.
+        /// </summary>
+        /// <param name="caregiverId"></param>
+        /// <param name="requesterId"></param>
+        /// <param name="status"></param>
+        /// <returns>List of Service Request</returns>
         public List<Request> getRequestsByFilters(int caregiverId, int requesterId, string status)
         {
             var requestList = new List<Request>();

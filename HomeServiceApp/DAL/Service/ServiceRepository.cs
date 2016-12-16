@@ -7,10 +7,19 @@ using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Collections.Generic;
 
+/// <summary>
+/// This class make connection with database and call different stored procedures related to services.
+/// </summary>
+
 namespace HSM.DAL
 {
     public class ServiceRepository : IServiceRepository
     {
+        /// <summary>
+        /// This method calls stored procedure addservice to add a new service.
+        /// </summary>
+        /// <param name="serviceDetails"></param>
+        /// <returns>boolean</returns>
         public Boolean AddService(Service serviceDetails)
         {
             try
@@ -49,6 +58,10 @@ namespace HSM.DAL
             return false;
         }
 
+        /// <summary>
+        ///  This method calls stored procedure getallservices to get all available services.
+        /// </summary>
+        /// <returns></returns>
         public List<Service> GetAllServices()
         {
             var serviceList = new List<Service>();

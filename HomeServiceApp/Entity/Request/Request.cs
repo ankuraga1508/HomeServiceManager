@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+/// <summary>
+/// This class represents the model for Service Request
+/// </summary>
+
 namespace HSM.Entity
 {
     public class Request

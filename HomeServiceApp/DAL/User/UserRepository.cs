@@ -11,10 +11,19 @@ using MySql.Data.MySqlClient;
 using Newtonsoft.Json.Linq;
 using System.Configuration;
 
+/// <summary>
+/// This class make connection with database and call different stored procedures related to users.
+/// </summary>
+
 namespace HSM.DAL
 {
     public class UserRepository : IUserRepository
     {
+        /// <summary>
+        ///  This method calls stored procedure getalluser to get all users from the database.
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <returns></returns>
         public List<User> GetAllUsers(int roleId)
         {
             var UserList = new List<User>();
@@ -61,6 +70,11 @@ namespace HSM.DAL
             return UserList;
         }
 
+        /// <summary>
+        /// This method calls stored procedure userlogin to validate user credentials.
+        /// </summary>
+        /// <param name="usercr"></param>
+        /// <returns>User</returns>
         public User userLogin(Credential usercr)
         {
             try
@@ -110,6 +124,11 @@ namespace HSM.DAL
             return null;
         }
 
+        /// <summary>
+        /// This method calls stored procedure getuserbyid to get all users based on id.
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns></returns>
         public User GetUserById(int UserId)
         {
             var UserData = new User();
@@ -154,6 +173,11 @@ namespace HSM.DAL
             return UserData;
         }
 
+        /// <summary>
+        /// This method calls stored procedure getuserbyusername to get all users based on username.
+        /// </summary>
+        /// <param name="UserName"></param>
+        /// <returns></returns>
         public User GetUserByUserName(string UserName)
         {
             var UserData = new User();
@@ -198,6 +222,11 @@ namespace HSM.DAL
             return UserData;
         }
 
+        /// <summary>
+        /// This method dave user's details into the database by calling stored procedure insertorupdate_user.
+        /// </summary>
+        /// <param name="UserData"></param>
+        /// <returns>User</returns>
         public User SaveUserDetails(User UserData)
         {
             try

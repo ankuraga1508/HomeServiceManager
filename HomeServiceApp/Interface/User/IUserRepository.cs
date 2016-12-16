@@ -1,9 +1,9 @@
 ﻿using HSM.Entity;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+/// <summary>
+/// This class provides an interface for User
+/// </summary>
 
 namespace HSM.Interface
 {
@@ -12,37 +12,36 @@ namespace HSM.Interface
         /// <summary>
         /// get all Users list
         /// </summary>
-        /// <param name="cityId"></param>
-        /// <param name="categoryId"></param>
-        /// <param name="pageIndex"></param>
-        /// <param name="pageSize"></param>
-        /// <returns></returns>
+        /// <param name="roleId"></param>
+        /// <returns>List of User</returns>
         List<User> GetAllUsers(int roleId);
 
         /// <summary>
         /// Check user is valid or not
         /// </summary>
+        /// <param name="usercr"></param>
+        /// <returns>User</returns>
         User userLogin(Credential usercr);
 
         /// <summary>
-        /// get delaer based on Userid
+        /// get userdetails based on UserId
         /// </summary>
         /// <param name="UserId"></param>
-        /// <returns></returns>
+        /// <returns>User</returns>
         User GetUserById(int UserId);
 
         /// <summary>
         /// get user based on UserName
         /// </summary>
         /// <param name="UserId"></param>
-        /// <returns></returns>
+        /// <returns>User</returns>
         User GetUserByUserName(string UserName);
 
         /// <summary>
         /// Save/Update User info
         /// </summary>
         /// <param name="UserData"></param>
-        /// <returns></returns>
+        /// <returns>User</returns>
         User SaveUserDetails(User UserData);
 
 

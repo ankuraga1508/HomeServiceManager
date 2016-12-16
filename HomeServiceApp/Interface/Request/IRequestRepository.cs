@@ -1,25 +1,29 @@
 ﻿using HSM.Entity;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+
+/// <summary>
+/// This class provides an interface for Service Request
+/// </summary>
+
 namespace HSM.Interface
 {
     public interface IRequestRepository
     {
         /// <summary>
-        /// Send Request
+        /// Add a new service request
         /// </summary>
+        /// <param name="requestDetails"></param>
+        /// <returns>boolean</returns>
         bool addRequest(Request requestDetails);
 
        
         /// <summary>
-        /// 
+        /// Get service request by filters
         /// </summary>
         /// <param name="caregiverId"></param>
         /// <param name="requesterId"></param>
         /// <param name="status"></param>
-        /// <returns></returns>
+        /// <returns>List of Request</returns>
         List<Request> getRequestsByFilters(int caregiverId, int requesterId, string status);
     }
 }

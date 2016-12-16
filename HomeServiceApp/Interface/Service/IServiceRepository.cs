@@ -1,20 +1,25 @@
 ﻿using HSM.Entity;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+
+/// <summary>
+/// This class provides an interface for Service
+/// </summary>
+
 namespace HSM.Interface
 {
     public interface IServiceRepository
     {
         /// <summary>
-        /// Add service
+        /// Add new service
         /// </summary>
+        /// <param name="serviceDetails"></param>
+        /// <returns>boolean</returns>
         bool AddService(Service serviceDetails);
 
         /// <summary>
         /// Get all services
         /// </summary>
+        /// <returns>List of Services</returns>
         List<Service> GetAllServices();
 
     }

@@ -6,10 +6,19 @@ using HSM.Common;
 using HSM.BL;
 using System.Net.Http;
 
+/// <summary>
+/// This class is request controller. All service requests goes through this controller. 
+/// </summary>
+
 namespace HSM.Services
 {
     public class RequestController : ApiController
     {
+        /// <summary>
+        /// Handle Http request with service request details
+        /// </summary>
+        /// <param name="requestDetails"></param>
+        /// <returns></returns>
         [System.Web.Http.HttpPost]
         [System.Web.Http.ActionName("postrequest")]
         public IHttpActionResult addRequest([FromBody] Entity.Request requestDetails)
@@ -30,7 +39,10 @@ namespace HSM.Services
             return Ok(response);
         }
 
-
+        /// <summary>
+        /// Http request to get service requests.
+        /// </summary>
+        /// <returns></returns>
         [System.Web.Http.HttpGet]
         [System.Web.Http.ActionName("getrequestbyfilters")]
         public IHttpActionResult getRequest()

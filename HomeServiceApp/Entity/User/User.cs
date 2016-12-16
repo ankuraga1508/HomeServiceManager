@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// This class represents the model for User
+/// </summary>
+
 namespace HSM.Entity
 {
     public class User : Credential
